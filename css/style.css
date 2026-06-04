@@ -1582,6 +1582,18 @@ a { color: inherit; text-decoration: none; }
   display: block;
 }
 
+.footer-map {
+  width: 100%;
+  line-height: 0;
+}
+
+.footer-map iframe {
+  width: 100%;
+  height: 420px;
+  border: none;
+  display: block;
+}
+
 .map-note {
   font-size: 13px;
   color: rgba(232,223,192,0.6);
