@@ -248,13 +248,16 @@ function initMenuSidebar() {
   const photos = document.querySelectorAll('.menu-sidebar-photo');
   if (!photos.length) return;
 
+  const captionEl = document.querySelector('.menu-sidebar-caption-text');
   let cur = 0;
   photos[cur].classList.add('active');
+  if (captionEl) captionEl.textContent = photos[cur].dataset.caption || photos[cur].alt;
 
   setInterval(() => {
     photos[cur].classList.remove('active');
     cur = (cur + 1) % photos.length;
     photos[cur].classList.add('active');
+    if (captionEl) captionEl.textContent = photos[cur].dataset.caption || photos[cur].alt;
   }, 4000);
 }
 
