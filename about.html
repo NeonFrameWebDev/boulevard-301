@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="title-es" content="Nosotros | Boulevard 301 Puerto Peñasco">
+  <meta name="title-en" content="About | Boulevard 301 Puerto Peñasco">
+  <title>Nosotros | Boulevard 301 Puerto Peñasco</title>
+  <meta name="description-es" content="Restaurante familiar de desayuno y comida en Puerto Peñasco. Huevos de rancho propio, ingredientes frescos, comedor con alma. Fresco y saludable desde la Avenida Benito Juárez.">
+  <meta name="description-en" content="Family-owned breakfast and lunch restaurant in Puerto Peñasco. Ranch-fresh eggs, local ingredients, a dining room with personality. Fresco y saludable on Avenida Benito Juárez.">
+  <meta name="description" content="Restaurante familiar de desayuno y comida en Puerto Peñasco. Huevos de rancho propio, ingredientes frescos, comedor con alma.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/about.html">
+  <meta property="og:title" content="Nosotros | Boulevard 301 Puerto Peñasco">
+  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/interior_2.jpg">
+
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    (function(){
+      var lang = localStorage.getItem('blvd301_lang') || 'es';
+      document.documentElement.lang = lang;
+    })();
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" role="navigation" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Boulevard 301 – Inicio">
+    <img src="assets/logo.jpg" alt="Boulevard 301">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" class="active" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-panel" role="dialog" aria-label="Menú de navegación">
+  <ul class="nav-mobile-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" class="active" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+  <div class="nav-mobile-footer">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+</div>
+
+<!-- ======================================================
+     PAGE HERO (50vh)
+     ====================================================== -->
+<header class="page-hero hero-short-50" aria-label="Nosotros - Boulevard 301">
+  <img class="hero-bg" src="assets/interior_2.jpg" alt="Booths en vinotinto y murales en las paredes del comedor" fetchpriority="high">
+  <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(59,51,32,0) 0%, rgba(59,51,32,0.6) 100%);"></div>
+  <div class="hero-content" style="padding-bottom: clamp(2rem,5vw,4rem);">
+    <p class="hero-eyebrow" data-es="Nuestra Historia" data-en="Our Story">Nuestra Historia</p>
+    <h1 class="hero-headline" style="font-size: clamp(32px, 6vw, 52px);" data-es="Un desayuno hecho con amor." data-en="A breakfast made with love.">Un desayuno hecho con amor.</h1>
+  </div>
+</header>
+
+<!-- ======================================================
+     SECTION: THE RECIPE (dark)
+     ====================================================== -->
+<section class="bg-dark">
+  <div class="section-inner">
+    <div class="col-split col-split-40-60" style="align-items:start; gap: 3rem;">
+
+      <!-- Photo -->
+      <div class="about-photo-wrap reveal">
+        <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
+        <p class="about-photo-caption" style="color: var(--muted);" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
+      </div>
+
+      <!-- Text -->
+      <div class="reveal">
+        <p class="recipe-pull" data-es="500 gr de Amor · 300 gr de Sazón · 1 Huevo de Paciencia · y locura al gusto" data-en="500g of Love · 300g of Seasoning · 1 Egg of Patience · and madness to taste">500 gr de Amor · 300 gr de Sazón · 1 Huevo de Paciencia · y locura al gusto</p>
+
+        <h2 class="section-heading" style="font-size: clamp(24px,3.5vw,32px); color: var(--cream); margin-bottom: 1.25rem;" data-es="Así cocinamos." data-en="This is how we cook.">Así cocinamos.</h2>
+
+        <div class="about-body-text">
+          <p data-es="Somos un restaurante familiar en el corazón de Puerto Peñasco, sobre el boulevard principal. Abrimos cada mañana con huevos frescos de nuestro propio rancho, afuera del pueblo. Los traemos directamente, sin intermediarios." data-en="We're a family-owned breakfast and lunch restaurant on Puerto Peñasco's main boulevard. Every morning starts with fresh eggs from our own ranch just outside town. We bring them in ourselves.">Somos un restaurante familiar en el corazón de Puerto Peñasco, sobre el boulevard principal. Abrimos cada mañana con huevos frescos de nuestro propio rancho, afuera del pueblo. Los traemos directamente, sin intermediarios.</p>
+          <p data-es="El menú mezcla lo que más nos gusta de Sonora y del norte de México: arrachera, machaca, chilaquiles, barbacoa estilo Sinaloa, y los huevos que siempre han sido la base de un buen desayuno. También tenemos platos para quienes prefieren comer ligero: avena, fruta de temporada, avocado toast, parfait." data-en="The menu runs from Sonoran arrachera steak and eggs to chilaquiles, machaca burritos, barbacoa Sinaloa style, and shrimp omelettes. If you want something lighter, there's avena, seasonal fruit, avocado toast, and parfait.">El menú mezcla lo que más nos gusta de Sonora y del norte de México: arrachera, machaca, chilaquiles, barbacoa estilo Sinaloa, y los huevos que siempre han sido la base de un buen desayuno. También tenemos platos para quienes prefieren comer ligero: avena, fruta de temporada, avocado toast, parfait.</p>
+          <p data-es="Llevamos años siendo el desayuno favorito de los locales y de quienes vienen de visita. Eso no es accidente. Es que cocinamos con amor, con sazón, y con paciencia." data-en="We've been a local favorite and a tourist stop for years. That doesn't happen by accident. It happens when you cook with love, seasoning, and patience.">Llevamos años siendo el desayuno favorito de los locales y de quienes vienen de visita. Eso no es accidente. Es que cocinamos con amor, con sazón, y con paciencia.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- By the numbers -->
+    <div class="about-stats-row" style="margin-top: 3.5rem;">
+      <div class="about-stat reveal">
+        <div class="about-stat-num">4.6</div>
+        <div class="about-stat-label" data-es="estrellas en Google" data-en="stars on Google">estrellas en Google</div>
+      </div>
+      <div class="about-stat reveal">
+        <div class="about-stat-num">511</div>
+        <div class="about-stat-label" data-es="reseñas" data-en="reviews">reseñas</div>
+      </div>
+      <div class="about-stat reveal">
+        <div class="about-stat-num">7</div>
+        <div class="about-stat-label" data-es="días a la semana" data-en="days a week">días a la semana</div>
+      </div>
+      <div class="about-stat reveal">
+        <div class="about-stat-num">7:30</div>
+        <div class="about-stat-label" data-es="abrimos cada mañana" data-en="we open every morning">abrimos cada mañana</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION: THE SPACE (light)
+     ====================================================== -->
+<section class="bg-light">
+  <div class="section-inner">
+    <p class="eyebrow" data-es="El Espacio" data-en="The Space">El Espacio</p>
+    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,34px); color: var(--olive); margin-bottom: 1.5rem;" data-es="Bienvenidos a nuestro comedor." data-en="Welcome to our dining room.">Bienvenidos a nuestro comedor.</h2>
+
+    <div class="photo-mosaic reveal">
+      <div class="mosaic-row mosaic-row-1">
+        <div class="mosaic-cell">
+          <img src="assets/interior_3.jpg" alt="Techo pintado a mano con vigas naranjas sobre cielo azul" loading="lazy">
+        </div>
+        <div class="mosaic-cell">
+          <img src="assets/interior_4.png" alt="Comedor de Boulevard 301 con clientes" loading="lazy">
+        </div>
+      </div>
+      <div class="mosaic-row mosaic-row-2" style="margin-top: 4px;">
+        <div class="mosaic-cell">
+          <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural del techo" loading="lazy">
+        </div>
+        <div class="mosaic-cell">
+          <img src="assets/interior_2.jpg" alt="Booths en vinotinto y murales en las paredes" loading="lazy">
+        </div>
+      </div>
+    </div>
+
+    <p style="font-size:15px; color: var(--muted); margin-top: 1.5rem; max-width: 680px;" data-es="El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro." data-en="The dining room has its own personality. Burgundy booths, a hand-painted ceiling, murals on every wall. Not catalog decor. Ours.">El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro.</p>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION: THE RANCH PROMISE (dark)
+     ====================================================== -->
+<section class="bg-dark">
+  <div class="section-inner">
+    <p class="eyebrow" data-es="Ingredientes" data-en="Ingredients">Ingredientes</p>
+    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,32px); color: var(--cream); margin-bottom: 2rem;" data-es="Del rancho a tu plato." data-en="From the ranch to your plate.">Del rancho a tu plato.</h2>
+
+    <div class="col-split col-split-55-45" style="align-items: center;">
+      <div>
+        <div class="ingredient-grid">
+          <div class="ingredient-block reveal">
+            <div class="ingredient-num">01</div>
+            <div class="ingredient-label" data-es="Huevos de rancho propio" data-en="Ranch-fresh eggs">Huevos de rancho propio</div>
+            <p class="ingredient-body" data-es="Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad." data-en="The eggs on your plate matter. Ours come from a ranch we run ourselves, outside of town. Actually fresh.">Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad.</p>
+          </div>
+          <div class="ingredient-block reveal">
+            <div class="ingredient-num">02</div>
+            <div class="ingredient-label" data-es="100% ingredientes frescos" data-en="100% fresh ingredients">100% ingredientes frescos</div>
+            <p class="ingredient-body" data-es="Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días." data-en="Quality ingredients. No shortcuts. Every plate is made fresh, every day.">Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días.</p>
+          </div>
+          <div class="ingredient-block reveal">
+            <div class="ingredient-num">03</div>
+            <div class="ingredient-label" data-es="Cocina sonorense" data-en="Sonoran kitchen tradition">Cocina sonorense</div>
+            <p class="ingredient-body" data-es="Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación." data-en="Arrachera, machaca, Sinaloa-style barbacoa, chilaquiles. The flavors of northern Mexico that need no explanation.">Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación.</p>
+          </div>
+          <div class="ingredient-block reveal">
+            <div class="ingredient-num">04</div>
+            <div class="ingredient-label" data-es="Hecho en casa" data-en="Homemade daily">Hecho en casa</div>
+            <p class="ingredient-body" data-es="El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido." data-en="The chorizo, the salsas, the daily specials. Made here. That's what the regulars already know.">El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <img class="about-ranch-photo" src="assets/dish_5.jpg" alt="Steak and Eggs: arrachera, huevos, papas y frijoles" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION: PULL QUOTES (light)
+     ====================================================== -->
+<section class="bg-light">
+  <div class="section-inner-narrow">
+    <p class="eyebrow" style="text-align:center;" data-es="Lo que dicen los clientes" data-en="What guests say">Lo que dicen los clientes</p>
+    <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
+      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--olive); border-left: 3px solid var(--rust); padding-left: 1.5rem; line-height: 1.7;">
+        <p data-es="«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»" data-en="&quot;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&quot;">«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»</p>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Renee S., TripAdvisor" data-en="— Renee S., TripAdvisor">— Renee S., TripAdvisor</footer>
+      </blockquote>
+
+      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--olive); border-left: 3px solid var(--rust); padding-left: 1.5rem; line-height: 1.7;">
+        <p data-es="«La comida es hermosa a la vista y deliciosa al paladar.»" data-en="&quot;The food is absolutely beautiful to look at and tastes oh so delicious.&quot;">«La comida es hermosa a la vista y deliciosa al paladar.»</p>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Sarah C., TripAdvisor" data-en="— Sarah C., TripAdvisor">— Sarah C., TripAdvisor</footer>
+      </blockquote>
+
+      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--olive); border-left: 3px solid var(--rust); padding-left: 1.5rem; line-height: 1.7;">
+        <p data-es="«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»" data-en="&quot;Orange juice squeezed fresh. The shrimp omelette was fantastic.&quot;">«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»</p>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Paul McLinn, Restaurant Guru" data-en="— Paul McLinn, Restaurant Guru">— Paul McLinn, Restaurant Guru</footer>
+      </blockquote>
+    </div>
+
+    <!-- [copy needed: owner/staff note placeholder] -->
+    <!-- PLACEHOLDER: Owner or team name block. To be filled in during pitch.
+         data-es="[copy needed: nombre del propietario o del equipo]"
+         data-en="[copy needed: owner or team name]"
+    -->
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION: HOURS + CTA STRIP (dark)
+     ====================================================== -->
+<section class="bg-dark hours-strip">
+  <p class="main-hours" data-es="Abierto todos los días · 7:30 AM – 4:00 PM" data-en="Open every day · 7:30 AM – 4:00 PM">Abierto todos los días · 7:30 AM – 4:00 PM</p>
+  <p class="sub-hours" data-es="Avenida Benito Juárez · Centro · Puerto Peñasco" data-en="Avenida Benito Juárez · Centro · Puerto Peñasco">Avenida Benito Juárez · Centro · Puerto Peñasco</p>
+  <a href="visit.html" class="btn btn-ghost-teal" style="margin-top: 1.5rem;" data-es="Ver cómo llegar" data-en="Get directions">Ver cómo llegar</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html"><img class="footer-logo" src="assets/logo.jpg" alt="Boulevard 301"></a>
+      <p class="footer-tagline" data-es="Desayuno y comida. Fresco y saludable." data-en="Breakfast and lunch. Fresh and healthy.">Desayuno y comida. Fresco y saludable.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/boulevard301/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span data-es="Lunes a domingo, 7:30 AM – 4:00 PM" data-en="Monday – Sunday, 7:30 AM – 4:00 PM">Lunes a domingo, 7:30 AM – 4:00 PM</span>
+      <span>Av. Benito Juárez, Centro, Puerto Peñasco, Sonora</span>
+      <a href="tel:+526383834816">Tel: +52 638 383 4816</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>&copy; 2026 Boulevard 301. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></span>
+    <span><a href="https://neonframewebdesign.com" target="_blank" rel="noopener noreferrer">NeonFrame Web Design</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

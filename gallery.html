@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta name="title-es" content="Galería | Boulevard 301 Puerto Peñasco">
+  <meta name="title-en" content="Gallery | Boulevard 301 Puerto Peñasco">
+  <title>Galería | Boulevard 301 Puerto Peñasco</title>
+  <meta name="description-es" content="Fotos del comedor, platillos y ambiente de Boulevard 301 en Puerto Peñasco. Steak and eggs, chilaquiles, French toast, booths en vinotinto, techo pintado a mano.">
+  <meta name="description-en" content="Photos of the dining room, dishes, and atmosphere at Boulevard 301 in Puerto Peñasco. Steak and eggs, chilaquiles, French toast, burgundy booths, hand-painted ceiling.">
+  <meta name="description" content="Fotos del comedor, platillos y ambiente de Boulevard 301 en Puerto Peñasco.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/gallery.html">
+  <meta property="og:title" content="Galería | Boulevard 301 Puerto Peñasco">
+  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/photo_c.jpg">
+
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    (function(){
+      var lang = localStorage.getItem('blvd301_lang') || 'es';
+      document.documentElement.lang = lang;
+    })();
+  </script>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="site-nav" role="navigation" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Boulevard 301 – Inicio">
+    <img src="assets/logo.jpg" alt="Boulevard 301">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" class="active" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="nav-mobile-panel" role="dialog" aria-label="Menú de navegación">
+  <ul class="nav-mobile-links">
+    <li><a href="index.html" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" class="active" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+  <div class="nav-mobile-footer">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+</div>
+
+<!-- ======================================================
+     PAGE HERO (35vh)
+     ====================================================== -->
+<header class="page-hero hero-short-35" aria-label="Galería de Boulevard 301">
+  <img class="hero-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural colorido" fetchpriority="high">
+  <div class="hero-overlay" style="background: rgba(59,51,32,0.50);"></div>
+  <div class="hero-content" style="text-align:center; padding: 2rem;">
+    <h1 class="hero-headline" style="font-size: clamp(32px, 6vw, 50px);" data-es="Galería" data-en="Gallery">Galería</h1>
+    <p style="font-size: 15px; color: rgba(232,223,192,0.8); font-family: var(--font-body); margin-top: 0.5rem;" data-es="Un vistazo a lo que te espera." data-en="A look at what's waiting for you.">Un vistazo a lo que te espera.</p>
+  </div>
+</header>
+
+<!-- ======================================================
+     FILTER BAR
+     ====================================================== -->
+<div class="gallery-filter-bar" role="toolbar" aria-label="Filtrar galería">
+  <button class="filter-btn active" data-filter="all" data-es="Todos" data-en="All">Todos</button>
+  <button class="filter-btn" data-filter="interiores" data-es="Interiores" data-en="Interiors">Interiores</button>
+  <button class="filter-btn" data-filter="platillos" data-es="Platillos" data-en="Dishes">Platillos</button>
+  <button class="filter-btn" data-filter="bebidas" data-es="Bebidas" data-en="Drinks">Bebidas</button>
+  <button class="filter-btn" data-filter="exterior" data-es="Exterior" data-en="Exterior">Exterior</button>
+</div>
+
+<!-- ======================================================
+     MASONRY GALLERY
+     ====================================================== -->
+<div class="gallery-section">
+  <div class="masonry-grid" role="list" aria-label="Fotos de Boulevard 301">
+
+    <!-- INTERIORES -->
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Comedor de Boulevard 301 con clientes">
+      <img src="assets/interior_4.png" alt="Boulevard 301 lleno de vida, como siempre" loading="lazy">
+      <span class="sr-only" data-es="Boulevard 301 lleno de vida, como siempre." data-en="Boulevard 301, full of life, as always."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Techo pintado a mano con vigas naranjas">
+      <img src="assets/interior_3.jpg" alt="Techo pintado a mano. Cada rincón tiene algo que ver." loading="lazy">
+      <span class="sr-only" data-es="Techo pintado a mano. Cada rincón tiene algo que ver." data-en="Hand-painted ceiling. Every corner has something to look at."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Booths en vinotinto y murales en las paredes">
+      <img src="assets/interior_2.jpg" alt="Comedor con booths en vinotinto y murales en las paredes" loading="lazy">
+      <span class="sr-only" data-es="Comedor con booths en vinotinto y murales en las paredes." data-en="Dining room with burgundy booths and wall murals."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Letrero de Boulevard 301 con mural">
+      <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 sobre la Avenida Benito Juárez" loading="lazy">
+      <span class="sr-only" data-es="Letrero de Boulevard 301." data-en="Boulevard 301 wall sign."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Mural receta en las paredes del comedor">
+      <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
+      <span class="sr-only" data-es="El mural receta en el comedor." data-en="The recipe mural in the dining room."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Portada del menú de Boulevard 301">
+      <img src="assets/photo_a.jpg" alt="Portada del menú físico de Boulevard 301" loading="lazy">
+      <span class="sr-only" data-es="Portada del menú de Boulevard 301." data-en="Boulevard 301 physical menu cover."></span>
+    </div>
+
+    <!-- PLATILLOS -->
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Steak and Eggs">
+      <img src="assets/dish_5.jpg" alt="Steak and Eggs. Arrachera, huevos, papas rancheras." loading="lazy">
+      <span class="sr-only" data-es="Steak and Eggs. Arrachera, huevos, papas rancheras." data-en="Steak and Eggs. Arrachera, eggs, ranch potatoes."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Chilaquiles en salsa verde">
+      <img src="assets/dish_7.jpg" alt="Chilaquiles en salsa verde con huevo, cotija y jalapeño" loading="lazy">
+      <span class="sr-only" data-es="Chilaquiles en salsa verde con huevo, cotija y jalapeño." data-en="Chilaquiles in salsa verde, fried egg, cotija, jalapeño."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Omelette Poblano">
+      <img src="assets/dish_4.jpg" alt="Omelette Poblano con salsa verde, elote y cotija" loading="lazy">
+      <span class="sr-only" data-es="Omelette Poblano con salsa verde, elote y cotija." data-en="Poblano omelette with green salsa, corn, cotija."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Huevos con chorizo y papas">
+      <img src="assets/dish_single_1.png" alt="Huevos, chorizo y papas. El clásico." loading="lazy">
+      <span class="sr-only" data-es="Huevos, chorizo y papas. El clásico." data-en="Eggs, chorizo, potatoes. The classic."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="French Toast con frutas">
+      <img src="assets/dish_single_2.png" alt="French Toast con fresas, kiwi, arándanos y miel" loading="lazy">
+      <span class="sr-only" data-es="French Toast con fresas, kiwi, arándanos y miel." data-en="French Toast with strawberries, kiwi, blueberries, honey."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Panini al chipotle con agua fresca">
+      <img src="assets/dish_table_1.png" alt="Panini al chipotle con agua fresca de fresa" loading="lazy">
+      <span class="sr-only" data-es="Panini al chipotle con agua fresca de fresa." data-en="Chipotle panini with strawberry agua fresca."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Jugo natural, chilaquiles, avocado toast">
+      <img src="assets/rg_dish_1.jpg" alt="Jugo natural, chilaquiles, avocado toast y salsas de la casa" loading="lazy">
+      <span class="sr-only" data-es="Jugo natural, chilaquiles, avocado toast y salsas de la casa." data-en="Fresh OJ, chilaquiles, avocado toast, house salsas."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Omelette, French toast y waffles">
+      <img src="assets/rg_dish_2.jpg" alt="Omelette con frijoles, French toast de frutas, waffles con berries" loading="lazy">
+      <span class="sr-only" data-es="Omelette, French toast de frutas y waffles con berries." data-en="Omelette, fruit French toast, waffles with berries."></span>
+    </div>
+
+    <!-- BEBIDAS -->
+    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Chocolate caliente en taza artesanal">
+      <img src="assets/drink_1.png" alt="Chocolate caliente en taza artesanal" loading="lazy">
+      <span class="sr-only" data-es="Chocolate caliente en taza artesanal. El desayuno empieza bien." data-en="Hot chocolate in a handmade mug. A good way to start."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Aguas frescas y bebidas">
+      <img src="assets/interior_drink.png" alt="Aguas frescas y bebidas de Boulevard 301" loading="lazy">
+      <span class="sr-only" data-es="Aguas frescas y presentación de bebidas." data-en="Aguas frescas and drinks presentation."></span>
+    </div>
+
+    <!-- EXTERIOR -->
+    <div class="masonry-item" data-cat="exterior" role="listitem" aria-label="Fachada de Boulevard 301">
+      <img src="assets/exterior_1.png" alt="Boulevard 301. Sobre la Avenida Benito Juárez." loading="lazy">
+      <span class="sr-only" data-es="Boulevard 301. Sobre la Avenida Benito Juárez." data-en="Boulevard 301. On Avenida Benito Juárez."></span>
+    </div>
+
+    <div class="masonry-item" data-cat="exterior" role="listitem" aria-label="Vista de esquina del restaurante">
+      <img src="assets/exterior_2.png" alt="Vista de esquina de Boulevard 301 con anuncio de pizarrón" loading="lazy">
+      <span class="sr-only" data-es="Vista de esquina de Boulevard 301 con pizarrón de ofertas." data-en="Corner view of Boulevard 301 with chalkboard sign."></span>
+    </div>
+
+  </div>
+</div>
+
+<!-- ======================================================
+     GALLERY CTA
+     ====================================================== -->
+<div class="gallery-cta-strip">
+  <h2 data-es="Ya tienes hambre. Ven a desayunar." data-en="Hungry yet? Come have breakfast.">Ya tienes hambre. Ven a desayunar.</h2>
+  <a href="menu.html" class="btn btn-primary" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+</div>
+
+<!-- ======================================================
+     LIGHTBOX
+     ====================================================== -->
+<div id="lightbox" role="dialog" aria-modal="true" aria-label="Visor de fotos">
+  <button class="lb-close" aria-label="Cerrar">&times;</button>
+  <button class="lb-arrow lb-prev" aria-label="Anterior">&#8592;</button>
+  <div class="lightbox-inner">
+    <img id="lb-img" src="" alt="">
+  </div>
+  <button class="lb-arrow lb-next" aria-label="Siguiente">&#8594;</button>
+  <div class="lb-caption"></div>
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html"><img class="footer-logo" src="assets/logo.jpg" alt="Boulevard 301"></a>
+      <p class="footer-tagline" data-es="Desayuno y comida. Fresco y saludable." data-en="Breakfast and lunch. Fresh and healthy.">Desayuno y comida. Fresco y saludable.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer">Facebook</a>
+        <a href="https://www.instagram.com/boulevard301/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      </div>
+    </div>
+    <div class="footer-info">
+      <span data-es="Lunes a domingo, 7:30 AM – 4:00 PM" data-en="Monday – Sunday, 7:30 AM – 4:00 PM">Lunes a domingo, 7:30 AM – 4:00 PM</span>
+      <span>Av. Benito Juárez, Centro, Puerto Peñasco, Sonora</span>
+      <a href="tel:+526383834816">Tel: +52 638 383 4816</a>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span>&copy; 2026 Boulevard 301. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></span>
+    <span><a href="https://neonframewebdesign.com" target="_blank" rel="noopener noreferrer">NeonFrame Web Design</a></span>
+  </div>
+</footer>
+
+<!-- sr-only helper -->
+<style>
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+</style>
+
+<script src="js/main.js"></script>
+</body>
+</html>

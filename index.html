@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bilingual title/description swap -->
+  <meta name="title-es" content="Boulevard 301 | Desayuno y Comida en Puerto Peñasco">
+  <meta name="title-en" content="Boulevard 301 | Breakfast and Lunch in Puerto Peñasco">
+  <title>Boulevard 301 | Desayuno y Comida en Puerto Peñasco</title>
+  <meta name="description-es" content="Restaurante familiar de desayuno y comida en el boulevard principal de Puerto Peñasco. Fresco, saludable y hecho con amor. Abierto todos los días 7:30 AM – 4 PM.">
+  <meta name="description-en" content="Family breakfast and lunch restaurant on Puerto Peñasco's main boulevard. Fresh, healthy, made with love. Open every day 7:30 AM – 4 PM.">
+  <meta name="description" content="Restaurante familiar de desayuno y comida en el boulevard principal de Puerto Peñasco. Fresco, saludable y hecho con amor. Abierto todos los días 7:30 AM – 4 PM.">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/">
+  <meta property="og:title" content="Boulevard 301 | Desayuno y Comida en Puerto Peñasco">
+  <meta property="og:description" content="Restaurante familiar de desayuno y comida en Puerto Peñasco. Fresco y saludable. Abierto todos los días 7:30 AM – 4 PM.">
+  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/interior_4.png">
+
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Apply language before paint to prevent flash -->
+  <script>
+    (function(){
+      var lang = localStorage.getItem('blvd301_lang') || 'es';
+      document.documentElement.lang = lang;
+    })();
+  </script>
+</head>
+<body>
+
+<!-- ======================================================
+     LOADER
+     ====================================================== -->
+<div id="loader" role="status" aria-label="Cargando...">
+  <img id="loader-logo" src="assets/logo.jpg" alt="Boulevard 301">
+  <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
+</div>
+
+<!-- ======================================================
+     NAV
+     ====================================================== -->
+<nav class="site-nav" role="navigation" aria-label="Navegación principal">
+  <a href="index.html" class="nav-logo" aria-label="Boulevard 301 – Inicio">
+    <img src="assets/logo.jpg" alt="Boulevard 301">
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="index.html" class="active" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+
+  <div class="nav-right">
+    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+
+  <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile nav panel -->
+<div class="nav-mobile-panel" role="dialog" aria-label="Menú de navegación">
+  <ul class="nav-mobile-links">
+    <li><a href="index.html" class="active" data-es="Inicio" data-en="Home">Inicio</a></li>
+    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
+    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
+    <li><a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a></li>
+    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
+  </ul>
+  <div class="nav-mobile-footer">
+    <div class="lang-toggle">
+      <button class="lang-btn active" data-lang="es">ES</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
+  </div>
+</div>
+
+<!-- ======================================================
+     SECTION 1: HERO
+     ====================================================== -->
+<section class="page-hero hero-home" aria-label="Hero">
+  <img
+    class="hero-bg hero-parallax-bg"
+    src="assets/interior_4.png"
+    alt="Comedor de Boulevard 301 lleno de vida"
+    fetchpriority="high"
+  >
+  <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(59,51,32,0.15) 0%, rgba(59,51,32,0.72) 100%);"></div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow" data-es="Puerto Peñasco, Sonora · Abierto todos los días 7:30 AM – 4 PM" data-en="Puerto Peñasco, Sonora · Open every day 7:30 AM – 4 PM">Puerto Peñasco, Sonora · Abierto todos los días 7:30 AM – 4 PM</p>
+    <h1 class="hero-headline" data-es="Desayuno y comida en el corazón del boulevard." data-en="Breakfast and lunch on Puerto Peñasco's main boulevard.">Desayuno y comida en el corazón del boulevard.</h1>
+    <p class="hero-sub" data-es="Fresco, saludable y con sazón. Abierto todos los días, 7:30 AM – 4 PM." data-en="Fresh, healthy, and made with seasoning. Open every day, 7:30 AM – 4 PM.">Fresco, saludable y con sazón. Abierto todos los días, 7:30 AM – 4 PM.</p>
+    <div class="hero-cta-row">
+      <a href="menu.html" class="btn btn-primary" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
+      <a href="visit.html" class="btn btn-secondary-cream" data-es="Cómo llegar" data-en="Get directions">Cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 2: STATS BAR
+     ====================================================== -->
+<div class="stats-bar" role="complementary">
+  <div class="stats-bar-inner">
+    <div class="stats-item" data-es="4.6 ★ Google · 511 reseñas" data-en="4.6 ★ Google · 511 reviews">4.6 ★ Google · 511 reseñas</div>
+    <div class="stats-sep" aria-hidden="true"></div>
+    <div class="stats-item" data-es="Abierto 7 días" data-en="Open 7 days">Abierto 7 días</div>
+    <div class="stats-sep" aria-hidden="true"></div>
+    <div class="stats-item" data-es="Estacionamiento gratis · WiFi · Para llevar" data-en="Free parking · WiFi · Takeout available">Estacionamiento gratis · WiFi · Para llevar</div>
+  </div>
+</div>
+
+<!-- ======================================================
+     SECTION 3: ABOUT TEASER (dark)
+     ====================================================== -->
+<section class="bg-dark">
+  <div class="section-inner">
+    <div class="col-split col-split-60-40" style="align-items: center;">
+      <!-- Text -->
+      <div class="reveal">
+        <p class="eyebrow" data-es="Nuestra Historia" data-en="Our Story">Nuestra Historia</p>
+        <h2 class="section-heading" style="font-size: clamp(26px,4vw,36px); color: var(--cream); margin-bottom: 1rem;" data-es="Hecho con amor, sazón, y un huevo de paciencia." data-en="Made with love, seasoning, and an egg of patience.">Hecho con amor, sazón, y un huevo de paciencia.</h2>
+        <p style="font-size:16px; color: rgba(232,223,192,0.85); line-height:1.75; max-width: 520px;" data-es="Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita." data-en="We're a family-owned restaurant in Puerto Peñasco. Eggs from our own ranch, fresh local ingredients, and a kitchen that has been a local favorite and a tourist stop for years.">Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita.</p>
+        <a href="about.html" class="text-link-arrow" data-es="Conócenos &rarr;" data-en="Our story &rarr;">Conócenos &rarr;</a>
+      </div>
+
+      <!-- Photo -->
+      <div class="about-photo-wrap reveal">
+        <img src="assets/photo_b.jpg" alt="Mural de receta en el comedor de Boulevard 301" loading="lazy">
+        <p class="about-photo-caption" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 4: SIGNATURE DISHES (light)
+     ====================================================== -->
+<section class="bg-light">
+  <div class="section-inner">
+    <p class="eyebrow" data-es="Lo que más nos piden" data-en="Customer Favorites">Lo que más nos piden</p>
+    <h2 class="section-heading" style="font-size: clamp(24px,4vw,36px); color: var(--olive); margin-bottom: 0.5rem;" data-es="De la plancha a tu mesa." data-en="From the grill to your table.">De la plancha a tu mesa.</h2>
+
+    <!-- Desktop grid -->
+    <div class="dish-cards-row">
+      <!-- Card 1: Steak & Eggs -->
+      <article class="dish-card reveal">
+        <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</p>
+          <p class="dish-card-price" data-es="$200 MXN" data-en="$200 MXN">$200 MXN</p>
+          <p class="dish-card-desc" data-es="Arrachera, huevos al gusto, papas rancheras, frijoles y jalapeños. El plato que enamora." data-en="Arrachera, eggs your way, ranch potatoes, beans, and jalapeños.">Arrachera, huevos al gusto, papas rancheras, frijoles y jalapeños. El plato que enamora.</p>
+        </div>
+      </article>
+
+      <!-- Card 2: French Toast -->
+      <article class="dish-card reveal">
+        <img class="dish-card-photo" src="assets/dish_single_2.png" alt="French Toast" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="French Toast" data-en="French Toast">French Toast</p>
+          <p class="dish-card-price" data-es="$140 MXN" data-en="$140 MXN">$140 MXN</p>
+          <p class="dish-card-desc" data-es="Dorado por fuera, suave por dentro. Con fresas, kiwi, arándanos y miel. El French toast que no se olvida." data-en="Golden outside, soft inside. Strawberries, kiwi, blueberries, and honey. More than one guest called it the best they've ever had.">Dorado por fuera, suave por dentro. Con fresas, kiwi, arándanos y miel. El French toast que no se olvida.</p>
+        </div>
+      </article>
+
+      <!-- Card 3: Benedictinos -->
+      <article class="dish-card reveal">
+        <img class="dish-card-photo" src="assets/dish_7.jpg" alt="Chilaquiles en Salsa Verde" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="Chilaquiles en Salsa Verde" data-en="Chilaquiles in Salsa Verde">Chilaquiles en Salsa Verde</p>
+          <p class="dish-card-price" data-es="$145 MXN" data-en="$145 MXN">$145 MXN</p>
+          <p class="dish-card-desc" data-es="Tortilla, salsa verde, huevo frito, cotija, jalapeño y frijoles." data-en="Tortilla chips, salsa verde, fried egg, cotija, jalapeño, and beans.">Tortilla, salsa verde, huevo frito, cotija, jalapeño y frijoles.</p>
+        </div>
+      </article>
+    </div>
+
+    <!-- Mobile scroll snap -->
+    <div class="dish-cards-scroll">
+      <article class="dish-card">
+        <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</p>
+          <p class="dish-card-price">$200 MXN</p>
+          <p class="dish-card-desc" data-es="Arrachera, huevos al gusto, papas rancheras, frijoles y jalapeños." data-en="Arrachera, eggs your way, ranch potatoes, beans, and jalapeños.">Arrachera, huevos al gusto, papas rancheras, frijoles y jalapeños.</p>
+        </div>
+      </article>
+      <article class="dish-card">
+        <img class="dish-card-photo" src="assets/dish_single_2.png" alt="French Toast" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="French Toast" data-en="French Toast">French Toast</p>
+          <p class="dish-card-price">$140 MXN</p>
+          <p class="dish-card-desc" data-es="Dorado por fuera, suave por dentro. Con fresas, kiwi, arándanos y miel." data-en="Golden outside, soft inside. Strawberries, kiwi, blueberries, and honey.">Dorado por fuera, suave por dentro. Con fresas, kiwi, arándanos y miel.</p>
+        </div>
+      </article>
+      <article class="dish-card">
+        <img class="dish-card-photo" src="assets/dish_7.jpg" alt="Chilaquiles" loading="lazy">
+        <div class="dish-card-body">
+          <p class="dish-card-name" data-es="Chilaquiles en Salsa Verde" data-en="Chilaquiles in Salsa Verde">Chilaquiles en Salsa Verde</p>
+          <p class="dish-card-price">$145 MXN</p>
+          <p class="dish-card-desc" data-es="Salsa verde, huevo frito, cotija, jalapeño." data-en="Salsa verde, fried egg, cotija, jalapeño.">Salsa verde, huevo frito, cotija, jalapeño.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="dish-cards-cta">
+      <a href="menu.html" class="btn btn-primary" data-es="Ver menú completo" data-en="See full menu">Ver menú completo</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 5: WHY ROW (dark)
+     ====================================================== -->
+<section class="bg-dark">
+  <div class="section-inner">
+    <div class="why-row">
+      <div class="why-col reveal">
+        <div class="why-icon" aria-hidden="true">&#127858;</div>
+        <h3 class="why-title" data-es="Ingredientes frescos" data-en="Fresh ingredients">Ingredientes frescos</h3>
+        <p class="why-body" data-es="Nuestros huevos vienen de un rancho propio, afuera del pueblo. Del campo directo al plato." data-en="Our eggs come from a ranch we run just outside town. From the field to your plate.">Nuestros huevos vienen de un rancho propio, afuera del pueblo. Del campo directo al plato.</p>
+      </div>
+      <div class="why-col reveal">
+        <div class="why-icon" aria-hidden="true">&#127807;</div>
+        <h3 class="why-title" data-es="100% orgánico" data-en="100% organic">100% orgánico</h3>
+        <p class="why-body" data-es="Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales." data-en="Quality ingredients. No shortcuts. Every plate is made fresh.">Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales.</p>
+      </div>
+      <div class="why-col reveal">
+        <div class="why-icon" aria-hidden="true">&#11088;</div>
+        <h3 class="why-title" data-es="4.6 estrellas en Google" data-en="4.6 stars on Google">4.6 estrellas en Google</h3>
+        <p class="why-body" data-es="511 reseñas. Local favorito. Visita obligada para quien viene a Puerto Peñasco." data-en="511 reviews. Local favorite. A must-visit when you're in Puerto Peñasco.">511 reseñas. Local favorito. Visita obligada para quien viene a Puerto Peñasco.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 6: MOOD SPLIT (no text)
+     ====================================================== -->
+<div class="mood-split" aria-hidden="true">
+  <div class="mood-split-panel">
+    <img src="assets/interior_3.jpg" alt="Techo pintado a mano, vigas naranjas sobre cielo azul" loading="lazy">
+  </div>
+  <div class="mood-split-panel">
+    <img src="assets/drink_1.png" alt="Chocolate caliente en taza artesanal" loading="lazy">
+  </div>
+</div>
+
+<!-- ======================================================
+     SECTION 7: TESTIMONIALS (light)
+     ====================================================== -->
+<section class="bg-light">
+  <div class="section-inner">
+    <p class="eyebrow" data-es="Lo que dicen" data-en="What they're saying">Lo que dicen</p>
+    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,32px); color: var(--olive);" data-es="4.6 estrellas en Google." data-en="4.6 stars on Google.">4.6 estrellas en Google.</h2>
+
+    <div class="review-cards-row">
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="5 estrellas">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <p class="review-meta">Excursion36973 &mdash; TripAdvisor</p>
+        <blockquote class="review-quote" data-es="«El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.»" data-en="&quot;Best French toast I ever had in my life. I will be a regular for breakfast.&quot;">«El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.»</blockquote>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="5 estrellas">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <p class="review-meta">Renee S. &mdash; TripAdvisor</p>
+        <blockquote class="review-quote" data-es="«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»" data-en="&quot;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&quot;">«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»</blockquote>
+      </article>
+
+      <article class="review-card reveal">
+        <div class="review-stars" aria-label="5 estrellas">
+          <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+        </div>
+        <p class="review-meta">shernandez710 &mdash; TripAdvisor</p>
+        <blockquote class="review-quote" data-es="«Chilaquiles increíbles. Porciones grandes y satisfactorias.»" data-en="&quot;Amazing Chilaquiles. Large, satisfying servings.&quot;">«Chilaquiles increíbles. Porciones grandes y satisfactorias.»</blockquote>
+      </article>
+    </div>
+
+    <div class="review-badge-row">
+      <div class="rating-badge">
+        <span class="num">4.6</span>
+        <span class="stars" aria-label="4.6 de 5 estrellas">
+          &#9733;&#9733;&#9733;&#9733;&#9733;
+        </span>
+        <span style="font-size:12px; color: var(--muted); margin-left:4px;">Google</span>
+      </div>
+      <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer" class="review-link" data-es="Ver todas las reseñas" data-en="See all reviews">Ver todas las reseñas</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     SECTION 8: CTA BANNER (dark)
+     ====================================================== -->
+<section class="cta-banner">
+  <img class="cta-banner-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural" loading="lazy">
+  <div class="cta-banner-overlay"></div>
+  <div class="cta-banner-content">
+    <h2 class="cta-banner-headline" data-es="Tu mesa te espera." data-en="Your table is waiting.">Tu mesa te espera.</h2>
+    <p class="cta-banner-sub" data-es="Abierto todos los días · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro" data-en="Open every day · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro">Abierto todos los días · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro</p>
+    <div class="hero-cta-row" style="justify-content: center;">
+      <a href="tel:+526383834816" class="btn btn-primary" data-es="Llamar ahora" data-en="Call now">Llamar ahora</a>
+      <a href="visit.html" class="btn btn-ghost-teal" data-es="Ver cómo llegar" data-en="Get directions">Ver cómo llegar</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================
+     FOOTER
+     ====================================================== -->
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="index.html">
+        <img class="footer-logo" src="assets/logo.jpg" alt="Boulevard 301">
+      </a>
+      <p class="footer-tagline" data-es="Desayuno y comida. Fresco y saludable." data-en="Breakfast and lunch. Fresh and healthy.">Desayuno y comida. Fresco y saludable.</p>
+      <div class="footer-social">
+        <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">Facebook</a>
+        <a href="https://www.instagram.com/boulevard301/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+      </div>
+    </div>
+
+    <div class="footer-info">
+      <span data-es="Lunes a domingo, 7:30 AM – 4:00 PM" data-en="Monday – Sunday, 7:30 AM – 4:00 PM">Lunes a domingo, 7:30 AM – 4:00 PM</span>
+      <span>Av. Benito Juárez, Centro, Puerto Peñasco, Sonora</span>
+      <a href="tel:+526383834816">Tel: +52 638 383 4816</a>
+      <nav aria-label="Páginas">
+        <a href="menu.html" data-es="Menú" data-en="Menu">Menú</a> &nbsp;·&nbsp;
+        <a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a> &nbsp;·&nbsp;
+        <a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a> &nbsp;·&nbsp;
+        <a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="footer-bar">
+    <span>&copy; 2026 Boulevard 301. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></span>
+    <span><a href="https://neonframewebdesign.com" target="_blank" rel="noopener noreferrer">NeonFrame Web Design</a></span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
