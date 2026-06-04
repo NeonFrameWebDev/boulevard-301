@@ -1348,6 +1348,7 @@ a { color: inherit; text-decoration: none; }
 .scroll-card img {
   width: 100%; height: 300px;
   object-fit: cover;
+  object-position: center;
   display: block;
   transition: transform 0.3s ease;
 }
@@ -1777,9 +1778,11 @@ a { color: inherit; text-decoration: none; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
 
   /* Gallery */
-  .scroll-card { width: calc(80vw); }
-  .scroll-card img { height: 240px; }
-  .scroll-strip-wrap::after { width: 40px; }
+  .scroll-section { padding: 2rem 1rem 1.25rem; }
+  .scroll-card { width: calc(75vw); max-width: 320px; }
+  .scroll-card img { height: 280px; object-position: center; }
+  .scroll-strip { padding-right: 1rem; }
+  .scroll-strip-wrap::after { width: 32px; }
 
   /* Visit */
   .map-wrap iframe { height: 260px; }
