@@ -144,9 +144,7 @@ function initLightbox() {
   let cur   = 0;
 
   function getItems() {
-    return Array.from(
-      document.querySelectorAll('.masonry-item:not(.hidden)')
-    );
+    return Array.from(document.querySelectorAll('.scroll-card'));
   }
 
   function show(index) {
@@ -173,8 +171,8 @@ function initLightbox() {
     document.body.style.overflow = '';
   }
 
-  // Wire up gallery items
-  document.querySelectorAll('.masonry-item').forEach((item, i) => {
+  // Wire up gallery cards
+  document.querySelectorAll('.scroll-card').forEach((item) => {
     item.addEventListener('click', () => {
       items = getItems();
       const visibleIndex = items.indexOf(item);
@@ -206,43 +204,43 @@ function initLightbox() {
   });
 }
 
-// ─── Gallery filter ───────────────────────────────────────────────────────────
-function initGalleryFilter() {
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  if (!filterBtns.length) return;
+// ─── Gallery scroll strips (arrow nav + drag) ─────────────────────────────────
+function initScrollStrips() {
+  document.querySelectorAll('.scroll-section').forEach(section => {
+    const strip = section.querySelector('.scroll-strip');
+    const prevBtn = section.querySelector('.scroll-nav-btn.prev');
+    const nextBtn = section.querySelector('.scroll-nav-btn.next');
+    if (!strip) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+    const cardWidth = () => {
+      const card = strip.querySelector('.scroll-card');
+      return card ? card.offsetWidth + 10 : 270;
+    };
 
-      const tag = btn.dataset.filter;
-      document.querySelectorAll('.masonry-item').forEach(item => {
-        if (tag === 'all' || item.dataset.cat === tag) {
-          item.classList.remove('hidden');
-        } else {
-          item.classList.add('hidden');
-        }
-      });
+    if (nextBtn) nextBtn.addEventListener('click', () => {
+      strip.scrollBy({ left: cardWidth() * 2, behavior: 'smooth' });
+    });
+    if (prevBtn) prevBtn.addEventListener('click', () => {
+      strip.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' });
+    });
+
+    // Drag to scroll
+    let isDown = false, startX, scrollLeft;
+    strip.addEventListener('mousedown', e => {
+      isDown = true;
+      strip.classList.add('dragging');
+      startX = e.pageX - strip.offsetLeft;
+      scrollLeft = strip.scrollLeft;
+    });
+    strip.addEventListener('mouseleave', () => { isDown = false; strip.classList.remove('dragging'); });
+    strip.addEventListener('mouseup', () => { isDown = false; strip.classList.remove('dragging'); });
+    strip.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - strip.offsetLeft;
+      strip.scrollLeft = scrollLeft - (x - startX) * 1.5;
     });
   });
-}
-
-// ─── Gallery lazy load ────────────────────────────────────────────────────────
-function initGalleryLazyReveal() {
-  const items = document.querySelectorAll('.masonry-item');
-  if (!items.length) return;
-
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        obs.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05 });
-
-  items.forEach(el => obs.observe(el));
 }
 
 // ─── Menu sidebar photo rotation ─────────────────────────────────────────────
@@ -292,8 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initNav();
   initScrollReveal();
   initLightbox();
-  initGalleryFilter();
-  initGalleryLazyReveal();
+  initScrollStrips();
   initMenuSidebar();
   initLoader();
   initParallax();

@@ -1245,45 +1245,133 @@ a { color: inherit; text-decoration: none; }
 
 .gallery-section {
   background: var(--cream);
-  padding: 2rem clamp(1rem, 3vw, 2.5rem) 3rem;
+  padding: 0.5rem 0 3rem;
 }
 
-.masonry-grid {
-  columns: 3;
-  column-gap: 12px;
+.scroll-section {
+  padding: 2.5rem clamp(1rem, 4vw, 3rem) 1.5rem;
 }
 
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 12px;
-  border-radius: 4px;
-  overflow: hidden;
-  position: relative;
+.scroll-section + .scroll-section {
+  border-top: 1px solid rgba(59,51,32,0.1);
+}
+
+.scroll-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.scroll-section-title {
+  font-family: var(--font-display);
+  font-size: clamp(20px, 2.5vw, 28px);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--olive);
+  letter-spacing: 0.06em;
+}
+
+.scroll-section-title::after {
+  content: '';
+  display: block;
+  width: 36px; height: 2px;
+  background: var(--rust);
+  margin-top: 6px;
+}
+
+.scroll-nav-btns {
+  display: flex;
+  gap: 8px;
+}
+
+.scroll-nav-btn {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--olive);
+  background: transparent;
+  color: var(--olive);
   cursor: pointer;
-  opacity: 0;
-  transform: translateY(8px);
-  transition: opacity 0.3s ease, transform 0.3s ease, border 0.2s;
-  border: 2px solid transparent;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
 }
 
-.masonry-item.revealed {
+.scroll-nav-btn:hover {
+  background: var(--olive);
+  color: var(--cream);
+}
+
+.scroll-strip-wrap {
+  position: relative;
+}
+
+.scroll-strip-wrap::after {
+  content: '';
+  position: absolute;
+  right: 0; top: 0; bottom: 0;
+  width: 80px;
+  background: linear-gradient(to right, transparent, var(--cream));
+  pointer-events: none;
+  z-index: 1;
+}
+
+.scroll-strip {
+  display: flex;
+  gap: 10px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: 6px;
+  cursor: grab;
+}
+
+.scroll-strip.dragging { cursor: grabbing; }
+.scroll-strip::-webkit-scrollbar { display: none; }
+
+.scroll-card {
+  flex: 0 0 auto;
+  width: 260px;
+  border-radius: 6px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  cursor: pointer;
+  position: relative;
+  border: 2px solid transparent;
+  transition: border-color 0.2s;
+}
+
+.scroll-card:hover { border-color: var(--rust); }
+
+.scroll-card img {
+  width: 100%; height: 300px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.scroll-card:hover img { transform: scale(1.05); }
+
+.scroll-card-caption {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 0.75rem 1rem;
+  background: linear-gradient(to top, rgba(59,51,32,0.9) 0%, transparent 100%);
+  color: var(--cream);
+  font-size: 13px;
+  font-family: var(--font-body);
+  font-weight: 500;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s, transform 0.25s;
+}
+
+.scroll-card:hover .scroll-card-caption {
   opacity: 1;
   transform: translateY(0);
 }
-
-.masonry-item.hidden {
-  display: none;
-}
-
-.masonry-item img {
-  width: 100%; height: 220px;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.25s ease-out;
-}
-
-.masonry-item:hover img { transform: scale(1.04); }
-.masonry-item:hover { border-color: var(--rust); }
 
 /* Lightbox */
 #lightbox {
@@ -1642,7 +1730,8 @@ a { color: inherit; text-decoration: none; }
 
   .about-stats-row { grid-template-columns: repeat(2, 1fr); }
 
-  .masonry-grid { columns: 2; }
+  .scroll-card { width: 220px; }
+  .scroll-card img { height: 260px; }
 }
 
 /* Hamburger breakpoint */
@@ -1688,7 +1777,9 @@ a { color: inherit; text-decoration: none; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
 
   /* Gallery */
-  .masonry-grid { columns: 1; }
+  .scroll-card { width: calc(80vw); }
+  .scroll-card img { height: 240px; }
+  .scroll-strip-wrap::after { width: 40px; }
 
   /* Visit */
   .map-wrap iframe { height: 260px; }

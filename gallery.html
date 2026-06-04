@@ -82,147 +82,204 @@
 </header>
 
 <!-- ======================================================
-     FILTER BAR
+     CATEGORY JUMP BAR
      ====================================================== -->
-<div class="gallery-filter-bar" role="toolbar" aria-label="Filtrar galería">
-  <button class="filter-btn active" data-filter="all" data-es="Todos" data-en="All">Todos</button>
-  <button class="filter-btn" data-filter="interiores" data-es="Interiores" data-en="Interiors">Interiores</button>
-  <button class="filter-btn" data-filter="platillos" data-es="Platillos" data-en="Dishes">Platillos</button>
-  <button class="filter-btn" data-filter="bebidas" data-es="Bebidas" data-en="Drinks">Bebidas</button>
-  <button class="filter-btn" data-filter="exterior" data-es="Exterior" data-en="Exterior">Exterior</button>
+<div class="gallery-filter-bar" role="navigation" aria-label="Secciones de galería">
+  <a class="filter-btn" href="#sec-platillos" data-es="Platillos" data-en="Dishes">Platillos</a>
+  <a class="filter-btn" href="#sec-bebidas" data-es="Bebidas" data-en="Drinks">Bebidas</a>
+  <a class="filter-btn" href="#sec-interiores" data-es="Interiores" data-en="Interiors">Interiores</a>
+  <a class="filter-btn" href="#sec-exterior" data-es="Exterior" data-en="Exterior">Exterior</a>
 </div>
 
 <!-- ======================================================
-     MASONRY GALLERY
+     GALLERY SCROLL SECTIONS
      ====================================================== -->
 <div class="gallery-section">
-  <div class="masonry-grid" role="list" aria-label="Fotos de Boulevard 301">
 
-    <!-- INTERIORES -->
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Comedor de Boulevard 301 con clientes">
-      <img src="assets/interior_4.png" alt="Boulevard 301 lleno de vida, como siempre" loading="lazy">
-      <span class="sr-only" data-es="Boulevard 301 lleno de vida, como siempre." data-en="Boulevard 301, full of life, as always."></span>
+  <!-- PLATILLOS -->
+  <div class="scroll-section" id="sec-platillos">
+    <div class="scroll-section-header">
+      <h2 class="scroll-section-title" data-es="Platillos" data-en="Dishes">Platillos</h2>
+      <div class="scroll-nav-btns">
+        <button class="scroll-nav-btn prev" aria-label="Anterior">&#8592;</button>
+        <button class="scroll-nav-btn next" aria-label="Siguiente">&#8594;</button>
+      </div>
     </div>
+    <div class="scroll-strip-wrap">
+      <div class="scroll-strip">
 
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Techo pintado a mano con vigas naranjas">
-      <img src="assets/interior_3.jpg" alt="Techo pintado a mano. Cada rincón tiene algo que ver." loading="lazy">
-      <span class="sr-only" data-es="Techo pintado a mano. Cada rincón tiene algo que ver." data-en="Hand-painted ceiling. Every corner has something to look at."></span>
+        <div class="scroll-card" tabindex="0" aria-label="Steak and Eggs">
+          <img src="assets/dish_5.jpg" alt="Steak and Eggs. Arrachera, huevos, papas rancheras." loading="lazy">
+          <span class="scroll-card-caption" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Chilaquiles en Salsa Verde">
+          <img src="assets/dish_7.jpg" alt="Chilaquiles en salsa verde con huevo, cotija y jalapeño" loading="lazy">
+          <span class="scroll-card-caption" data-es="Chilaquiles en Salsa Verde" data-en="Green Salsa Chilaquiles">Chilaquiles en Salsa Verde</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Omelette Poblano">
+          <img src="assets/dish_4.jpg" alt="Omelette Poblano con salsa verde, elote y cotija" loading="lazy">
+          <span class="scroll-card-caption" data-es="Omelette Poblano" data-en="Poblano Omelette">Omelette Poblano</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Huevos con Chorizo">
+          <img src="assets/dish_single_1.png" alt="Huevos, chorizo y papas. El clásico." loading="lazy">
+          <span class="scroll-card-caption" data-es="Huevos con Chorizo" data-en="Eggs &amp; Chorizo">Huevos con Chorizo</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="French Toast">
+          <img src="assets/dish_single_2.png" alt="French Toast con fresas, kiwi, arándanos y miel" loading="lazy">
+          <span class="scroll-card-caption" data-es="French Toast" data-en="French Toast">French Toast</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Panini al Chipotle">
+          <img src="assets/dish_table_1.png" alt="Panini al chipotle con agua fresca de fresa" loading="lazy">
+          <span class="scroll-card-caption" data-es="Panini al Chipotle" data-en="Chipotle Panini">Panini al Chipotle</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Mesa de Brunch">
+          <img src="assets/rg_dish_1.jpg" alt="Jugo natural, chilaquiles, avocado toast y salsas de la casa" loading="lazy">
+          <span class="scroll-card-caption" data-es="Mesa de Brunch" data-en="Brunch Spread">Mesa de Brunch</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Omelette y Waffles">
+          <img src="assets/rg_dish_2.jpg" alt="Omelette con frijoles, French toast de frutas, waffles con berries" loading="lazy">
+          <span class="scroll-card-caption" data-es="Omelette y Waffles" data-en="Omelette &amp; Waffles">Omelette y Waffles</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Hot Cakes de Colores">
+          <img src="assets/pancakes_rainbow.jpg" alt="Hot cakes de colores con miel de maple, frutas y crema" loading="lazy">
+          <span class="scroll-card-caption" data-es="Hot Cakes de Colores" data-en="Rainbow Pancakes">Hot Cakes de Colores</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="French Toast con Nutella">
+          <img src="assets/french_toast_fruit.jpg" alt="French Toast con Nutella, blueberries, kiwi, fresas y manzana" loading="lazy">
+          <span class="scroll-card-caption" data-es="French Toast con Nutella" data-en="Nutella French Toast">French Toast con Nutella</span>
+        </div>
+
+      </div>
     </div>
-
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Booths en vinotinto y murales en las paredes">
-      <img src="assets/interior_2.jpg" alt="Comedor con booths en vinotinto y murales en las paredes" loading="lazy">
-      <span class="sr-only" data-es="Comedor con booths en vinotinto y murales en las paredes." data-en="Dining room with burgundy booths and wall murals."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Letrero de Boulevard 301 con mural">
-      <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 sobre la Avenida Benito Juárez" loading="lazy">
-      <span class="sr-only" data-es="Letrero de Boulevard 301." data-en="Boulevard 301 wall sign."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Mural receta en las paredes del comedor">
-      <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
-      <span class="sr-only" data-es="El mural receta en el comedor." data-en="The recipe mural in the dining room."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Portada del menú de Boulevard 301">
-      <img src="assets/photo_a.jpg" alt="Portada del menú físico de Boulevard 301" loading="lazy">
-      <span class="sr-only" data-es="Portada del menú de Boulevard 301." data-en="Boulevard 301 physical menu cover."></span>
-    </div>
-
-    <!-- PLATILLOS -->
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Steak and Eggs">
-      <img src="assets/dish_5.jpg" alt="Steak and Eggs. Arrachera, huevos, papas rancheras." loading="lazy">
-      <span class="sr-only" data-es="Steak and Eggs. Arrachera, huevos, papas rancheras." data-en="Steak and Eggs. Arrachera, eggs, ranch potatoes."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Chilaquiles en salsa verde">
-      <img src="assets/dish_7.jpg" alt="Chilaquiles en salsa verde con huevo, cotija y jalapeño" loading="lazy">
-      <span class="sr-only" data-es="Chilaquiles en salsa verde con huevo, cotija y jalapeño." data-en="Chilaquiles in salsa verde, fried egg, cotija, jalapeño."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Omelette Poblano">
-      <img src="assets/dish_4.jpg" alt="Omelette Poblano con salsa verde, elote y cotija" loading="lazy">
-      <span class="sr-only" data-es="Omelette Poblano con salsa verde, elote y cotija." data-en="Poblano omelette with green salsa, corn, cotija."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Huevos con chorizo y papas">
-      <img src="assets/dish_single_1.png" alt="Huevos, chorizo y papas. El clásico." loading="lazy">
-      <span class="sr-only" data-es="Huevos, chorizo y papas. El clásico." data-en="Eggs, chorizo, potatoes. The classic."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="French Toast con frutas">
-      <img src="assets/dish_single_2.png" alt="French Toast con fresas, kiwi, arándanos y miel" loading="lazy">
-      <span class="sr-only" data-es="French Toast con fresas, kiwi, arándanos y miel." data-en="French Toast with strawberries, kiwi, blueberries, honey."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Panini al chipotle con agua fresca">
-      <img src="assets/dish_table_1.png" alt="Panini al chipotle con agua fresca de fresa" loading="lazy">
-      <span class="sr-only" data-es="Panini al chipotle con agua fresca de fresa." data-en="Chipotle panini with strawberry agua fresca."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Jugo natural, chilaquiles, avocado toast">
-      <img src="assets/rg_dish_1.jpg" alt="Jugo natural, chilaquiles, avocado toast y salsas de la casa" loading="lazy">
-      <span class="sr-only" data-es="Jugo natural, chilaquiles, avocado toast y salsas de la casa." data-en="Fresh OJ, chilaquiles, avocado toast, house salsas."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Omelette, French toast y waffles">
-      <img src="assets/rg_dish_2.jpg" alt="Omelette con frijoles, French toast de frutas, waffles con berries" loading="lazy">
-      <span class="sr-only" data-es="Omelette, French toast de frutas y waffles con berries." data-en="Omelette, fruit French toast, waffles with berries."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="Hot cakes de colores con miel">
-      <img src="assets/pancakes_rainbow.jpg" alt="Hot cakes de colores con miel de maple, frutas y crema" loading="lazy">
-      <span class="sr-only" data-es="Hot cakes de colores con miel de maple, frutas y crema." data-en="Rainbow pancakes with maple syrup, fruit, and cream."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="platillos" role="listitem" aria-label="French Toast con Nutella y frutas">
-      <img src="assets/french_toast_fruit.jpg" alt="French Toast con Nutella, blueberries, kiwi, fresas y manzana" loading="lazy">
-      <span class="sr-only" data-es="French Toast con Nutella, blueberries, kiwi, fresas y manzana." data-en="French Toast with Nutella, blueberries, kiwi, strawberries, and apple."></span>
-    </div>
-
-    <!-- BEBIDAS -->
-    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Chocolate caliente en taza artesanal">
-      <img src="assets/drink_1.png" alt="Chocolate caliente en taza artesanal" loading="lazy">
-      <span class="sr-only" data-es="Chocolate caliente en taza artesanal. El desayuno empieza bien." data-en="Hot chocolate in a handmade mug. A good way to start."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Caffe Latte en frasco de vidrio">
-      <img src="assets/drink_2.jpg" alt="Caffe Latte helado en frasco de vidrio" loading="lazy">
-      <span class="sr-only" data-es="Caffe Latte helado. Frío, suave y perfecto." data-en="Iced Caffe Latte. Cold, smooth, and perfect."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Bebida helada Boulevard 301">
-      <img src="assets/drink_3.jpg" alt="Bebida helada en vaso Boulevard 301" loading="lazy">
-      <span class="sr-only" data-es="Bebida helada de la casa. El vaso dice todo." data-en="House iced drink. The cup says it all."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Dos lattes helados en frascos de vidrio">
-      <img src="assets/drink_4.jpg" alt="Dos lattes helados en frascos de vidrio sobre la mesa" loading="lazy">
-      <span class="sr-only" data-es="Dos lattes helados. Para compartir, o no." data-en="Two iced lattes. To share, or not to share."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="bebidas" role="listitem" aria-label="Café helado con capas de colores Boulevard 301">
-      <img src="assets/drink_5.jpg" alt="Café helado con capas de colores en vaso Boulevard 301" loading="lazy">
-      <span class="sr-only" data-es="Café helado con capas. Tan bueno a la vista como al paladar." data-en="Layered iced coffee. As good to look at as it is to drink."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="interiores" role="listitem" aria-label="Servidora de Boulevard 301">
-      <img src="assets/interior_drink.png" alt="Servidora de Boulevard 301 llevando platillos" loading="lazy">
-      <span class="sr-only" data-es="Servicio con gusto. As&#237; es Boulevard 301." data-en="Service with a smile. That's Boulevard 301."></span>
-    </div>
-
-    <!-- EXTERIOR -->
-    <div class="masonry-item" data-cat="exterior" role="listitem" aria-label="Fachada de Boulevard 301">
-      <img src="assets/exterior_1.png" alt="Boulevard 301. Sobre la Avenida Benito Juárez." loading="lazy">
-      <span class="sr-only" data-es="Boulevard 301. Sobre la Avenida Benito Juárez." data-en="Boulevard 301. On Avenida Benito Juárez."></span>
-    </div>
-
-    <div class="masonry-item" data-cat="exterior" role="listitem" aria-label="Vista de esquina del restaurante">
-      <img src="assets/exterior_2.png" alt="Vista de esquina de Boulevard 301 con anuncio de pizarrón" loading="lazy">
-      <span class="sr-only" data-es="Vista de esquina de Boulevard 301 con pizarrón de ofertas." data-en="Corner view of Boulevard 301 with chalkboard sign."></span>
-    </div>
-
   </div>
+
+  <!-- BEBIDAS -->
+  <div class="scroll-section" id="sec-bebidas">
+    <div class="scroll-section-header">
+      <h2 class="scroll-section-title" data-es="Bebidas" data-en="Drinks">Bebidas</h2>
+      <div class="scroll-nav-btns">
+        <button class="scroll-nav-btn prev" aria-label="Anterior">&#8592;</button>
+        <button class="scroll-nav-btn next" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+    <div class="scroll-strip-wrap">
+      <div class="scroll-strip">
+
+        <div class="scroll-card" tabindex="0" aria-label="Chocolate Caliente">
+          <img src="assets/drink_1.png" alt="Chocolate caliente en taza artesanal" loading="lazy">
+          <span class="scroll-card-caption" data-es="Chocolate Caliente" data-en="Hot Chocolate">Chocolate Caliente</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Caffe Latte Helado">
+          <img src="assets/drink_2.jpg" alt="Caffe Latte helado en frasco de vidrio" loading="lazy">
+          <span class="scroll-card-caption" data-es="Caffe Latte Helado" data-en="Iced Caffe Latte">Caffe Latte Helado</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Bebida de la Casa">
+          <img src="assets/drink_3.jpg" alt="Bebida helada en vaso Boulevard 301" loading="lazy">
+          <span class="scroll-card-caption" data-es="Bebida de la Casa" data-en="House Drink">Bebida de la Casa</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Lattes Helados">
+          <img src="assets/drink_4.jpg" alt="Dos lattes helados en frascos de vidrio" loading="lazy">
+          <span class="scroll-card-caption" data-es="Lattes Helados" data-en="Iced Lattes">Lattes Helados</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Café Helado de Capas">
+          <img src="assets/drink_5.jpg" alt="Café helado con capas de colores en vaso Boulevard 301" loading="lazy">
+          <span class="scroll-card-caption" data-es="Café Helado de Capas" data-en="Layered Iced Coffee">Café Helado de Capas</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- INTERIORES -->
+  <div class="scroll-section" id="sec-interiores">
+    <div class="scroll-section-header">
+      <h2 class="scroll-section-title" data-es="Interiores" data-en="Interiors">Interiores</h2>
+      <div class="scroll-nav-btns">
+        <button class="scroll-nav-btn prev" aria-label="Anterior">&#8592;</button>
+        <button class="scroll-nav-btn next" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+    <div class="scroll-strip-wrap">
+      <div class="scroll-strip">
+
+        <div class="scroll-card" tabindex="0" aria-label="Comedor lleno de vida">
+          <img src="assets/interior_4.png" alt="Boulevard 301 lleno de vida, como siempre" loading="lazy">
+          <span class="scroll-card-caption" data-es="Lleno de Vida" data-en="Full of Life">Lleno de Vida</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Techo pintado a mano">
+          <img src="assets/interior_3.jpg" alt="Techo pintado a mano. Cada rincón tiene algo que ver." loading="lazy">
+          <span class="scroll-card-caption" data-es="Techo Pintado a Mano" data-en="Hand-Painted Ceiling">Techo Pintado a Mano</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Booths en vinotinto">
+          <img src="assets/interior_2.jpg" alt="Comedor con booths en vinotinto y murales en las paredes" loading="lazy">
+          <span class="scroll-card-caption" data-es="Booths en Vinotinto" data-en="Burgundy Booths">Booths en Vinotinto</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Letrero de Boulevard 301">
+          <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 sobre la Avenida Benito Juárez" loading="lazy">
+          <span class="scroll-card-caption" data-es="Letrero Boulevard 301" data-en="Boulevard 301 Sign">Letrero Boulevard 301</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Mural receta">
+          <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
+          <span class="scroll-card-caption" data-es="Mural Receta" data-en="Recipe Mural">Mural Receta</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="El menú físico">
+          <img src="assets/photo_a.jpg" alt="Portada del menú físico de Boulevard 301" loading="lazy">
+          <span class="scroll-card-caption" data-es="El Menú" data-en="The Menu">El Menú</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Servicio en el comedor">
+          <img src="assets/interior_drink.png" alt="Servidora de Boulevard 301 llevando platillos" loading="lazy">
+          <span class="scroll-card-caption" data-es="Servicio con Gusto" data-en="Service with a Smile">Servicio con Gusto</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- EXTERIOR -->
+  <div class="scroll-section" id="sec-exterior">
+    <div class="scroll-section-header">
+      <h2 class="scroll-section-title" data-es="Exterior" data-en="Exterior">Exterior</h2>
+      <div class="scroll-nav-btns">
+        <button class="scroll-nav-btn prev" aria-label="Anterior">&#8592;</button>
+        <button class="scroll-nav-btn next" aria-label="Siguiente">&#8594;</button>
+      </div>
+    </div>
+    <div class="scroll-strip-wrap">
+      <div class="scroll-strip">
+
+        <div class="scroll-card" tabindex="0" aria-label="Fachada de Boulevard 301">
+          <img src="assets/exterior_1.png" alt="Boulevard 301. Sobre la Avenida Benito Juárez." loading="lazy">
+          <span class="scroll-card-caption" data-es="Av. Benito Juárez" data-en="Av. Benito Juárez">Av. Benito Juárez</span>
+        </div>
+
+        <div class="scroll-card" tabindex="0" aria-label="Vista de esquina">
+          <img src="assets/exterior_2.png" alt="Vista de esquina de Boulevard 301 con anuncio de pizarrón" loading="lazy">
+          <span class="scroll-card-caption" data-es="Vista de Esquina" data-en="Corner View">Vista de Esquina</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <!-- ======================================================
