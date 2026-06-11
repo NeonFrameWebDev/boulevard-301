@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Bilingual title/description swap -->
   <meta name="title-es" content="Boulevard 301 | Desayuno y Comida en Puerto Peñasco">
   <meta name="title-en" content="Boulevard 301 | Breakfast and Lunch in Puerto Peñasco">
   <title>Boulevard 301 | Desayuno y Comida en Puerto Peñasco</title>
@@ -12,7 +11,6 @@
   <meta name="description-en" content="Family breakfast and lunch restaurant on Puerto Peñasco's main boulevard. Fresh, healthy, made with love. Open every day 7:30 AM – 4 PM.">
   <meta name="description" content="Restaurante familiar de desayuno y comida en el boulevard principal de Puerto Peñasco. Fresco, saludable y hecho con amor. Abierto todos los días 7:30 AM – 4 PM.">
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/">
   <meta property="og:title" content="Boulevard 301 | Desayuno y Comida en Puerto Peñasco">
@@ -22,7 +20,6 @@
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Apply language before paint to prevent flash -->
   <script>
     (function(){
       var lang = localStorage.getItem('blvd301_lang') || 'es';
@@ -88,21 +85,30 @@
 </div>
 
 <!-- ======================================================
-     SECTION 1: HERO
+     SECTION 1: HERO (centered, Quiriego-style)
      ====================================================== -->
 <section class="page-hero hero-home" aria-label="Hero">
   <img
     class="hero-bg hero-parallax-bg"
     src="assets/interior_4.png"
-    alt="Comedor de Boulevard 301 lleno de vida"
+    alt="Comedor de Boulevard 301"
     fetchpriority="high"
   >
-  <div class="hero-overlay" style="background: linear-gradient(to bottom, rgba(59,51,32,0.15) 0%, rgba(59,51,32,0.72) 100%);"></div>
+  <div class="hero-overlay" style="background: rgba(26,20,12,0.58);"></div>
+
+  <!-- Decorative corner frame -->
+  <div class="rahmen" aria-hidden="true">
+    <div class="eck-tl"></div>
+    <div class="eck-tr"></div>
+    <div class="eck-bl"></div>
+    <div class="eck-br"></div>
+  </div>
 
   <div class="hero-content">
-    <p class="hero-eyebrow" style="color: var(--rust); font-weight: 600; background: rgba(59,51,32,0.55); padding: 0.35rem 1.25rem; border-radius: 100px; display: inline-block;" data-es="Puerto Peñasco, Sonora · Abierto todos los días 7:30 AM – 4 PM" data-en="Puerto Peñasco, Sonora · Open every day 7:30 AM – 4 PM">Puerto Peñasco, Sonora · Abierto todos los días 7:30 AM – 4 PM</p>
-    <h1 class="hero-headline" data-es="Desayuno y comida en el corazón del boulevard." data-en="Breakfast and lunch on Puerto Peñasco's main boulevard.">Desayuno y comida en el corazón del boulevard.</h1>
-    <p class="hero-sub" data-es="Fresco, saludable y con sazón. Abierto todos los días, 7:30 AM – 4 PM." data-en="Fresh, healthy, and made with seasoning. Open every day, 7:30 AM – 4 PM.">Fresco, saludable y con sazón. Abierto todos los días, 7:30 AM – 4 PM.</p>
+    <img class="hero-logo-center" src="assets/logo.jpg" alt="Boulevard 301 logo">
+    <p class="hero-eyebrow" data-es="Puerto Peñasco, Sonora" data-en="Puerto Peñasco, Sonora">Puerto Peñasco, Sonora</p>
+    <h1 class="hero-headline">Boulevard 301</h1>
+    <p class="hero-sub" data-es="Desayuno y comida. Fresco, saludable y con sazón." data-en="Breakfast and lunch. Fresh, healthy, and made with love.">Desayuno y comida. Fresco, saludable y con sazón.</p>
     <div class="hero-cta-row">
       <a href="menu.html" class="btn btn-primary" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
       <a href="visit.html" class="btn btn-secondary-cream" data-es="Cómo llegar" data-en="Get directions">Cómo llegar</a>
@@ -124,39 +130,68 @@
 </div>
 
 <!-- ======================================================
-     SECTION 3: ABOUT TEASER (dark)
+     SECTION 3: CATEGORY GRID (Quiriego-style)
+     ====================================================== -->
+<div class="category-grid" role="complementary" aria-label="Nuestro menú">
+  <div class="category-item">
+    <img src="assets/dish_5.jpg" alt="Desayunos" loading="lazy">
+    <div class="category-item-overlay">
+      <div class="category-item-content">
+        <span class="category-item-label" data-es="Desayunos" data-en="Breakfast">Desayunos</span>
+        <span class="category-item-sub" data-es="Huevos, omelettes, steak and eggs" data-en="Eggs, omelettes, steak and eggs">Huevos, omelettes, steak and eggs</span>
+      </div>
+    </div>
+  </div>
+  <div class="category-item">
+    <img src="assets/drink_1.jpg" alt="Bebidas" loading="lazy">
+    <div class="category-item-overlay">
+      <div class="category-item-content">
+        <span class="category-item-label" data-es="Bebidas" data-en="Drinks">Bebidas</span>
+        <span class="category-item-sub" data-es="Jugos, licuados, café, chocolate" data-en="Juices, smoothies, coffee, hot chocolate">Jugos, licuados, café, chocolate</span>
+      </div>
+    </div>
+  </div>
+  <div class="category-item">
+    <img src="assets/french_toast_fruit.jpg" alt="Especialidades" loading="lazy">
+    <div class="category-item-overlay">
+      <div class="category-item-content">
+        <span class="category-item-label" data-es="Especialidades" data-en="Specials">Especialidades</span>
+        <span class="category-item-sub" data-es="French toast, chilaquiles, pancakes" data-en="French toast, chilaquiles, pancakes">French toast, chilaquiles, pancakes</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================================================
+     SECTION 4: ABOUT TEASER
      ====================================================== -->
 <section class="bg-dark">
   <div class="section-inner">
     <div class="col-split col-split-60-40" style="align-items: center;">
-      <!-- Text -->
       <div class="reveal">
         <p class="eyebrow" data-es="Nuestra Historia" data-en="Our Story">Nuestra Historia</p>
-        <h2 class="section-heading" style="font-size: clamp(26px,4vw,36px); color: var(--cream); margin-bottom: 1rem;" data-es="Hecho con amor, sazón, y un huevo de paciencia." data-en="Made with love, seasoning, and an egg of patience.">Hecho con amor, sazón, y un huevo de paciencia.</h2>
-        <p style="font-size:16px; color: rgba(232,223,192,0.85); line-height:1.75; max-width: 520px;" data-es="Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita." data-en="We're a family-owned restaurant in Puerto Peñasco. Eggs from our own ranch, fresh local ingredients, and a kitchen that has been a local favorite and a tourist stop for years.">Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita.</p>
+        <h2 class="section-heading" style="font-size: clamp(26px,4vw,40px); color: var(--cream); margin-bottom: 1rem;" data-es="Hecho con amor, sazón, y un huevo de paciencia." data-en="Made with love, seasoning, and an egg of patience.">Hecho con amor, sazón, y un huevo de paciencia.</h2>
+        <p style="font-size:16px; font-weight:400; color: rgba(232,223,192,0.85); line-height:1.8; max-width: 520px;" data-es="Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita." data-en="We're a family-owned restaurant in Puerto Peñasco. Eggs from our own ranch, fresh local ingredients, and a kitchen that has been a local favorite and a tourist stop for years.">Somos un restaurante familiar en Puerto Peñasco. Huevos de nuestro propio rancho, ingredientes frescos y locales, y una cocina que lleva años siendo el desayuno favorito de los locales y de quienes vienen de visita.</p>
         <a href="about.html" class="text-link-arrow" data-es="Conócenos &rarr;" data-en="Our story &rarr;">Conócenos &rarr;</a>
       </div>
 
-      <!-- Photo -->
       <div class="about-photo-wrap reveal">
         <img src="assets/photo_b.jpg" alt="Mural de receta en el comedor de Boulevard 301" loading="lazy">
-        <p class="about-photo-caption" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
+        <p class="about-photo-caption" style="color: rgba(232,223,192,0.55);" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ======================================================
-     SECTION 4: SIGNATURE DISHES (light)
+     SECTION 5: SIGNATURE DISHES
      ====================================================== -->
 <section class="bg-light">
   <div class="section-inner">
     <p class="eyebrow" data-es="Lo que más nos piden" data-en="Customer Favorites">Lo que más nos piden</p>
-    <h2 class="section-heading" style="font-size: clamp(24px,4vw,36px); color: var(--olive); margin-bottom: 0.5rem;" data-es="De la plancha a tu mesa." data-en="From the grill to your table.">De la plancha a tu mesa.</h2>
+    <h2 class="section-heading" style="font-size: clamp(24px,4vw,40px); margin-bottom: 0.5rem;" data-es="De la plancha a tu mesa." data-en="From the grill to your table.">De la plancha a tu mesa.</h2>
 
-    <!-- Desktop grid -->
     <div class="dish-cards-row">
-      <!-- Card 1: Steak & Eggs -->
       <article class="dish-card reveal">
         <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy">
         <div class="dish-card-body">
@@ -166,7 +201,6 @@
         </div>
       </article>
 
-      <!-- Card 2: French Toast -->
       <article class="dish-card reveal">
         <img class="dish-card-photo" src="assets/french_toast_fruit.jpg" alt="French Toast" style="object-position: center 60%;" loading="lazy">
         <div class="dish-card-body">
@@ -176,7 +210,6 @@
         </div>
       </article>
 
-      <!-- Card 3: Benedictinos -->
       <article class="dish-card reveal">
         <img class="dish-card-photo" src="assets/dish_7.jpg" alt="Chilaquiles en Salsa Verde" style="object-position: center 65%;" loading="lazy">
         <div class="dish-card-body">
@@ -187,7 +220,6 @@
       </article>
     </div>
 
-    <!-- Mobile scroll snap -->
     <div class="dish-cards-scroll">
       <article class="dish-card">
         <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy">
@@ -222,23 +254,23 @@
 </section>
 
 <!-- ======================================================
-     SECTION 5: WHY ROW (dark)
+     SECTION 6: WHY ROW
      ====================================================== -->
 <section class="bg-dark">
   <div class="section-inner">
     <div class="why-row">
       <div class="why-col reveal">
-        <div class="why-icon" aria-hidden="true">&#127858;</div>
+        <span class="why-icon" aria-hidden="true">&#127858;</span>
         <h3 class="why-title" data-es="Ingredientes frescos" data-en="Fresh ingredients">Ingredientes frescos</h3>
         <p class="why-body" data-es="Nuestros huevos vienen de un rancho propio, afuera del pueblo. Del campo directo al plato." data-en="Our eggs come from a ranch we run just outside town. From the field to your plate.">Nuestros huevos vienen de un rancho propio, afuera del pueblo. Del campo directo al plato.</p>
       </div>
       <div class="why-col reveal">
-        <div class="why-icon" aria-hidden="true">&#127807;</div>
+        <span class="why-icon" aria-hidden="true">&#127807;</span>
         <h3 class="why-title" data-es="100% orgánico" data-en="100% organic">100% orgánico</h3>
         <p class="why-body" data-es="Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales." data-en="Quality ingredients. No shortcuts. Every plate is made fresh.">Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales.</p>
       </div>
       <div class="why-col reveal">
-        <div class="why-icon" aria-hidden="true">&#11088;</div>
+        <span class="why-icon" aria-hidden="true">&#11088;</span>
         <h3 class="why-title" data-es="4.6 estrellas en Google" data-en="4.6 stars on Google">4.6 estrellas en Google</h3>
         <p class="why-body" data-es="511 reseñas. Local favorito. Visita obligada para quien viene a Puerto Peñasco." data-en="511 reviews. Local favorite. A must-visit when you're in Puerto Peñasco.">511 reseñas. Local favorito. Visita obligada para quien viene a Puerto Peñasco.</p>
       </div>
@@ -247,7 +279,7 @@
 </section>
 
 <!-- ======================================================
-     SECTION 6: MOOD SPLIT (no text)
+     SECTION 7: MOOD SPLIT
      ====================================================== -->
 <div class="mood-split" aria-hidden="true">
   <div class="mood-split-panel">
@@ -259,12 +291,12 @@
 </div>
 
 <!-- ======================================================
-     SECTION 7: TESTIMONIALS (light)
+     SECTION 8: TESTIMONIALS
      ====================================================== -->
 <section class="bg-light">
   <div class="section-inner">
     <p class="eyebrow" data-es="Lo que dicen" data-en="What they're saying">Lo que dicen</p>
-    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,32px); color: var(--olive);" data-es="4.6 estrellas en Google." data-en="4.6 stars on Google.">4.6 estrellas en Google.</h2>
+    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,36px);" data-es="4.6 estrellas en Google." data-en="4.6 stars on Google.">4.6 estrellas en Google.</h2>
 
     <div class="review-cards-row">
       <article class="review-card reveal">
@@ -272,7 +304,7 @@
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
         <p class="review-meta">Excursion36973 &mdash; TripAdvisor</p>
-        <blockquote class="review-quote" data-es="«El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.»" data-en="&quot;Best French toast I ever had in my life. I will be a regular for breakfast.&quot;">«El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.»</blockquote>
+        <blockquote class="review-quote" data-es="&ldquo;El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.&rdquo;" data-en="&ldquo;Best French toast I ever had in my life. I will be a regular for breakfast.&rdquo;">&ldquo;El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.&rdquo;</blockquote>
       </article>
 
       <article class="review-card reveal">
@@ -280,7 +312,7 @@
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
         <p class="review-meta">Renee S. &mdash; TripAdvisor</p>
-        <blockquote class="review-quote" data-es="«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»" data-en="&quot;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&quot;">«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»</blockquote>
+        <blockquote class="review-quote" data-es="&ldquo;El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.&rdquo;" data-en="&ldquo;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&rdquo;">&ldquo;El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.&rdquo;</blockquote>
       </article>
 
       <article class="review-card reveal">
@@ -288,16 +320,14 @@
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
         <p class="review-meta">shernandez710 &mdash; TripAdvisor</p>
-        <blockquote class="review-quote" data-es="«Chilaquiles increíbles. Porciones grandes y satisfactorias.»" data-en="&quot;Amazing Chilaquiles. Large, satisfying servings.&quot;">«Chilaquiles increíbles. Porciones grandes y satisfactorias.»</blockquote>
+        <blockquote class="review-quote" data-es="&ldquo;Chilaquiles increíbles. Porciones grandes y satisfactorias.&rdquo;" data-en="&ldquo;Amazing Chilaquiles. Large, satisfying servings.&rdquo;">&ldquo;Chilaquiles increíbles. Porciones grandes y satisfactorias.&rdquo;</blockquote>
       </article>
     </div>
 
     <div class="review-badge-row">
       <div class="rating-badge">
         <span class="num">4.6</span>
-        <span class="stars" aria-label="4.6 de 5 estrellas">
-          &#9733;&#9733;&#9733;&#9733;&#9733;
-        </span>
+        <span class="stars" aria-label="4.6 de 5 estrellas">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
         <span style="font-size:12px; color: var(--muted); margin-left:4px;">Google</span>
       </div>
       <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer" class="review-link" data-es="Ver todas las reseñas" data-en="See all reviews">Ver todas las reseñas</a>
@@ -306,17 +336,17 @@
 </section>
 
 <!-- ======================================================
-     SECTION 8: CTA BANNER (dark)
+     SECTION 9: CTA BANNER
      ====================================================== -->
 <section class="cta-banner">
-  <img class="cta-banner-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural" loading="lazy">
+  <img class="cta-banner-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301" loading="lazy">
   <div class="cta-banner-overlay"></div>
   <div class="cta-banner-content">
     <h2 class="cta-banner-headline" data-es="Tu mesa te espera." data-en="Your table is waiting.">Tu mesa te espera.</h2>
     <p class="cta-banner-sub" data-es="Abierto todos los días · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro" data-en="Open every day · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro">Abierto todos los días · 7:30 AM – 4:00 PM · Avenida Benito Juárez, Centro</p>
     <div class="hero-cta-row" style="justify-content: center;">
       <a href="tel:+526383834816" class="btn btn-primary" data-es="Llamar ahora" data-en="Call now">Llamar ahora</a>
-      <a href="visit.html" class="btn btn-ghost-teal" data-es="Ver cómo llegar" data-en="Get directions">Ver cómo llegar</a>
+      <a href="visit.html" class="btn btn-secondary-cream" data-es="Ver cómo llegar" data-en="Get directions">Ver cómo llegar</a>
     </div>
   </div>
 </section>
@@ -325,6 +355,14 @@
      FOOTER
      ====================================================== -->
 <footer class="site-footer" role="contentinfo">
+  <!-- Decorative corner frame -->
+  <div class="rahmen rahmen-footer" aria-hidden="true">
+    <div class="eck-tl"></div>
+    <div class="eck-tr"></div>
+    <div class="eck-bl"></div>
+    <div class="eck-br"></div>
+  </div>
+
   <div class="footer-inner">
     <div class="footer-brand">
       <a href="index.html">
