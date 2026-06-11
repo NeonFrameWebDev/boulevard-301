@@ -308,6 +308,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav-hamburger {
   display: none;
+  margin-left: auto;   /* push to the far right on mobile (logo stays left) */
   flex-direction: column;
   gap: 5px;
   cursor: pointer;
