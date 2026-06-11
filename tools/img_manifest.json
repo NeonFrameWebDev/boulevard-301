@@ -1,0 +1,414 @@
+{
+  "dish_4.jpg": {
+    "stem": "dish_4",
+    "intrinsic": [
+      1512,
+      2016
+    ],
+    "fallback": "assets/dish_4.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1512
+    ],
+    "srcset": "assets/dish_4-400.webp 400w, assets/dish_4-640.webp 640w, assets/dish_4-960.webp 960w, assets/dish_4-1280.webp 1280w, assets/dish_4-1512.webp 1512w",
+    "max": "assets/dish_4-1512.webp"
+  },
+  "dish_5.jpg": {
+    "stem": "dish_5",
+    "intrinsic": [
+      1512,
+      2016
+    ],
+    "fallback": "assets/dish_5.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1512
+    ],
+    "srcset": "assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w, assets/dish_5-1280.webp 1280w, assets/dish_5-1512.webp 1512w",
+    "max": "assets/dish_5-1512.webp"
+  },
+  "dish_7.jpg": {
+    "stem": "dish_7",
+    "intrinsic": [
+      1512,
+      2016
+    ],
+    "fallback": "assets/dish_7.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1512
+    ],
+    "srcset": "assets/dish_7-400.webp 400w, assets/dish_7-640.webp 640w, assets/dish_7-960.webp 960w, assets/dish_7-1280.webp 1280w, assets/dish_7-1512.webp 1512w",
+    "max": "assets/dish_7-1512.webp"
+  },
+  "dish_eggs_chipotle.jpg": {
+    "stem": "dish_eggs_chipotle",
+    "intrinsic": [
+      2048,
+      2048
+    ],
+    "fallback": "assets/dish_eggs_chipotle.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/dish_eggs_chipotle-400.webp 400w, assets/dish_eggs_chipotle-640.webp 640w, assets/dish_eggs_chipotle-960.webp 960w, assets/dish_eggs_chipotle-1280.webp 1280w, assets/dish_eggs_chipotle-1600.webp 1600w",
+    "max": "assets/dish_eggs_chipotle-1600.webp"
+  },
+  "dish_french_toast_berries.jpg": {
+    "stem": "dish_french_toast_berries",
+    "intrinsic": [
+      2048,
+      2049
+    ],
+    "fallback": "assets/dish_french_toast_berries.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/dish_french_toast_berries-400.webp 400w, assets/dish_french_toast_berries-640.webp 640w, assets/dish_french_toast_berries-960.webp 960w, assets/dish_french_toast_berries-1280.webp 1280w, assets/dish_french_toast_berries-1600.webp 1600w",
+    "max": "assets/dish_french_toast_berries-1600.webp"
+  },
+  "dish_single_1.jpg": {
+    "stem": "dish_single_1",
+    "intrinsic": [
+      768,
+      1024
+    ],
+    "fallback": "assets/dish_single_1.jpg",
+    "widths": [
+      400,
+      640,
+      768
+    ],
+    "srcset": "assets/dish_single_1-400.webp 400w, assets/dish_single_1-640.webp 640w, assets/dish_single_1-768.webp 768w",
+    "max": "assets/dish_single_1-768.webp"
+  },
+  "dish_single_2.jpg": {
+    "stem": "dish_single_2",
+    "intrinsic": [
+      1024,
+      768
+    ],
+    "fallback": "assets/dish_single_2.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1024
+    ],
+    "srcset": "assets/dish_single_2-400.webp 400w, assets/dish_single_2-640.webp 640w, assets/dish_single_2-960.webp 960w, assets/dish_single_2-1024.webp 1024w",
+    "max": "assets/dish_single_2-1024.webp"
+  },
+  "dish_table_1.jpg": {
+    "stem": "dish_table_1",
+    "intrinsic": [
+      1024,
+      768
+    ],
+    "fallback": "assets/dish_table_1.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1024
+    ],
+    "srcset": "assets/dish_table_1-400.webp 400w, assets/dish_table_1-640.webp 640w, assets/dish_table_1-960.webp 960w, assets/dish_table_1-1024.webp 1024w",
+    "max": "assets/dish_table_1-1024.webp"
+  },
+  "drink_1.jpg": {
+    "stem": "drink_1",
+    "intrinsic": [
+      768,
+      1024
+    ],
+    "fallback": "assets/drink_1.jpg",
+    "widths": [
+      400,
+      640,
+      768
+    ],
+    "srcset": "assets/drink_1-400.webp 400w, assets/drink_1-640.webp 640w, assets/drink_1-768.webp 768w",
+    "max": "assets/drink_1-768.webp"
+  },
+  "drink_2.jpg": {
+    "stem": "drink_2",
+    "intrinsic": [
+      1536,
+      2048
+    ],
+    "fallback": "assets/drink_2.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1536
+    ],
+    "srcset": "assets/drink_2-400.webp 400w, assets/drink_2-640.webp 640w, assets/drink_2-960.webp 960w, assets/drink_2-1280.webp 1280w, assets/drink_2-1536.webp 1536w",
+    "max": "assets/drink_2-1536.webp"
+  },
+  "drink_3.jpg": {
+    "stem": "drink_3",
+    "intrinsic": [
+      828,
+      828
+    ],
+    "fallback": "assets/drink_3.jpg",
+    "widths": [
+      400,
+      640,
+      828
+    ],
+    "srcset": "assets/drink_3-400.webp 400w, assets/drink_3-640.webp 640w, assets/drink_3-828.webp 828w",
+    "max": "assets/drink_3-828.webp"
+  },
+  "drink_4.jpg": {
+    "stem": "drink_4",
+    "intrinsic": [
+      1366,
+      2048
+    ],
+    "fallback": "assets/drink_4.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1366
+    ],
+    "srcset": "assets/drink_4-400.webp 400w, assets/drink_4-640.webp 640w, assets/drink_4-960.webp 960w, assets/drink_4-1280.webp 1280w, assets/drink_4-1366.webp 1366w",
+    "max": "assets/drink_4-1366.webp"
+  },
+  "drink_5.jpg": {
+    "stem": "drink_5",
+    "intrinsic": [
+      1536,
+      2048
+    ],
+    "fallback": "assets/drink_5.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1536
+    ],
+    "srcset": "assets/drink_5-400.webp 400w, assets/drink_5-640.webp 640w, assets/drink_5-960.webp 960w, assets/drink_5-1280.webp 1280w, assets/drink_5-1536.webp 1536w",
+    "max": "assets/drink_5-1536.webp"
+  },
+  "exterior_1.png": {
+    "stem": "exterior_1",
+    "intrinsic": [
+      2048,
+      2048
+    ],
+    "fallback": "assets/exterior_1.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/exterior_1-400.webp 400w, assets/exterior_1-640.webp 640w, assets/exterior_1-960.webp 960w, assets/exterior_1-1280.webp 1280w, assets/exterior_1-1600.webp 1600w",
+    "max": "assets/exterior_1-1600.webp"
+  },
+  "exterior_2.png": {
+    "stem": "exterior_2",
+    "intrinsic": [
+      2048,
+      2049
+    ],
+    "fallback": "assets/exterior_2.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/exterior_2-400.webp 400w, assets/exterior_2-640.webp 640w, assets/exterior_2-960.webp 960w, assets/exterior_2-1280.webp 1280w, assets/exterior_2-1600.webp 1600w",
+    "max": "assets/exterior_2-1600.webp"
+  },
+  "french_toast_fruit.jpg": {
+    "stem": "french_toast_fruit",
+    "intrinsic": [
+      1366,
+      2048
+    ],
+    "fallback": "assets/french_toast_fruit.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1366
+    ],
+    "srcset": "assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w, assets/french_toast_fruit-1280.webp 1280w, assets/french_toast_fruit-1366.webp 1366w",
+    "max": "assets/french_toast_fruit-1366.webp"
+  },
+  "interior_2.jpg": {
+    "stem": "interior_2",
+    "intrinsic": [
+      2048,
+      2048
+    ],
+    "fallback": "assets/interior_2.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w",
+    "max": "assets/interior_2-1600.webp"
+  },
+  "interior_3.jpg": {
+    "stem": "interior_3",
+    "intrinsic": [
+      2048,
+      2048
+    ],
+    "fallback": "assets/interior_3.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1600
+    ],
+    "srcset": "assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w, assets/interior_3-1600.webp 1600w",
+    "max": "assets/interior_3-1600.webp"
+  },
+  "interior_4.jpg": {
+    "stem": "interior_4",
+    "intrinsic": [
+      1024,
+      768
+    ],
+    "fallback": "assets/interior_4.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1024
+    ],
+    "srcset": "assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w",
+    "max": "assets/interior_4-1024.webp"
+  },
+  "interior_4.png": {
+    "stem": "interior_4",
+    "intrinsic": [
+      1024,
+      768
+    ],
+    "fallback": "assets/interior_4.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1024
+    ],
+    "srcset": "assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w",
+    "max": "assets/interior_4-1024.webp"
+  },
+  "interior_drink.jpg": {
+    "stem": "interior_drink",
+    "intrinsic": [
+      768,
+      1024
+    ],
+    "fallback": "assets/interior_drink.jpg",
+    "widths": [
+      400,
+      640,
+      768
+    ],
+    "srcset": "assets/interior_drink-400.webp 400w, assets/interior_drink-640.webp 640w, assets/interior_drink-768.webp 768w",
+    "max": "assets/interior_drink-768.webp"
+  },
+  "pancakes_rainbow.jpg": {
+    "stem": "pancakes_rainbow",
+    "intrinsic": [
+      1080,
+      1078
+    ],
+    "fallback": "assets/pancakes_rainbow.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1080
+    ],
+    "srcset": "assets/pancakes_rainbow-400.webp 400w, assets/pancakes_rainbow-640.webp 640w, assets/pancakes_rainbow-960.webp 960w, assets/pancakes_rainbow-1080.webp 1080w",
+    "max": "assets/pancakes_rainbow-1080.webp"
+  },
+  "photo_a.jpg": {
+    "stem": "photo_a",
+    "intrinsic": [
+      1536,
+      2048
+    ],
+    "fallback": "assets/photo_a.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1536
+    ],
+    "srcset": "assets/photo_a-400.webp 400w, assets/photo_a-640.webp 640w, assets/photo_a-960.webp 960w, assets/photo_a-1280.webp 1280w, assets/photo_a-1536.webp 1536w",
+    "max": "assets/photo_a-1536.webp"
+  },
+  "photo_b.jpg": {
+    "stem": "photo_b",
+    "intrinsic": [
+      1536,
+      2048
+    ],
+    "fallback": "assets/photo_b.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1536
+    ],
+    "srcset": "assets/photo_b-400.webp 400w, assets/photo_b-640.webp 640w, assets/photo_b-960.webp 960w, assets/photo_b-1280.webp 1280w, assets/photo_b-1536.webp 1536w",
+    "max": "assets/photo_b-1536.webp"
+  },
+  "photo_c.jpg": {
+    "stem": "photo_c",
+    "intrinsic": [
+      1536,
+      2048
+    ],
+    "fallback": "assets/photo_c.jpg",
+    "widths": [
+      400,
+      640,
+      960,
+      1280,
+      1536
+    ],
+    "srcset": "assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w",
+    "max": "assets/photo_c-1536.webp"
+  }
+}

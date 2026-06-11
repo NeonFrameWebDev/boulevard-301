@@ -5,7 +5,8 @@
    corner-frame hero, 3-column category grid.
    ========================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,600&display=swap');
+/* Barlow is loaded non-blocking from each page's <head> (preconnect + print-swap),
+   not via @import (which serializes CSS -> font CSS -> font files). */
 
 :root {
   --olive:       #3B3320;
@@ -38,7 +39,13 @@
   clip: rect(0,0,0,0); white-space: nowrap; border: 0;
 }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+.menu-open { overflow: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
 
 body {
   font-family: var(--font-main);
@@ -51,6 +58,9 @@ body {
 }
 
 img { display: block; max-width: 100%; height: auto; }
+/* <picture> is layout-transparent so the wrapped <img> inherits container styles
+   exactly as a direct child img did (object-fit fills, hover scales, etc.). */
+picture { display: contents; }
 a { color: inherit; text-decoration: none; }
 
 /* =========================================================
@@ -143,25 +153,59 @@ a { color: inherit; text-decoration: none; }
 /* =========================================================
    NAV
    ========================================================= */
+/* Fixed bar: transparent over the hero, solidifies on scroll (Quiriego-style). */
 .site-nav {
-  position: sticky; top: 0; left: 0; right: 0;
+  position: fixed; top: 0; left: 0; right: 0;
   height: var(--nav-h-desk);
-  background: var(--olive);
+  background: transparent;
   z-index: 500;
   display: flex;
   align-items: center;
   padding: 0 clamp(1rem, 4vw, 3rem);
   gap: 1.5rem;
+  transition: height 0.35s var(--ease, ease), background 0.35s ease,
+              box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
 
+/* Top-down legibility scrim while the bar is transparent over the hero image. */
+.site-nav::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom, rgba(26,20,12,0.55), rgba(26,20,12,0));
+  opacity: 1;
+  transition: opacity 0.35s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.site-nav.scrolled {
+  height: 58px;
+  background: rgba(43,34,21,0.92);
+  -webkit-backdrop-filter: saturate(140%) blur(8px);
+  backdrop-filter: saturate(140%) blur(8px);
+  box-shadow: 0 1px 0 rgba(232,223,192,0.08), 0 8px 28px rgba(0,0,0,0.28);
+}
+.site-nav.scrolled::before { opacity: 0; }
+
+/* Brand mark stays out of the way over the hero, then reveals as you scroll. */
 .nav-logo {
   flex-shrink: 0;
   display: flex;
   align-items: center;
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.site-nav.scrolled .nav-logo {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
 }
 
 .nav-logo img {
-  height: 42px; width: 42px;
+  height: 38px; width: 38px;
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid rgba(232,223,192,0.45);
@@ -177,22 +221,35 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links a {
+  position: relative;
   font-family: var(--font-main);
   font-size: 13px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: rgba(232,223,192,0.8);
-  padding-bottom: 3px;
-  border-bottom: 1.5px solid transparent;
-  transition: color 0.2s, border-color 0.2s;
+  color: rgba(232,223,192,0.85);
+  padding-bottom: 5px;
+  transition: color 0.25s ease;
+}
+
+/* Underline grows from the centre on hover / focus / active. */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 50%; bottom: 0;
+  width: 0; height: 1.5px;
+  background: var(--golden);
+  transform: translateX(-50%);
+  transition: width 0.28s cubic-bezier(.45,0,.2,1);
 }
 
 .nav-links a:hover,
-.nav-links a.active {
-  color: var(--cream);
-  border-bottom-color: var(--golden);
-}
+.nav-links a:focus-visible,
+.nav-links a.active { color: #fff; }
+
+.nav-links a:hover::after,
+.nav-links a:focus-visible::after,
+.nav-links a.active::after { width: 100%; }
 
 .nav-right {
   flex-shrink: 0;
@@ -271,40 +328,74 @@ a { color: inherit; text-decoration: none; }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; }
 .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
+/* Full-screen overlay menu. Reveals with a circular wipe from the hamburger,
+   links stagger in. Sits just under the nav bar so the X stays tappable. */
 .nav-mobile-panel {
-  display: none;
-  position: absolute;
-  top: var(--nav-h-mob);
-  left: 0; right: 0;
+  position: fixed; inset: 0;
   background: var(--olive);
-  padding: 1.5rem clamp(1rem, 5vw, 2rem) 2rem;
-  border-top: 1px solid rgba(123,104,55,0.3);
-  z-index: 499;
+  padding: max(var(--nav-h-mob), 60px) clamp(1.5rem, 9vw, 3rem) 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.75rem;
+  z-index: 480;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  clip-path: circle(0% at calc(100% - 38px) 28px);
+  transition: clip-path 0.5s cubic-bezier(.7,0,.2,1),
+              opacity 0.25s ease,
+              visibility 0s linear 0.5s;
 }
 
-.nav-mobile-panel.open { display: block; }
+.nav-mobile-panel.open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  clip-path: circle(150% at calc(100% - 38px) 28px);
+  transition: clip-path 0.55s cubic-bezier(.7,0,.2,1), opacity 0.2s ease;
+}
+
+/* Brand echo: faint corner frame inside the overlay. */
+.nav-mobile-panel::after {
+  content: "";
+  position: absolute; inset: 16px;
+  border: 1px solid rgba(232,223,192,0.14);
+  pointer-events: none;
+}
 
 .nav-mobile-links {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
-.nav-mobile-links li { border-bottom: 1px solid rgba(232,223,192,0.1); }
+.nav-mobile-links li { border-bottom: 1px solid rgba(232,223,192,0.12); }
 
 .nav-mobile-links a {
   font-family: var(--font-main);
-  font-size: 18px;
-  font-weight: 500;
-  letter-spacing: 0.06em;
+  font-size: clamp(23px, 7.5vw, 32px);
+  font-weight: 600;
+  letter-spacing: 0.03em;
   text-transform: uppercase;
   color: var(--cream);
   display: block;
-  padding: 0.9rem 0;
+  padding: 0.95rem 0;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease, transform 0.45s ease, color 0.2s ease;
 }
 
+.nav-mobile-panel.open .nav-mobile-links a { opacity: 1; transform: none; }
+.nav-mobile-panel.open .nav-mobile-links li:nth-child(1) a { transition-delay: 0.12s; }
+.nav-mobile-panel.open .nav-mobile-links li:nth-child(2) a { transition-delay: 0.18s; }
+.nav-mobile-panel.open .nav-mobile-links li:nth-child(3) a { transition-delay: 0.24s; }
+.nav-mobile-panel.open .nav-mobile-links li:nth-child(4) a { transition-delay: 0.30s; }
+.nav-mobile-panel.open .nav-mobile-links li:nth-child(5) a { transition-delay: 0.36s; }
+
+.nav-mobile-links a:active,
 .nav-mobile-links a.active { color: var(--golden); }
 
 .nav-mobile-footer {
@@ -312,7 +403,16 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.45s ease 0.42s, transform 0.45s ease 0.42s;
 }
+
+.nav-mobile-panel.open .nav-mobile-footer { opacity: 1; transform: none; }
+
+/* Hamburger floats above the overlay so it can morph into the close (X). */
+.nav-hamburger { position: relative; z-index: 501; }
+.nav-hamburger.open span { background: var(--cream); }
 
 /* =========================================================
    FOOTER
@@ -1829,7 +1929,6 @@ a { color: inherit; text-decoration: none; }
   .nav-links { display: none; }
   .nav-right  { display: none; }
   .nav-hamburger { display: flex; }
-  .nav-mobile-panel { top: var(--nav-h-mob); }
 
   .stats-bar { height: auto; padding: 1rem; }
   .stats-bar-inner { flex-direction: column; gap: 0.75rem; }

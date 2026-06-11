@@ -15,8 +15,22 @@
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/about.html">
   <meta property="og:title" content="Nosotros | Boulevard 301 Puerto Peñasco">
   <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/interior_2.jpg">
+  <meta name="theme-color" content="#3B3320">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+
+  <!-- Preload the LCP hero (responsive WebP) -->
+  <link rel="preload" as="image"
+        imagesrcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w"
+        imagesizes="100vw">
+
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -73,7 +87,11 @@
      PAGE HERO (50vh)
      ====================================================== -->
 <header class="page-hero hero-short-50" aria-label="Nosotros - Boulevard 301">
-  <img class="hero-bg" src="assets/interior_2.jpg" alt="Booths en vinotinto y murales en las paredes del comedor" fetchpriority="high">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w">
+    <img class="hero-bg" src="assets/interior_2.jpg" width="2048" height="2048" alt="Booths en vinotinto y murales en las paredes del comedor" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-overlay" style="background: rgba(26,20,12,0.55);"></div>
   <div class="hero-content" style="padding-bottom: clamp(2rem,5vw,4rem);">
     <p class="hero-eyebrow" data-es="Nuestra Historia" data-en="Our Story">Nuestra Historia</p>
@@ -90,7 +108,11 @@
 
       <!-- Photo -->
       <div class="about-photo-wrap reveal">
-        <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 480px, 90vw"
+            srcset="assets/photo_b-400.webp 400w, assets/photo_b-640.webp 640w, assets/photo_b-960.webp 960w, assets/photo_b-1280.webp 1280w, assets/photo_b-1536.webp 1536w">
+          <img src="assets/photo_b.jpg" width="1536" height="2048" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy" decoding="async">
+        </picture>
         <p class="about-photo-caption" style="color: var(--muted);" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
       </div>
 
@@ -142,18 +164,34 @@
     <div class="photo-mosaic reveal">
       <div class="mosaic-row mosaic-row-1">
         <div class="mosaic-cell">
-          <img src="assets/interior_3.jpg" alt="Techo pintado a mano con vigas naranjas sobre cielo azul" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
+              srcset="assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w, assets/interior_3-1600.webp 1600w">
+            <img src="assets/interior_3.jpg" width="2048" height="2048" alt="Techo pintado a mano con vigas naranjas sobre cielo azul" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="mosaic-cell">
-          <img src="assets/interior_4.png" alt="Comedor de Boulevard 301 con clientes" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
+              srcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w">
+            <img src="assets/interior_4.jpg" width="1024" height="768" alt="Comedor de Boulevard 301 con clientes" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
       <div class="mosaic-row mosaic-row-2" style="margin-top: 4px;">
         <div class="mosaic-cell">
-          <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural del techo" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
+              srcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
+            <img src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301 con mural del techo" loading="lazy" decoding="async">
+          </picture>
         </div>
         <div class="mosaic-cell">
-          <img src="assets/interior_2.jpg" alt="Booths en vinotinto y murales en las paredes" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
+              srcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w">
+            <img src="assets/interior_2.jpg" width="2048" height="2048" alt="Booths en vinotinto y murales en las paredes" loading="lazy" decoding="async">
+          </picture>
         </div>
       </div>
     </div>
@@ -197,7 +235,11 @@
       </div>
 
       <div class="reveal">
-        <img class="about-ranch-photo" src="assets/dish_5.jpg" alt="Steak and Eggs: arrachera, huevos, papas y frijoles" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 50vw, 100vw"
+            srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w, assets/dish_5-1280.webp 1280w, assets/dish_5-1512.webp 1512w">
+          <img class="about-ranch-photo" src="assets/dish_5.jpg" width="1512" height="2016" alt="Steak and Eggs: arrachera, huevos, papas y frijoles" loading="lazy" decoding="async">
+        </picture>
       </div>
     </div>
   </div>
@@ -212,17 +254,17 @@
     <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
       <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
         <p data-es="«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»" data-en="&quot;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&quot;">«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Renee S., TripAdvisor" data-en="— Renee S., TripAdvisor">— Renee S., TripAdvisor</footer>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Renee S., TripAdvisor" data-en="Renee S., TripAdvisor">Renee S., TripAdvisor</footer>
       </blockquote>
 
       <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
         <p data-es="«La comida es hermosa a la vista y deliciosa al paladar.»" data-en="&quot;The food is absolutely beautiful to look at and tastes oh so delicious.&quot;">«La comida es hermosa a la vista y deliciosa al paladar.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Sarah C., TripAdvisor" data-en="— Sarah C., TripAdvisor">— Sarah C., TripAdvisor</footer>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Sarah C., TripAdvisor" data-en="Sarah C., TripAdvisor">Sarah C., TripAdvisor</footer>
       </blockquote>
 
       <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
         <p data-es="«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»" data-en="&quot;Orange juice squeezed fresh. The shrimp omelette was fantastic.&quot;">«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="— Paul McLinn, Restaurant Guru" data-en="— Paul McLinn, Restaurant Guru">— Paul McLinn, Restaurant Guru</footer>
+        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Paul McLinn, Restaurant Guru" data-en="Paul McLinn, Restaurant Guru">Paul McLinn, Restaurant Guru</footer>
       </blockquote>
     </div>
 

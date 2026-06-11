@@ -84,32 +84,61 @@ function initLang() {
   });
 }
 
-// ─── Nav hamburger ────────────────────────────────────────────────────────────
+// ─── Nav hamburger (full-screen overlay) ──────────────────────────────────────
 function initNav() {
   const hamburger = document.querySelector('.nav-hamburger');
-  const mobilePanel = document.querySelector('.nav-mobile-panel');
-  if (!hamburger || !mobilePanel) return;
+  const panel = document.querySelector('.nav-mobile-panel');
+  if (!hamburger || !panel) return;
+
+  function setOpen(open) {
+    panel.classList.toggle('open', open);
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    const es = getLang() === 'es';
+    hamburger.setAttribute('aria-label',
+      open ? (es ? 'Cerrar menú' : 'Close menu') : (es ? 'Abrir menú' : 'Open menu'));
+    document.body.classList.toggle('menu-open', open);
+    if (open) {
+      const first = panel.querySelector('a');
+      if (first) first.focus({ preventScroll: true });
+    }
+  }
 
   hamburger.addEventListener('click', (e) => {
     e.stopPropagation();
-    const open = mobilePanel.classList.toggle('open');
-    hamburger.classList.toggle('open', open);
+    setOpen(!panel.classList.contains('open'));
   });
 
   document.addEventListener('click', (e) => {
-    if (!mobilePanel.contains(e.target) && !hamburger.contains(e.target)) {
-      mobilePanel.classList.remove('open');
-      hamburger.classList.remove('open');
+    if (panel.classList.contains('open') &&
+        !panel.contains(e.target) && !hamburger.contains(e.target)) {
+      setOpen(false);
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && panel.classList.contains('open')) {
+      setOpen(false);
+      hamburger.focus();
     }
   });
 
   // Close on link tap
-  mobilePanel.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      mobilePanel.classList.remove('open');
-      hamburger.classList.remove('open');
-    });
+  panel.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => setOpen(false));
   });
+}
+
+// ─── Nav scroll state (transparent over hero -> solid on scroll) ───────────────
+function initNavScroll() {
+  const nav = document.querySelector('.site-nav');
+  if (!nav) return;
+  let ticking = false;
+  const update = () => { nav.classList.toggle('scrolled', window.scrollY > 40); ticking = false; };
+  update();
+  window.addEventListener('scroll', () => {
+    if (!ticking) { requestAnimationFrame(update); ticking = true; }
+  }, { passive: true });
 }
 
 // ─── Scroll reveal ────────────────────────────────────────────────────────────
@@ -266,24 +295,40 @@ function initLoader() {
   const loader = document.getElementById('loader');
   if (!loader) return;
 
-  // Total: 0.4s logo + 0.6s bar + a tiny buffer = 1.2s
-  setTimeout(() => {
+  let done = false;
+  const dismiss = () => {
+    if (done) return;
+    done = true;
     loader.classList.add('fade-out');
     setTimeout(() => { loader.style.display = 'none'; }, 250);
-  }, 1150);
+  };
+
+  // Dismiss as soon as the page is ready (brief brand beat), with a safety cap.
+  if (document.readyState === 'complete') {
+    setTimeout(dismiss, 250);
+  } else {
+    window.addEventListener('load', () => setTimeout(dismiss, 250));
+  }
+  setTimeout(dismiss, 1100);
 }
 
-// ─── Home hero parallax (desktop only) ───────────────────────────────────────
+// ─── Home hero parallax (desktop only, rAF-throttled) ─────────────────────────
 function initParallax() {
   const heroBg = document.querySelector('.hero-parallax-bg');
   if (!heroBg) return;
 
-  // Disable on touch devices
+  // Skip on touch and for reduced-motion users.
   if (window.matchMedia('(hover: none)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  let ticking = false;
   window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    heroBg.style.transform = `translateY(${y * 0.4}px)`;
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
+      ticking = false;
+    });
   }, { passive: true });
 }
 
@@ -291,6 +336,7 @@ function initParallax() {
 document.addEventListener('DOMContentLoaded', () => {
   initLang();
   initNav();
+  initNavScroll();
   initScrollReveal();
   initLightbox();
   initScrollStrips();

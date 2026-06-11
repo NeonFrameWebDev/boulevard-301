@@ -14,9 +14,23 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/visit.html">
   <meta property="og:title" content="Visítanos | Boulevard 301 Puerto Peñasco">
-  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/exterior_2.png">
+  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/exterior_2.jpg">
+  <meta name="theme-color" content="#3B3320">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+
+  <!-- Preload the LCP hero (responsive WebP) -->
+  <link rel="preload" as="image"
+        imagesrcset="assets/exterior_2-400.webp 400w, assets/exterior_2-640.webp 640w, assets/exterior_2-960.webp 960w, assets/exterior_2-1280.webp 1280w, assets/exterior_2-1600.webp 1600w"
+        imagesizes="100vw">
+
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -73,7 +87,11 @@
      PAGE HERO (45vh)
      ====================================================== -->
 <header class="page-hero hero-short-45" aria-label="Visita Boulevard 301">
-  <img class="hero-bg" src="assets/exterior_2.png" alt="Vista de esquina de Boulevard 301 en la Avenida Benito Juárez" fetchpriority="high">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/exterior_2-400.webp 400w, assets/exterior_2-640.webp 640w, assets/exterior_2-960.webp 960w, assets/exterior_2-1280.webp 1280w, assets/exterior_2-1600.webp 1600w">
+    <img class="hero-bg" src="assets/exterior_2.jpg" width="2048" height="2049" alt="Vista de esquina de Boulevard 301 en la Avenida Benito Juárez" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-overlay" style="background: rgba(26,20,12,0.52);"></div>
   <div class="hero-content" style="text-align:center; padding: 2rem;">
     <h1 class="hero-headline" style="font-size: clamp(32px, 6vw, 56px);" data-es="Visítanos" data-en="Visit Us">Visítanos</h1>

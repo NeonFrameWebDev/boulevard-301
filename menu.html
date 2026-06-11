@@ -15,8 +15,22 @@
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/menu.html">
   <meta property="og:title" content="Menú | Boulevard 301 Puerto Peñasco">
   <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/photo_a.jpg">
+  <meta name="theme-color" content="#3B3320">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+
+  <!-- Preload the LCP hero (responsive WebP) -->
+  <link rel="preload" as="image"
+        imagesrcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w, assets/french_toast_fruit-1280.webp 1280w, assets/french_toast_fruit-1366.webp 1366w"
+        imagesizes="100vw">
+
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -73,7 +87,11 @@
      PAGE HERO (40vh)
      ====================================================== -->
 <header class="page-hero hero-short-40" aria-label="Menú de Boulevard 301">
-  <img class="hero-bg" src="assets/french_toast_fruit.jpg" alt="French Toast con Nutella y frutas frescas" fetchpriority="high" style="object-position: center 55%;">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w, assets/french_toast_fruit-1280.webp 1280w, assets/french_toast_fruit-1366.webp 1366w">
+    <img class="hero-bg" src="assets/french_toast_fruit.jpg" width="1366" height="2048" alt="French Toast con Nutella y frutas frescas" fetchpriority="high" style="object-position: center 55%;" decoding="async">
+  </picture>
   <div class="hero-overlay" style="background: rgba(26,20,12,0.55);"></div>
   <div class="hero-content" style="text-align:center; padding: 2rem;">
     <h1 class="hero-headline" style="font-size: clamp(36px, 6vw, 56px);" data-es="El Menú" data-en="The Menu">El Menú</h1>
@@ -266,7 +284,7 @@
         <div class="menu-item-price" data-es="[precio por confirmar]" data-en="[price TBC]">[precio por confirmar]</div>
       </div>
       <div class="menu-item">
-        <div class="menu-item-name" data-es="Paninis variados — pregunta por las opciones del día." data-en="More panini options — ask your server.">Paninis variados — pregunta por las opciones del día.</div>
+        <div class="menu-item-name" data-es="Paninis variados, pregunta por las opciones del día." data-en="More panini options, ask your server.">Paninis variados, pregunta por las opciones del día.</div>
         <div class="menu-item-price" data-es="[precios por confirmar]" data-en="[prices TBC]">[precios por confirmar]</div>
       </div>
       <p class="menu-note" data-es="Consulta el menú completo en restaurante." data-en="Ask in-restaurant for full lunch menu.">Consulta el menú completo en restaurante.</p>
@@ -278,10 +296,10 @@
       <h2 class="menu-cat-title" data-es="Bebidas" data-en="Drinks">Bebidas</h2>
 
       <ul class="menu-drink-list">
-        <li data-es="Jugo de naranja natural — exprimido al momento" data-en="Fresh-squeezed orange juice">Jugo de naranja natural — exprimido al momento</li>
+        <li data-es="Jugo de naranja natural, exprimido al momento" data-en="Fresh-squeezed orange juice">Jugo de naranja natural, exprimido al momento</li>
         <li data-es="Latte / Cappuccino / Americano" data-en="Latte / Cappuccino / Americano">Latte / Cappuccino / Americano</li>
         <li data-es="Chocolate caliente" data-en="Hot chocolate">Chocolate caliente</li>
-        <li data-es="Aguas frescas — horchata, jamaica y frutas de temporada" data-en="Aguas frescas — horchata, hibiscus, seasonal fruit">Aguas frescas — horchata, jamaica y frutas de temporada</li>
+        <li data-es="Aguas frescas: horchata, jamaica y frutas de temporada" data-en="Aguas frescas: horchata, hibiscus, seasonal fruit">Aguas frescas: horchata, jamaica y frutas de temporada</li>
       </ul>
       <p class="menu-note" data-es="Preguntar por opciones del día." data-en="Ask about today's options.">Preguntar por opciones del día.</p>
     </section>
@@ -302,12 +320,36 @@
   <!-- ── Sidebar (desktop only) ─────────────────────────── -->
   <aside class="menu-sidebar" aria-label="Fotos del menú">
     <div class="menu-sidebar-photos">
-      <img class="menu-sidebar-photo active" src="assets/dish_4.jpg" alt="Omelette Poblano" data-caption="Omelette Poblano" loading="lazy">
-      <img class="menu-sidebar-photo" src="assets/dish_7.jpg" alt="Chilaquiles en Salsa Verde" data-caption="Chilaquiles" loading="lazy">
-      <img class="menu-sidebar-photo" src="assets/dish_table_1.jpg" alt="Panini al Chipotle" data-caption="Panini al Chipotle" loading="lazy" style="object-position: 10% 68%;">
-      <img class="menu-sidebar-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" data-caption="Steak and Eggs" loading="lazy">
-      <img class="menu-sidebar-photo" src="assets/dish_single_1.jpg" alt="Huevos con Chorizo" data-caption="Huevos con Chorizo" loading="lazy">
-      <img class="menu-sidebar-photo" src="assets/pancakes_rainbow.jpg" alt="Hot Cakes de Colores" data-caption="Pancakes" loading="lazy" style="object-position: center top;">
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/dish_4-400.webp 400w, assets/dish_4-640.webp 640w, assets/dish_4-960.webp 960w, assets/dish_4-1280.webp 1280w, assets/dish_4-1512.webp 1512w">
+        <img class="menu-sidebar-photo active" src="assets/dish_4.jpg" width="1512" height="2016" alt="Omelette Poblano" data-caption="Omelette Poblano" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/dish_7-400.webp 400w, assets/dish_7-640.webp 640w, assets/dish_7-960.webp 960w, assets/dish_7-1280.webp 1280w, assets/dish_7-1512.webp 1512w">
+        <img class="menu-sidebar-photo" src="assets/dish_7.jpg" width="1512" height="2016" alt="Chilaquiles en Salsa Verde" data-caption="Chilaquiles" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/dish_table_1-400.webp 400w, assets/dish_table_1-640.webp 640w, assets/dish_table_1-960.webp 960w, assets/dish_table_1-1024.webp 1024w">
+        <img class="menu-sidebar-photo" src="assets/dish_table_1.jpg" width="1024" height="768" alt="Panini al Chipotle" data-caption="Panini al Chipotle" loading="lazy" style="object-position: 10% 68%;" decoding="async">
+      </picture>
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w, assets/dish_5-1280.webp 1280w, assets/dish_5-1512.webp 1512w">
+        <img class="menu-sidebar-photo" src="assets/dish_5.jpg" width="1512" height="2016" alt="Steak and Eggs" data-caption="Steak and Eggs" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/dish_single_1-400.webp 400w, assets/dish_single_1-640.webp 640w, assets/dish_single_1-768.webp 768w">
+        <img class="menu-sidebar-photo" src="assets/dish_single_1.jpg" width="768" height="1024" alt="Huevos con Chorizo" data-caption="Huevos con Chorizo" loading="lazy" decoding="async">
+      </picture>
+      <picture>
+        <source type="image/webp" sizes="(min-width: 1024px) 420px, 100vw"
+          srcset="assets/pancakes_rainbow-400.webp 400w, assets/pancakes_rainbow-640.webp 640w, assets/pancakes_rainbow-960.webp 960w, assets/pancakes_rainbow-1080.webp 1080w">
+        <img class="menu-sidebar-photo" src="assets/pancakes_rainbow.jpg" width="1080" height="1078" alt="Hot Cakes de Colores" data-caption="Pancakes" loading="lazy" style="object-position: center top;" decoding="async">
+      </picture>
       <div class="menu-sidebar-caption">
         <span class="menu-sidebar-caption-text">Omelette Poblano</span>
       </div>

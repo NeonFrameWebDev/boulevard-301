@@ -15,9 +15,23 @@
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/">
   <meta property="og:title" content="Boulevard 301 | Desayuno y Comida en Puerto Peñasco">
   <meta property="og:description" content="Restaurante familiar de desayuno y comida en Puerto Peñasco. Fresco y saludable. Abierto todos los días 7:30 AM – 4 PM.">
-  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/interior_4.png">
+  <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/interior_4.jpg">
+  <meta name="theme-color" content="#3B3320">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+
+  <!-- Preload the LCP hero (responsive WebP) -->
+  <link rel="preload" as="image"
+        imagesrcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w"
+        imagesizes="100vw">
+
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -88,12 +102,17 @@
      SECTION 1: HERO (centered, Quiriego-style)
      ====================================================== -->
 <section class="page-hero hero-home" aria-label="Hero">
-  <img
-    class="hero-bg hero-parallax-bg"
-    src="assets/interior_4.png"
-    alt="Comedor de Boulevard 301"
-    fetchpriority="high"
-  >
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w">
+    <img
+      class="hero-bg hero-parallax-bg"
+      src="assets/interior_4.jpg"
+      width="1024" height="768"
+      alt="Comedor de Boulevard 301"
+      fetchpriority="high" decoding="async"
+    >
+  </picture>
   <div class="hero-overlay" style="background: rgba(26,20,12,0.58);"></div>
 
   <!-- Decorative corner frame -->
@@ -134,7 +153,11 @@
      ====================================================== -->
 <div class="category-grid" role="complementary" aria-label="Nuestro menú">
   <div class="category-item">
-    <img src="assets/dish_5.jpg" alt="Desayunos" loading="lazy">
+    <picture>
+      <source type="image/webp" sizes="(min-width: 768px) 34vw, 100vw"
+        srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w, assets/dish_5-1280.webp 1280w">
+      <img src="assets/dish_5.jpg" width="1512" height="2016" alt="Desayunos" loading="lazy" decoding="async">
+    </picture>
     <div class="category-item-overlay">
       <div class="category-item-content">
         <span class="category-item-label" data-es="Desayunos" data-en="Breakfast">Desayunos</span>
@@ -143,7 +166,11 @@
     </div>
   </div>
   <div class="category-item">
-    <img src="assets/drink_1.jpg" alt="Bebidas" loading="lazy">
+    <picture>
+      <source type="image/webp" sizes="(min-width: 768px) 34vw, 100vw"
+        srcset="assets/drink_1-400.webp 400w, assets/drink_1-640.webp 640w, assets/drink_1-768.webp 768w">
+      <img src="assets/drink_1.jpg" width="768" height="1024" alt="Bebidas" loading="lazy" decoding="async">
+    </picture>
     <div class="category-item-overlay">
       <div class="category-item-content">
         <span class="category-item-label" data-es="Bebidas" data-en="Drinks">Bebidas</span>
@@ -152,7 +179,11 @@
     </div>
   </div>
   <div class="category-item">
-    <img src="assets/french_toast_fruit.jpg" alt="Especialidades" loading="lazy">
+    <picture>
+      <source type="image/webp" sizes="(min-width: 768px) 34vw, 100vw"
+        srcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w, assets/french_toast_fruit-1280.webp 1280w">
+      <img src="assets/french_toast_fruit.jpg" width="1366" height="2048" alt="Especialidades" loading="lazy" decoding="async">
+    </picture>
     <div class="category-item-overlay">
       <div class="category-item-content">
         <span class="category-item-label" data-es="Especialidades" data-en="Specials">Especialidades</span>
@@ -176,7 +207,11 @@
       </div>
 
       <div class="about-photo-wrap reveal">
-        <img src="assets/photo_b.jpg" alt="Mural de receta en el comedor de Boulevard 301" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 480px, 90vw"
+            srcset="assets/photo_b-400.webp 400w, assets/photo_b-640.webp 640w, assets/photo_b-960.webp 960w">
+          <img src="assets/photo_b.jpg" width="1536" height="2048" alt="Mural de receta en el comedor de Boulevard 301" loading="lazy" decoding="async">
+        </picture>
         <p class="about-photo-caption" style="color: rgba(232,223,192,0.55);" data-es="El mural en nuestro comedor." data-en="The mural in our dining room.">El mural en nuestro comedor.</p>
       </div>
     </div>
@@ -193,7 +228,11 @@
 
     <div class="dish-cards-row">
       <article class="dish-card reveal">
-        <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w">
+          <img class="dish-card-photo" src="assets/dish_5.jpg" width="1512" height="2016" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</p>
           <p class="dish-card-price" data-es="$200 MXN" data-en="$200 MXN">$200 MXN</p>
@@ -202,7 +241,11 @@
       </article>
 
       <article class="dish-card reveal">
-        <img class="dish-card-photo" src="assets/french_toast_fruit.jpg" alt="French Toast" style="object-position: center 60%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w">
+          <img class="dish-card-photo" src="assets/french_toast_fruit.jpg" width="1366" height="2048" alt="French Toast" style="object-position: center 60%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="French Toast" data-en="French Toast">French Toast</p>
           <p class="dish-card-price" data-es="$140 MXN" data-en="$140 MXN">$140 MXN</p>
@@ -211,7 +254,11 @@
       </article>
 
       <article class="dish-card reveal">
-        <img class="dish-card-photo" src="assets/dish_7.jpg" alt="Chilaquiles en Salsa Verde" style="object-position: center 65%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/dish_7-400.webp 400w, assets/dish_7-640.webp 640w, assets/dish_7-960.webp 960w">
+          <img class="dish-card-photo" src="assets/dish_7.jpg" width="1512" height="2016" alt="Chilaquiles en Salsa Verde" style="object-position: center 65%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="Chilaquiles en Salsa Verde" data-en="Chilaquiles in Salsa Verde">Chilaquiles en Salsa Verde</p>
           <p class="dish-card-price" data-es="$145 MXN" data-en="$145 MXN">$145 MXN</p>
@@ -222,7 +269,11 @@
 
     <div class="dish-cards-scroll">
       <article class="dish-card">
-        <img class="dish-card-photo" src="assets/dish_5.jpg" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w">
+          <img class="dish-card-photo" src="assets/dish_5.jpg" width="1512" height="2016" alt="Steak and Eggs" style="object-position: center 70%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</p>
           <p class="dish-card-price">$200 MXN</p>
@@ -230,7 +281,11 @@
         </div>
       </article>
       <article class="dish-card">
-        <img class="dish-card-photo" src="assets/french_toast_fruit.jpg" alt="French Toast" style="object-position: center 60%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w">
+          <img class="dish-card-photo" src="assets/french_toast_fruit.jpg" width="1366" height="2048" alt="French Toast" style="object-position: center 60%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="French Toast" data-en="French Toast">French Toast</p>
           <p class="dish-card-price">$140 MXN</p>
@@ -238,7 +293,11 @@
         </div>
       </article>
       <article class="dish-card">
-        <img class="dish-card-photo" src="assets/dish_7.jpg" alt="Chilaquiles" style="object-position: center 65%;" loading="lazy">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 380px, 78vw"
+            srcset="assets/dish_7-400.webp 400w, assets/dish_7-640.webp 640w, assets/dish_7-960.webp 960w">
+          <img class="dish-card-photo" src="assets/dish_7.jpg" width="1512" height="2016" alt="Chilaquiles" style="object-position: center 65%;" loading="lazy" decoding="async">
+        </picture>
         <div class="dish-card-body">
           <p class="dish-card-name" data-es="Chilaquiles en Salsa Verde" data-en="Chilaquiles in Salsa Verde">Chilaquiles en Salsa Verde</p>
           <p class="dish-card-price">$145 MXN</p>
@@ -283,10 +342,18 @@
      ====================================================== -->
 <div class="mood-split" aria-hidden="true">
   <div class="mood-split-panel">
-    <img src="assets/interior_3.jpg" alt="Techo pintado a mano, vigas naranjas sobre cielo azul" loading="lazy">
+    <picture>
+      <source type="image/webp" sizes="(min-width: 768px) 50vw, 100vw"
+        srcset="assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w">
+      <img src="assets/interior_3.jpg" width="2048" height="2048" alt="Techo pintado a mano, vigas naranjas sobre cielo azul" loading="lazy" decoding="async">
+    </picture>
   </div>
   <div class="mood-split-panel">
-    <img src="assets/drink_1.jpg" alt="Chocolate caliente en taza artesanal" loading="lazy" style="object-position: center 70%;">
+    <picture>
+      <source type="image/webp" sizes="(min-width: 768px) 50vw, 100vw"
+        srcset="assets/drink_1-400.webp 400w, assets/drink_1-640.webp 640w, assets/drink_1-768.webp 768w">
+      <img src="assets/drink_1.jpg" width="768" height="1024" alt="Chocolate caliente en taza artesanal" loading="lazy" decoding="async" style="object-position: center 70%;">
+    </picture>
   </div>
 </div>
 
@@ -303,7 +370,7 @@
         <div class="review-stars" aria-label="5 estrellas">
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
-        <p class="review-meta">Excursion36973 &mdash; TripAdvisor</p>
+        <p class="review-meta">Excursion36973 · TripAdvisor</p>
         <blockquote class="review-quote" data-es="&ldquo;El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.&rdquo;" data-en="&ldquo;Best French toast I ever had in my life. I will be a regular for breakfast.&rdquo;">&ldquo;El mejor French toast que he comido en mi vida. Voy a ser cliente fijo.&rdquo;</blockquote>
       </article>
 
@@ -311,7 +378,7 @@
         <div class="review-stars" aria-label="5 estrellas">
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
-        <p class="review-meta">Renee S. &mdash; TripAdvisor</p>
+        <p class="review-meta">Renee S. · TripAdvisor</p>
         <blockquote class="review-quote" data-es="&ldquo;El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.&rdquo;" data-en="&ldquo;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&rdquo;">&ldquo;El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.&rdquo;</blockquote>
       </article>
 
@@ -319,7 +386,7 @@
         <div class="review-stars" aria-label="5 estrellas">
           <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
         </div>
-        <p class="review-meta">shernandez710 &mdash; TripAdvisor</p>
+        <p class="review-meta">shernandez710 · TripAdvisor</p>
         <blockquote class="review-quote" data-es="&ldquo;Chilaquiles increíbles. Porciones grandes y satisfactorias.&rdquo;" data-en="&ldquo;Amazing Chilaquiles. Large, satisfying servings.&rdquo;">&ldquo;Chilaquiles increíbles. Porciones grandes y satisfactorias.&rdquo;</blockquote>
       </article>
     </div>
@@ -339,7 +406,11 @@
      SECTION 9: CTA BANNER
      ====================================================== -->
 <section class="cta-banner">
-  <img class="cta-banner-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301" loading="lazy">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
+    <img class="cta-banner-bg" src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301" loading="lazy" decoding="async">
+  </picture>
   <div class="cta-banner-overlay"></div>
   <div class="cta-banner-content">
     <h2 class="cta-banner-headline" data-es="Tu mesa te espera." data-en="Your table is waiting.">Tu mesa te espera.</h2>

@@ -15,8 +15,22 @@
   <meta property="og:url" content="https://neonframewebdev.github.io/boulevard-301/gallery.html">
   <meta property="og:title" content="Galería | Boulevard 301 Puerto Peñasco">
   <meta property="og:image" content="https://neonframewebdev.github.io/boulevard-301/assets/photo_c.jpg">
+  <meta name="theme-color" content="#3B3320">
 
   <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+
+  <!-- Preload the LCP hero (responsive WebP) -->
+  <link rel="preload" as="image"
+        imagesrcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w"
+        imagesizes="100vw">
+
   <link rel="stylesheet" href="css/style.css">
 
   <script>
@@ -73,7 +87,11 @@
      PAGE HERO (35vh)
      ====================================================== -->
 <header class="page-hero hero-short-35" aria-label="Galería de Boulevard 301">
-  <img class="hero-bg" src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 con mural colorido" fetchpriority="high">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
+    <img class="hero-bg" src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301 con mural colorido" fetchpriority="high" decoding="async">
+  </picture>
   <div class="hero-overlay" style="background: rgba(26,20,12,0.52);"></div>
   <div class="hero-content" style="text-align:center; padding: 2rem;">
     <h1 class="hero-headline" style="font-size: clamp(32px, 6vw, 56px);" data-es="Galería" data-en="Gallery">Galería</h1>
@@ -109,52 +127,92 @@
       <div class="scroll-strip">
 
         <div class="scroll-card" tabindex="0" aria-label="Steak and Eggs">
-          <img src="assets/dish_5.jpg" alt="Steak and Eggs. Arrachera, huevos, papas rancheras." loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_5-400.webp 400w, assets/dish_5-640.webp 640w, assets/dish_5-960.webp 960w, assets/dish_5-1280.webp 1280w, assets/dish_5-1512.webp 1512w">
+            <img src="assets/dish_5.jpg" width="1512" height="2016" alt="Steak and Eggs. Arrachera, huevos, papas rancheras." loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Steak and Eggs" data-en="Steak and Eggs">Steak and Eggs</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Chilaquiles en Salsa Verde">
-          <img src="assets/dish_7.jpg" alt="Chilaquiles en salsa verde con huevo, cotija y jalapeño" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_7-400.webp 400w, assets/dish_7-640.webp 640w, assets/dish_7-960.webp 960w, assets/dish_7-1280.webp 1280w, assets/dish_7-1512.webp 1512w">
+            <img src="assets/dish_7.jpg" width="1512" height="2016" alt="Chilaquiles en salsa verde con huevo, cotija y jalapeño" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Chilaquiles en Salsa Verde" data-en="Green Salsa Chilaquiles">Chilaquiles en Salsa Verde</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Omelette Poblano">
-          <img src="assets/dish_4.jpg" alt="Omelette Poblano con salsa verde, elote y cotija" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_4-400.webp 400w, assets/dish_4-640.webp 640w, assets/dish_4-960.webp 960w, assets/dish_4-1280.webp 1280w, assets/dish_4-1512.webp 1512w">
+            <img src="assets/dish_4.jpg" width="1512" height="2016" alt="Omelette Poblano con salsa verde, elote y cotija" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Omelette Poblano" data-en="Poblano Omelette">Omelette Poblano</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Huevos con Chorizo">
-          <img src="assets/dish_single_1.jpg" alt="Huevos, chorizo y papas. El clásico." loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_single_1-400.webp 400w, assets/dish_single_1-640.webp 640w, assets/dish_single_1-768.webp 768w">
+            <img src="assets/dish_single_1.jpg" width="768" height="1024" alt="Huevos, chorizo y papas. El clásico." loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Huevos con Chorizo" data-en="Eggs &amp; Chorizo">Huevos con Chorizo</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="French Toast">
-          <img src="assets/dish_single_2.jpg" alt="French Toast con fresas, kiwi, arándanos y miel" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_single_2-400.webp 400w, assets/dish_single_2-640.webp 640w, assets/dish_single_2-960.webp 960w, assets/dish_single_2-1024.webp 1024w">
+            <img src="assets/dish_single_2.jpg" width="1024" height="768" alt="French Toast con fresas, kiwi, arándanos y miel" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="French Toast" data-en="French Toast">French Toast</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Panini al Chipotle">
-          <img src="assets/dish_table_1.jpg" alt="Panini al chipotle con agua fresca de fresa" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_table_1-400.webp 400w, assets/dish_table_1-640.webp 640w, assets/dish_table_1-960.webp 960w, assets/dish_table_1-1024.webp 1024w">
+            <img src="assets/dish_table_1.jpg" width="1024" height="768" alt="Panini al chipotle con agua fresca de fresa" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Panini al Chipotle" data-en="Chipotle Panini">Panini al Chipotle</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Hot Cakes de Colores">
-          <img src="assets/pancakes_rainbow.jpg" alt="Hot cakes de colores con miel de maple, frutas y crema" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/pancakes_rainbow-400.webp 400w, assets/pancakes_rainbow-640.webp 640w, assets/pancakes_rainbow-960.webp 960w, assets/pancakes_rainbow-1080.webp 1080w">
+            <img src="assets/pancakes_rainbow.jpg" width="1080" height="1078" alt="Hot cakes de colores con miel de maple, frutas y crema" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Hot Cakes de Colores" data-en="Rainbow Pancakes">Hot Cakes de Colores</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="French Toast con Nutella">
-          <img src="assets/french_toast_fruit.jpg" alt="French Toast con Nutella, blueberries, kiwi, fresas y manzana" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/french_toast_fruit-400.webp 400w, assets/french_toast_fruit-640.webp 640w, assets/french_toast_fruit-960.webp 960w, assets/french_toast_fruit-1280.webp 1280w, assets/french_toast_fruit-1366.webp 1366w">
+            <img src="assets/french_toast_fruit.jpg" width="1366" height="2048" alt="French Toast con Nutella, blueberries, kiwi, fresas y manzana" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="French Toast con Nutella" data-en="Nutella French Toast">French Toast con Nutella</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Huevos al Chipotle">
-          <img src="assets/dish_eggs_chipotle.jpg" alt="Huevos al chipotle con cotija, jitomate, cebolla y papas" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_eggs_chipotle-400.webp 400w, assets/dish_eggs_chipotle-640.webp 640w, assets/dish_eggs_chipotle-960.webp 960w, assets/dish_eggs_chipotle-1280.webp 1280w, assets/dish_eggs_chipotle-1600.webp 1600w">
+            <img src="assets/dish_eggs_chipotle.jpg" width="2048" height="2048" alt="Huevos al chipotle con cotija, jitomate, cebolla y papas" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Huevos al Chipotle" data-en="Chipotle Eggs">Huevos al Chipotle</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="French Toast con Berries">
-          <img src="assets/dish_french_toast_berries.jpg" alt="French Toast con fresas, kiwi, blueberries y crema" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/dish_french_toast_berries-400.webp 400w, assets/dish_french_toast_berries-640.webp 640w, assets/dish_french_toast_berries-960.webp 960w, assets/dish_french_toast_berries-1280.webp 1280w, assets/dish_french_toast_berries-1600.webp 1600w">
+            <img src="assets/dish_french_toast_berries.jpg" width="2048" height="2049" alt="French Toast con fresas, kiwi, blueberries y crema" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="French Toast con Berries" data-en="French Toast with Berries">French Toast con Berries</span>
         </div>
 
@@ -175,27 +233,47 @@
       <div class="scroll-strip">
 
         <div class="scroll-card" tabindex="0" aria-label="Chocolate Caliente">
-          <img src="assets/drink_1.jpg" alt="Chocolate caliente en taza artesanal" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/drink_1-400.webp 400w, assets/drink_1-640.webp 640w, assets/drink_1-768.webp 768w">
+            <img src="assets/drink_1.jpg" width="768" height="1024" alt="Chocolate caliente en taza artesanal" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Chocolate Caliente" data-en="Hot Chocolate">Chocolate Caliente</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Caffe Latte Helado">
-          <img src="assets/drink_2.jpg" alt="Caffe Latte helado en frasco de vidrio" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/drink_2-400.webp 400w, assets/drink_2-640.webp 640w, assets/drink_2-960.webp 960w, assets/drink_2-1280.webp 1280w, assets/drink_2-1536.webp 1536w">
+            <img src="assets/drink_2.jpg" width="1536" height="2048" alt="Caffe Latte helado en frasco de vidrio" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Caffe Latte Helado" data-en="Iced Caffe Latte">Caffe Latte Helado</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Bebida de la Casa">
-          <img src="assets/drink_3.jpg" alt="Bebida helada en vaso Boulevard 301" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/drink_3-400.webp 400w, assets/drink_3-640.webp 640w, assets/drink_3-828.webp 828w">
+            <img src="assets/drink_3.jpg" width="828" height="828" alt="Bebida helada en vaso Boulevard 301" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Bebida de la Casa" data-en="House Drink">Bebida de la Casa</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Lattes Helados">
-          <img src="assets/drink_4.jpg" alt="Dos lattes helados en frascos de vidrio" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/drink_4-400.webp 400w, assets/drink_4-640.webp 640w, assets/drink_4-960.webp 960w, assets/drink_4-1280.webp 1280w, assets/drink_4-1366.webp 1366w">
+            <img src="assets/drink_4.jpg" width="1366" height="2048" alt="Dos lattes helados en frascos de vidrio" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Lattes Helados" data-en="Iced Lattes">Lattes Helados</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Café Helado de Capas">
-          <img src="assets/drink_5.jpg" alt="Café helado con capas de colores en vaso Boulevard 301" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/drink_5-400.webp 400w, assets/drink_5-640.webp 640w, assets/drink_5-960.webp 960w, assets/drink_5-1280.webp 1280w, assets/drink_5-1536.webp 1536w">
+            <img src="assets/drink_5.jpg" width="1536" height="2048" alt="Café helado con capas de colores en vaso Boulevard 301" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Café Helado de Capas" data-en="Layered Iced Coffee">Café Helado de Capas</span>
         </div>
 
@@ -216,37 +294,65 @@
       <div class="scroll-strip">
 
         <div class="scroll-card" tabindex="0" aria-label="Comedor lleno de vida">
-          <img src="assets/interior_4.jpg" alt="Boulevard 301 lleno de vida, como siempre" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w">
+            <img src="assets/interior_4.jpg" width="1024" height="768" alt="Boulevard 301 lleno de vida, como siempre" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Lleno de Vida" data-en="Full of Life">Lleno de Vida</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Techo pintado a mano">
-          <img src="assets/interior_3.jpg" alt="Techo pintado a mano. Cada rincón tiene algo que ver." loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w, assets/interior_3-1600.webp 1600w">
+            <img src="assets/interior_3.jpg" width="2048" height="2048" alt="Techo pintado a mano. Cada rincón tiene algo que ver." loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Techo Pintado a Mano" data-en="Hand-Painted Ceiling">Techo Pintado a Mano</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Booths en vinotinto">
-          <img src="assets/interior_2.jpg" alt="Comedor con booths en vinotinto y murales en las paredes" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w">
+            <img src="assets/interior_2.jpg" width="2048" height="2048" alt="Comedor con booths en vinotinto y murales en las paredes" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Booths en Vinotinto" data-en="Burgundy Booths">Booths en Vinotinto</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Letrero de Boulevard 301">
-          <img src="assets/photo_c.jpg" alt="Letrero de Boulevard 301 sobre la Avenida Benito Juárez" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
+            <img src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301 sobre la Avenida Benito Juárez" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Letrero Boulevard 301" data-en="Boulevard 301 Sign">Letrero Boulevard 301</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Mural receta">
-          <img src="assets/photo_b.jpg" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/photo_b-400.webp 400w, assets/photo_b-640.webp 640w, assets/photo_b-960.webp 960w, assets/photo_b-1280.webp 1280w, assets/photo_b-1536.webp 1536w">
+            <img src="assets/photo_b.jpg" width="1536" height="2048" alt="Mural receta: 500 gr de Amor, 300 gr de Sazón" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Mural Receta" data-en="Recipe Mural">Mural Receta</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="El menú físico">
-          <img src="assets/photo_a.jpg" alt="Portada del menú físico de Boulevard 301" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/photo_a-400.webp 400w, assets/photo_a-640.webp 640w, assets/photo_a-960.webp 960w, assets/photo_a-1280.webp 1280w, assets/photo_a-1536.webp 1536w">
+            <img src="assets/photo_a.jpg" width="1536" height="2048" alt="Portada del menú físico de Boulevard 301" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="El Menú" data-en="The Menu">El Menú</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Servicio en el comedor">
-          <img src="assets/interior_drink.jpg" alt="Servidora de Boulevard 301 llevando platillos" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/interior_drink-400.webp 400w, assets/interior_drink-640.webp 640w, assets/interior_drink-768.webp 768w">
+            <img src="assets/interior_drink.jpg" width="768" height="1024" alt="Servidora de Boulevard 301 llevando platillos" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Servicio con Gusto" data-en="Service with a Smile">Servicio con Gusto</span>
         </div>
 
@@ -267,12 +373,20 @@
       <div class="scroll-strip">
 
         <div class="scroll-card" tabindex="0" aria-label="Fachada de Boulevard 301">
-          <img src="assets/exterior_1.png" alt="Boulevard 301. Sobre la Avenida Benito Juárez." loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/exterior_1-400.webp 400w, assets/exterior_1-640.webp 640w, assets/exterior_1-960.webp 960w, assets/exterior_1-1280.webp 1280w, assets/exterior_1-1600.webp 1600w">
+            <img src="assets/exterior_1.jpg" width="2048" height="2048" alt="Boulevard 301. Sobre la Avenida Benito Juárez." loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Av. Benito Juárez" data-en="Av. Benito Juárez">Av. Benito Juárez</span>
         </div>
 
         <div class="scroll-card" tabindex="0" aria-label="Vista de esquina">
-          <img src="assets/exterior_2.png" alt="Vista de esquina de Boulevard 301 con anuncio de pizarrón" loading="lazy">
+          <picture>
+            <source type="image/webp" sizes="(max-width: 767px) 78vw, 320px"
+              srcset="assets/exterior_2-400.webp 400w, assets/exterior_2-640.webp 640w, assets/exterior_2-960.webp 960w, assets/exterior_2-1280.webp 1280w, assets/exterior_2-1600.webp 1600w">
+            <img src="assets/exterior_2.jpg" width="2048" height="2049" alt="Vista de esquina de Boulevard 301 con anuncio de pizarrón" loading="lazy" decoding="async">
+          </picture>
           <span class="scroll-card-caption" data-es="Vista de Esquina" data-en="Corner View">Vista de Esquina</span>
         </div>
 
