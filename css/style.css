@@ -632,6 +632,22 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
 }
 
+/* Minimal typographic hero (no photo) + clean text CTA band */
+.hero-plain {
+  background: radial-gradient(125% 95% at 50% 26%, #38311F 0%, #211E15 72%);
+}
+.hero-plain .hero-eyebrow { color: var(--gold-soft); }
+.hero-plain .hero-headline { color: var(--white); }
+.hero-rule {
+  display: block;
+  width: 54px; height: 1px;
+  background: var(--gold);
+  margin: 0.2rem auto 1.9rem;
+  opacity: 0.9;
+}
+.cta-plain { background: var(--olive); }
+.cta-plain .cta-banner-sub { color: rgba(232,223,192,0.78); }
+
 @media (hover: none) {
   .hero-home .hero-bg { background-attachment: scroll; }
 }
