@@ -9,26 +9,40 @@
    not via @import (which serializes CSS -> font CSS -> font files). */
 
 :root {
-  --olive:       #3B3320;
+  /* Quiriego-faithful: gold on cream/paper/white, deep olive for dark beats. */
+  --olive:       #2E2A1E;
+  --olive-deep:  #211E15;
   --cream:       #E8DFC0;
-  --golden:      #7B6837;
-  --burgundy:    #8B2020;
-  --burgundy-dk: #6A1818;
-  --rust:        #D4622A;
-  --teal:        #3A6E8C;
-  --near-black:  #1A1A18;
-  --body-dark:   #2A2215;
-  --muted:       #7A6E5A;
+  --paper:       #F5F2EB;   /* off-white section ground */
+  --white:       #FFFFFF;
+  --golden:      #7B6837;   /* brand gold */
+  --gold:        #7B6837;
+  --gold-soft:   #9A8048;
+  --near-black:  #1A1714;
+  --ink:         #1A1714;
+  --body-dark:   #1A1714;
+  --muted:       #8A8170;
   --sand:        #C4B49A;
+  --line:        rgba(26,23,20,0.14);     /* hairline on light */
+  --line-cream:  rgba(232,223,192,0.20);  /* hairline on dark */
+  /* retired accents aliased to gold so no legacy ref reintroduces burgundy/teal/rust */
+  --burgundy:    #7B6837;
+  --burgundy-dk: #6A5A2F;
+  --rust:        #7B6837;
+  --teal:        #7B6837;
 
   --font-main:    'Barlow', sans-serif;
   --font-display: 'Barlow', sans-serif;
   --font-accent:  'Barlow', sans-serif;
   --font-body:    'Barlow', sans-serif;
 
-  --nav-h-desk: 68px;
-  --nav-h-mob:  56px;
-  --section-pad: clamp(3.5rem, 8vw, 6.5rem);
+  --nav-h-desk: 72px;
+  --nav-h-mob:  58px;
+  --section-pad: clamp(5rem, 9vw, 9rem);
+  --track-wide:  0.34em;   /* section headings */
+  --track-x:     0.5em;    /* hero / display wordmarks */
+  --track-ui:    0.16em;   /* nav, eyebrows, buttons */
+  --radius: 0;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -49,13 +63,17 @@ html { scroll-behavior: smooth; scroll-padding-top: 72px; }
 
 body {
   font-family: var(--font-main);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 16px;
-  color: var(--body-dark);
-  background: #fff;
-  line-height: 1.65;
+  color: var(--ink);
+  background: var(--white);
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
+
+/* Quiriego signature: hierarchy from case + tracking, not heavy weight. No italic. */
+h1, h2, h3, .section-heading, .hero-headline, .cta-banner-headline { font-style: normal; }
 
 img { display: block; max-width: 100%; height: auto; }
 /* <picture> is layout-transparent so the wrapped <img> inherits container styles
@@ -69,23 +87,25 @@ a { color: inherit; text-decoration: none; }
 .eyebrow {
   font-family: var(--font-main);
   font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 500;
+  letter-spacing: var(--track-ui);
   text-transform: uppercase;
-  color: var(--golden);
-  margin-bottom: 0.7rem;
+  color: var(--muted);
+  margin-bottom: 1rem;
 }
 
 .section-heading {
   font-family: var(--font-main);
-  font-weight: 700;
-  line-height: 1.15;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
   color: var(--golden);
 }
 
 .pull-quote {
   font-family: var(--font-main);
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
 }
 
@@ -206,7 +226,7 @@ a { color: inherit; text-decoration: none; }
 
 .nav-logo img {
   height: 38px; width: 38px;
-  border-radius: 50%;
+  border-radius: 0;
   object-fit: cover;
   border: 1px solid rgba(232,223,192,0.45);
 }
@@ -289,22 +309,22 @@ a { color: inherit; text-decoration: none; }
 
 .btn-reserve {
   font-family: var(--font-main);
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.1em;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: var(--track-ui);
   text-transform: uppercase;
-  background: var(--burgundy);
-  color: #fff;
-  border: none;
-  border-radius: 2px;
-  padding: 8px 18px;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(232,223,192,0.5);
+  border-radius: var(--radius);
+  padding: 10px 20px;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s ease;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
   white-space: nowrap;
 }
 
-.btn-reserve:hover { background: var(--burgundy-dk); }
+.btn-reserve:hover { background: var(--cream); color: var(--olive); border-color: var(--cream); }
 
 .nav-hamburger {
   display: none;
@@ -444,15 +464,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .footer-logo {
-  width: 60px; height: 60px;
-  border-radius: 50%;
+  width: 58px; height: 58px;
+  border-radius: 0;
   object-fit: cover;
-  border: 1px solid rgba(232,223,192,0.35);
+  border: 1px solid rgba(232,223,192,0.3);
 }
 
 .footer-tagline {
   font-family: var(--font-main);
-  font-style: italic;
+  font-style: normal;
   font-weight: 300;
   font-size: 15px;
   color: rgba(232,223,192,0.8);
@@ -518,39 +538,41 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 0.4rem;
   font-family: var(--font-main);
-  font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 0.1em;
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: var(--track-ui);
   text-transform: uppercase;
-  border-radius: 2px;
-  padding: 12px 28px;
+  border-radius: var(--radius);
+  padding: 15px 34px;
   cursor: pointer;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
-  border: 2px solid transparent;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  border: 1px solid transparent;
   white-space: nowrap;
 }
 
+/* Square ghost buttons (quiriego): hairline outline, fill on hover. */
 .btn-primary {
-  background: var(--golden);
-  color: #fff;
+  background: transparent;
+  color: var(--golden);
   border-color: var(--golden);
 }
 
 .btn-primary:hover {
-  background: var(--body-dark);
-  border-color: var(--body-dark);
+  background: var(--golden);
+  color: var(--cream);
+  border-color: var(--golden);
 }
 
 .btn-secondary {
   background: transparent;
-  color: var(--teal);
-  border-color: var(--teal);
+  color: var(--golden);
+  border-color: var(--golden);
 }
 
 .btn-secondary:hover {
-  background: var(--teal);
-  color: #fff;
+  background: var(--golden);
+  color: var(--cream);
 }
 
 .btn-secondary-cream {
@@ -627,44 +649,40 @@ a { color: inherit; text-decoration: none; }
   animation: fadeInUp 0.8s 0.15s ease both;
 }
 
-.hero-logo-center {
-  width: 88px; height: 88px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid rgba(232,223,192,0.65);
-  margin-bottom: 1.5rem;
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-}
+.hero-logo-center { display: none; }   /* medallion retired (quiriego look) */
 
 .hero-eyebrow {
   font-family: var(--font-main);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 500;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(232,223,192,0.8);
-  margin-bottom: 0.75rem;
+  color: rgba(245,242,235,0.82);
+  margin-bottom: 1.4rem;
 }
 
 .hero-headline {
   font-family: var(--font-main);
-  font-weight: 800;
-  font-size: clamp(44px, 9vw, 88px);
+  font-weight: 400;
+  font-size: clamp(30px, 6.2vw, 62px);
   color: #fff;
-  text-shadow: 0 2px 24px rgba(0,0,0,0.35);
-  line-height: 1.0;
-  margin-bottom: 1rem;
-  letter-spacing: -0.01em;
+  text-shadow: 0 2px 22px rgba(0,0,0,0.3);
+  line-height: 1.1;
+  margin-bottom: 1.4rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  padding-left: 0.32em;   /* optical centering for the trailing letter-spacing */
 }
 
 .hero-sub {
   font-family: var(--font-main);
   font-weight: 300;
-  font-size: 18px;
-  color: rgba(232,223,192,0.9);
-  max-width: 460px;
-  margin-bottom: 2rem;
-  line-height: 1.6;
+  font-size: 17px;
+  letter-spacing: 0.02em;
+  color: rgba(245,242,235,0.9);
+  max-width: 480px;
+  margin-bottom: 2.2rem;
+  line-height: 1.7;
 }
 
 .hero-cta-row {
@@ -674,8 +692,9 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
 }
 
-/* ─── Decorative corner frame (Rahmen) ─── */
-.rahmen {
+/* ─── Decorative corner frame (Rahmen) — retired for the quiriego look ─── */
+.rahmen { display: none !important; }
+.rahmen-legacy {
   position: absolute;
   inset: 22px;
   z-index: 3;
@@ -718,12 +737,14 @@ a { color: inherit; text-decoration: none; }
    STATS BAR
    ========================================================= */
 .stats-bar {
-  background: var(--golden);
+  background: var(--paper);
   padding: 0 clamp(1rem, 4vw, 3rem);
-  height: 66px;
+  height: 74px;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .stats-bar-inner {
@@ -739,18 +760,63 @@ a { color: inherit; text-decoration: none; }
   flex: 1;
   text-align: center;
   font-family: var(--font-main);
-  font-weight: 600;
-  font-size: 12px;
-  letter-spacing: 0.08em;
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #fff;
+  color: var(--muted);
 }
 
 .stats-sep {
   width: 1px;
-  height: 22px;
-  background: rgba(255,255,255,0.35);
+  height: 26px;
+  background: var(--line);
   flex-shrink: 0;
+}
+
+/* =========================================================
+   MISION / VISION INTRO (Quiriego-style: airy, centered, gold labels)
+   ========================================================= */
+.section-intro {
+  background: var(--white);
+  text-align: center;
+  padding: var(--section-pad) clamp(1.5rem, 5vw, 4rem);
+}
+.intro-block { max-width: 1000px; margin: 0 auto; }
+.intro-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2.5rem, 7vw, 6rem);
+  margin-top: 2.8rem;
+}
+.intro-label {
+  font-family: var(--font-main);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: var(--track-wide);
+  text-transform: uppercase;
+  color: var(--golden);
+  margin-bottom: 1.3rem;
+  padding-left: var(--track-wide);
+}
+.intro-label::after {
+  content: "";
+  display: block;
+  width: 34px; height: 1px;
+  background: var(--golden);
+  margin: 1rem auto 0;
+}
+.intro-lead {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.9;
+  color: var(--ink);
+  max-width: 42ch;
+  margin: 0 auto;
+}
+@media (max-width: 700px) {
+  .intro-cols { grid-template-columns: 1fr; gap: 3rem; }
 }
 
 /* =========================================================
@@ -759,14 +825,14 @@ a { color: inherit; text-decoration: none; }
 .category-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3px;
-  background: var(--near-black);
+  gap: 1px;
+  background: var(--line);
 }
 
 .category-item {
   position: relative;
-  height: 62vh;
-  min-height: 340px;
+  height: 72vh;
+  min-height: 420px;
   overflow: hidden;
   cursor: default;
 }
@@ -799,13 +865,15 @@ a { color: inherit; text-decoration: none; }
 
 .category-item-label {
   font-family: var(--font-main);
-  font-weight: 700;
-  font-size: clamp(15px, 1.8vw, 23px);
-  letter-spacing: 0.28em;
+  font-weight: 400;
+  font-size: clamp(16px, 2vw, 26px);
+  letter-spacing: 0.4em;
   text-transform: uppercase;
   color: #fff;
   display: block;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.55rem;
+  padding-left: 0.4em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.45);
 }
 
 .category-item-sub {
@@ -1111,11 +1179,14 @@ a { color: inherit; text-decoration: none; }
 
 .cta-banner-headline {
   font-family: var(--font-main);
-  font-weight: 800;
-  font-style: italic;
-  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 400;
+  font-style: normal;
+  font-size: clamp(26px, 4.4vw, 50px);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
   color: #fff;
-  margin-bottom: 0.75rem;
+  margin-bottom: 1.2rem;
+  padding-left: 0.3em;
 }
 
 .cta-banner-sub {
