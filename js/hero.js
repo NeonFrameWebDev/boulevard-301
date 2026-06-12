@@ -21,7 +21,9 @@ uniform sampler2D uTex;
 uniform vec2  uRes;
 uniform vec2  uImg;
 uniform float uTime;
-uniform float uAmp;
+uniform float uAmp;    // how far the bands travel
+uniform float uSpeed;  // racing speed (advection cycles / sec)
+uniform float uZoom;   // <1 zooms out (reveals more of the mural)
 
 // Ashima 2D simplex noise.
 vec3 mod289(vec3 x){ return x - floor(x*(1.0/289.0))*289.0; }
@@ -61,20 +63,34 @@ void main(){
   if (ca > ia) { cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5; }
   else         { cuv.x = (uv.x - 0.5) * (ca / ia) + 0.5; }
 
-  // flowing domain-warp: two octaves of slowly drifting noise
-  float t = uTime;
-  vec2 d  = vec2(snoise(cuv * 2.3 + vec2(0.0, t * 0.05)),
-                 snoise(cuv * 3.1 + vec2(t * 0.043, 1.7))) * uAmp;
-  d      += vec2(snoise(cuv * 1.1 + vec2(t * 0.021, 5.0)),
-                 snoise(cuv * 1.3 + vec2(3.0, t * 0.018))) * uAmp * 0.9;
+  // zoom out a touch: sample a larger region; anything past the photo edge
+  // becomes the dark hero backdrop so it reads as a clean frame.
+  cuv = (cuv - 0.5) / uZoom + 0.5;
+  vec2 ib = step(vec2(0.0), cuv) * step(cuv, vec2(1.0));
+  float inside = ib.x * ib.y;
 
-  vec2 suv = clamp(cuv + d, 0.0, 1.0);
-  vec3 col = texture2D(uTex, suv).rgb;
+  // Smooth, slowly-evolving direction field. The black and white RACE along
+  // these curved paths (continuous one-way flow) instead of wobbling in place.
+  float ang = snoise(cuv * 1.3 + vec2(0.0, uTime * 0.015)) * 3.14159265;
+  vec2 dir  = vec2(cos(ang), sin(ang));
+
+  // Flow-map advection: push the sampling along dir, cross-fading two
+  // half-cycle-offset phases so the motion loops seamlessly = endless racing.
+  vec2  flow = dir * uAmp;
+  float t  = uTime * uSpeed;
+  float p0 = fract(t);
+  float p1 = fract(t + 0.5);
+  float fl = abs(1.0 - 2.0 * p0);
+  vec3 c0 = texture2D(uTex, clamp(cuv + flow * p0, 0.0, 1.0)).rgb;
+  vec3 c1 = texture2D(uTex, clamp(cuv + flow * p1, 0.0, 1.0)).rgb;
+  vec3 col = mix(c0, c1, fl);
 
   // crisp black-and-white
   float gray = dot(col, vec3(0.299, 0.587, 0.114));
   gray = mix(gray, smoothstep(0.16, 0.84, gray), 0.5);
-  gl_FragColor = vec4(vec3(gray), 1.0);
+
+  vec3 bg = vec3(0.075, 0.065, 0.045);
+  gl_FragColor = vec4(mix(bg, vec3(gray), inside), 1.0);
 }
 `;
 
@@ -132,12 +148,16 @@ export function initHero() {
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
     } catch (e) { return; }
 
-    const uRes  = gl.getUniformLocation(prog, 'uRes');
-    const uImg  = gl.getUniformLocation(prog, 'uImg');
-    const uTime = gl.getUniformLocation(prog, 'uTime');
-    const uAmp  = gl.getUniformLocation(prog, 'uAmp');
+    const uRes   = gl.getUniformLocation(prog, 'uRes');
+    const uImg   = gl.getUniformLocation(prog, 'uImg');
+    const uTime  = gl.getUniformLocation(prog, 'uTime');
+    const uAmp   = gl.getUniformLocation(prog, 'uAmp');
+    const uSpeed = gl.getUniformLocation(prog, 'uSpeed');
+    const uZoom  = gl.getUniformLocation(prog, 'uZoom');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
-    gl.uniform1f(uAmp, 0.009);
+    gl.uniform1f(uAmp, 0.055);    // how far the bands race
+    gl.uniform1f(uSpeed, 0.18);   // racing speed
+    gl.uniform1f(uZoom, 0.9);     // zoom out a little
 
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
