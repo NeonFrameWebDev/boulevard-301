@@ -23,10 +23,10 @@ uniform vec2  uRes;
 uniform vec2  uImg;
 uniform float uTime;
 uniform float uZoom;    // <1 zooms out (reveals more of the mural)
-uniform vec2  uCenter;  // focal point of the concentric rings (image uv)
-uniform float uFreq;    // how many pulse rings travel at once
-uniform float uSpeed;   // outward pulse speed
-uniform float uAmp;     // pulse strength (how much the rings brighten)
+uniform vec2  uCenter;  // center the arc rotates around (image uv)
+uniform float uFreq;    // arc half-width (how wide the glowing sweep is)
+uniform float uSpeed;   // sweep speed (laps per second)
+uniform float uAmp;     // glow strength of the arc
 
 float lum(vec3 c){ return dot(c, vec3(0.299, 0.587, 0.114)); }
 
@@ -57,14 +57,16 @@ void main(){
           + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.125;
   float bw = smoothstep(0.40, 0.60, b);          // crisp black & white
 
-  // A luminous wave travels OUTWARD from the rings' focal point (sonar). It
-  // only changes brightness, never position, so the mural stays pin sharp.
-  vec2 p = cuv - uCenter; p.x *= uImg.x / uImg.y;   // aspect-correct radius
-  float d = length(p);
-  // a gentle luminous wave travels outward through the rings; symmetric so the
-  // mural keeps its full black & white (crests stay white, troughs dim a touch)
-  float wave = sin(d * uFreq - uTime * uSpeed);   // -1..1
-  float lit  = clamp(bw * (1.0 + uAmp * wave), 0.0, 1.0);
+  // A glowing arc races AROUND the rings like a snake (radar sweep). Only the
+  // brightness changes; the photo never moves or warps.
+  vec2 p = cuv - uCenter; p.x *= uImg.x / uImg.y;   // aspect-correct
+  float ang   = atan(p.y, p.x) * 0.15915494 + 0.5;    // 0..1 angle around center
+  float sweep = fract(uTime * uSpeed);                 // arc position, rotating
+  float da    = abs(fract(ang - sweep + 0.5) - 0.5);   // angular distance, 0..0.5
+  float glow  = smoothstep(uFreq, 0.0, da);            // uFreq = arc half-width
+  // the sweep lifts the dark stripes toward gray and pushes the light ones to
+  // full white, so a bright wedge clearly races around (visible on black & white)
+  float lit   = clamp(bw + glow * uAmp * (0.45 + 0.55 * bw), 0.0, 1.0);
 
   vec3 bg = vec3(0.075, 0.065, 0.045);
   gl_FragColor = vec4(mix(bg, vec3(lit), inside), 1.0);
@@ -135,10 +137,10 @@ export function initHero() {
     const uAmp    = gl.getUniformLocation(prog, 'uAmp');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
     gl.uniform1f(uZoom, 0.9);            // zoom out a little
-    gl.uniform2f(uCenter, 0.42, 0.42);   // focal point of the rings
-    gl.uniform1f(uFreq, 17.0);           // how many pulse rings travel at once
-    gl.uniform1f(uSpeed, 2.2);           // outward pulse speed
-    gl.uniform1f(uAmp, 0.25);            // pulse strength
+    gl.uniform2f(uCenter, 0.42, 0.42);   // center the arc rotates around
+    gl.uniform1f(uFreq, 0.12);           // arc half-width (~85 deg sweep)
+    gl.uniform1f(uSpeed, 0.33);          // ~3s per lap
+    gl.uniform1f(uAmp, 0.6);             // glow strength
 
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
