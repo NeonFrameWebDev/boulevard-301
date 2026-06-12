@@ -181,6 +181,7 @@ a { color: inherit; text-decoration: none; }
   z-index: 500;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 0 clamp(1rem, 4vw, 3rem);
   gap: 1.5rem;
   transition: height 0.35s var(--ease, ease), background 0.35s ease,
@@ -232,7 +233,12 @@ a { color: inherit; text-decoration: none; }
 }
 
 .nav-links {
-  flex: 1;
+  /* Absolutely centered on the page so the links don't drift left when the
+     logo (narrow) and the right cluster (wider) are unequal widths. */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
