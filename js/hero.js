@@ -1,10 +1,10 @@
 // hero.js
 // Animated black-and-white mural hero. The real Boulevard 301 building is an
 // op-art mural of concentric black/white stripes; this renders it to a WebGL
-// canvas. The PHOTO never moves or distorts (an earlier warp looked seasick) --
-// instead a luminous wave travels OUTWARD from the rings' focal point like
-// sonar, brightening each ring in turn, so the black and white pulse outward
-// while the mural and its painted "Boulevard 301" wordmark stay pin sharp.
+// canvas. The PHOTO never moves or distorts (earlier warp/pulse/radar tries
+// were rejected) -- instead a single soft glint of light sweeps diagonally
+// across the wall on a loop, so the mural and its painted "Boulevard 301"
+// wordmark stay pin sharp. Fits by width so the full wordmark shows on phones.
 //
 // Robustness: the static <picture> sits underneath. If WebGL is unavailable or
 // the user prefers reduced motion, we never reveal the canvas and the static
@@ -23,10 +23,8 @@ uniform vec2  uRes;
 uniform vec2  uImg;
 uniform float uTime;
 uniform float uZoom;    // <1 zooms out (reveals more of the mural)
-uniform vec2  uCenter;  // center the arc rotates around (image uv)
-uniform float uFreq;    // arc half-width (how wide the glowing sweep is)
-uniform float uSpeed;   // sweep speed (laps per second)
-uniform float uAmp;     // glow strength of the arc
+uniform float uSpeed;   // glint sweep speed (sweeps per second)
+uniform float uAmp;     // glint strength
 
 float lum(vec3 c){ return dot(c, vec3(0.299, 0.587, 0.114)); }
 
@@ -34,12 +32,13 @@ void main(){
   vec2 uv = gl_FragCoord.xy / uRes;
   uv.y = 1.0 - uv.y;                 // image upright (canvas origin is bottom-left)
 
-  // object-fit: cover
+  // Fit by WIDTH: on wide screens this fills like cover (crops a little height);
+  // on tall phones it letterboxes top/bottom so the full painted wordmark always
+  // shows, and that letterbox becomes the dark hero frame the nav + CTA sit in.
   float ca = uRes.x / uRes.y;
   float ia = uImg.x / uImg.y;
   vec2 cuv = uv;
-  if (ca > ia) { cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5; }
-  else         { cuv.x = (uv.x - 0.5) * (ca / ia) + 0.5; }
+  cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5;
 
   // zoom out a touch; anything past the photo edge becomes the dark hero
   // backdrop so it reads as a clean frame.
@@ -57,16 +56,16 @@ void main(){
           + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.125;
   float bw = smoothstep(0.40, 0.60, b);          // crisp black & white
 
-  // A glowing arc races AROUND the rings like a snake (radar sweep). Only the
-  // brightness changes; the photo never moves or warps.
-  vec2 p = cuv - uCenter; p.x *= uImg.x / uImg.y;   // aspect-correct
-  float ang   = atan(p.y, p.x) * 0.15915494 + 0.5;    // 0..1 angle around center
-  float sweep = fract(uTime * uSpeed);                 // arc position, rotating
-  float da    = abs(fract(ang - sweep + 0.5) - 0.5);   // angular distance, 0..0.5
-  float glow  = smoothstep(uFreq, 0.0, da);            // uFreq = arc half-width
-  // the sweep lifts the dark stripes toward gray and pushes the light ones to
-  // full white, so a bright wedge clearly races around (visible on black & white)
-  float lit   = clamp(bw + glow * uAmp * (0.45 + 0.55 * bw), 0.0, 1.0);
+  // A single light glint sweeps diagonally across the crisp mural: no warp, no
+  // rings, just a gleam of light gliding over the wall.
+  float u    = fract(uTime * uSpeed);
+  float pos  = u * 1.5 - 0.25;                      // glint travels off-screen to off-screen
+  float p    = cuv.x * 0.42 + cuv.y * 0.66;         // diagonal coordinate
+  float dp   = p - pos;
+  float core = exp(-(dp * dp) / 0.00245);           // sharp bright core (2*0.035^2)
+  float halo = exp(-(dp * dp) / 0.0288) * 0.35;     // soft halo (2*0.12^2)
+  float gleam = core + halo;
+  float lit  = clamp(bw + gleam * (0.55 * bw + 0.22) * uAmp, 0.0, 1.0);
 
   vec3 bg = vec3(0.075, 0.065, 0.045);
   gl_FragColor = vec4(mix(bg, vec3(lit), inside), 1.0);
@@ -131,16 +130,12 @@ export function initHero() {
     const uImg    = gl.getUniformLocation(prog, 'uImg');
     const uTime   = gl.getUniformLocation(prog, 'uTime');
     const uZoom   = gl.getUniformLocation(prog, 'uZoom');
-    const uCenter = gl.getUniformLocation(prog, 'uCenter');
-    const uFreq   = gl.getUniformLocation(prog, 'uFreq');
     const uSpeed  = gl.getUniformLocation(prog, 'uSpeed');
     const uAmp    = gl.getUniformLocation(prog, 'uAmp');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
     gl.uniform1f(uZoom, 0.9);            // zoom out a little
-    gl.uniform2f(uCenter, 0.42, 0.42);   // center the arc rotates around
-    gl.uniform1f(uFreq, 0.12);           // arc half-width (~85 deg sweep)
-    gl.uniform1f(uSpeed, 0.33);          // ~3s per lap
-    gl.uniform1f(uAmp, 0.6);             // glow strength
+    gl.uniform1f(uSpeed, 0.3);           // ~3.3s per glint sweep
+    gl.uniform1f(uAmp, 1.0);             // glint strength
 
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
