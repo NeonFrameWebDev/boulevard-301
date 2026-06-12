@@ -1,9 +1,10 @@
 // hero.js
 // Animated black-and-white mural hero. The real Boulevard 301 building is an
 // op-art mural of concentric black/white stripes; this renders it to a WebGL
-// canvas and warps it with a slow flowing displacement field so the stripes
-// move like liquid ink. The painted "Boulevard 301" wordmark on the wall is
-// the hero title, so we keep the warp gentle enough to stay legible.
+// canvas. The PHOTO never moves or distorts (an earlier warp looked seasick) --
+// instead a luminous wave travels OUTWARD from the rings' focal point like
+// sonar, brightening each ring in turn, so the black and white pulse outward
+// while the mural and its painted "Boulevard 301" wordmark stay pin sharp.
 //
 // Robustness: the static <picture> sits underneath. If WebGL is unavailable or
 // the user prefers reduced motion, we never reveal the canvas and the static
@@ -21,36 +22,13 @@ uniform sampler2D uTex;
 uniform vec2  uRes;
 uniform vec2  uImg;
 uniform float uTime;
-uniform float uAmp;    // how far the bands travel
-uniform float uSpeed;  // racing speed (advection cycles / sec)
-uniform float uZoom;   // <1 zooms out (reveals more of the mural)
+uniform float uZoom;    // <1 zooms out (reveals more of the mural)
+uniform vec2  uCenter;  // focal point of the concentric rings (image uv)
+uniform float uFreq;    // how many pulse rings travel at once
+uniform float uSpeed;   // outward pulse speed
+uniform float uAmp;     // pulse strength (how much the rings brighten)
 
-// Ashima 2D simplex noise.
-vec3 mod289(vec3 x){ return x - floor(x*(1.0/289.0))*289.0; }
-vec2 mod289(vec2 x){ return x - floor(x*(1.0/289.0))*289.0; }
-vec3 permute(vec3 x){ return mod289(((x*34.0)+1.0)*x); }
-float snoise(vec2 v){
-  const vec4 C = vec4(0.211324865405187, 0.366025403784439,
-                     -0.577350269189626, 0.024390243902439);
-  vec2 i  = floor(v + dot(v, C.yy));
-  vec2 x0 = v -   i + dot(i, C.xx);
-  vec2 i1 = (x0.x > x0.y) ? vec2(1.0, 0.0) : vec2(0.0, 1.0);
-  vec4 x12 = x0.xyxy + C.xxzz; x12.xy -= i1;
-  i = mod289(i);
-  vec3 p = permute( permute( i.y + vec3(0.0, i1.y, 1.0))
-                          + i.x + vec3(0.0, i1.x, 1.0));
-  vec3 m = max(0.5 - vec3(dot(x0,x0), dot(x12.xy,x12.xy), dot(x12.zw,x12.zw)), 0.0);
-  m = m*m; m = m*m;
-  vec3 x = 2.0 * fract(p * C.www) - 1.0;
-  vec3 h = abs(x) - 0.5;
-  vec3 ox = floor(x + 0.5);
-  vec3 a0 = x - ox;
-  m *= 1.79284291400159 - 0.85373472095314 * (a0*a0 + h*h);
-  vec3 g;
-  g.x  = a0.x  * x0.x  + h.x  * x0.y;
-  g.yz = a0.yz * x12.xz + h.yz * x12.yw;
-  return 130.0 * dot(m, g);
-}
+float lum(vec3 c){ return dot(c, vec3(0.299, 0.587, 0.114)); }
 
 void main(){
   vec2 uv = gl_FragCoord.xy / uRes;
@@ -63,34 +41,33 @@ void main(){
   if (ca > ia) { cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5; }
   else         { cuv.x = (uv.x - 0.5) * (ca / ia) + 0.5; }
 
-  // zoom out a touch: sample a larger region; anything past the photo edge
-  // becomes the dark hero backdrop so it reads as a clean frame.
+  // zoom out a touch; anything past the photo edge becomes the dark hero
+  // backdrop so it reads as a clean frame.
   cuv = (cuv - 0.5) / uZoom + 0.5;
   vec2 ib = step(vec2(0.0), cuv) * step(cuv, vec2(1.0));
   float inside = ib.x * ib.y;
 
-  // Smooth, slowly-evolving direction field. The black and white RACE along
-  // these curved paths (continuous one-way flow) instead of wobbling in place.
-  float ang = snoise(cuv * 1.3 + vec2(0.0, uTime * 0.015)) * 3.14159265;
-  vec2 dir  = vec2(cos(ang), sin(ang));
+  // The PHOTO never moves or warps: sample at the fixed pixel, lightly blurred
+  // only to keep the black/white crisp.
+  float e = 1.1 / uImg.y;
+  float b = lum(texture2D(uTex, cuv).rgb) * 0.5
+          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.125
+          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.125
+          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.125
+          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.125;
+  float bw = smoothstep(0.40, 0.60, b);          // crisp black & white
 
-  // Flow-map advection: push the sampling along dir, cross-fading two
-  // half-cycle-offset phases so the motion loops seamlessly = endless racing.
-  vec2  flow = dir * uAmp;
-  float t  = uTime * uSpeed;
-  float p0 = fract(t);
-  float p1 = fract(t + 0.5);
-  float fl = abs(1.0 - 2.0 * p0);
-  vec3 c0 = texture2D(uTex, clamp(cuv + flow * p0, 0.0, 1.0)).rgb;
-  vec3 c1 = texture2D(uTex, clamp(cuv + flow * p1, 0.0, 1.0)).rgb;
-  vec3 col = mix(c0, c1, fl);
-
-  // crisp black-and-white
-  float gray = dot(col, vec3(0.299, 0.587, 0.114));
-  gray = mix(gray, smoothstep(0.16, 0.84, gray), 0.5);
+  // A luminous wave travels OUTWARD from the rings' focal point (sonar). It
+  // only changes brightness, never position, so the mural stays pin sharp.
+  vec2 p = cuv - uCenter; p.x *= uImg.x / uImg.y;   // aspect-correct radius
+  float d = length(p);
+  // a gentle luminous wave travels outward through the rings; symmetric so the
+  // mural keeps its full black & white (crests stay white, troughs dim a touch)
+  float wave = sin(d * uFreq - uTime * uSpeed);   // -1..1
+  float lit  = clamp(bw * (1.0 + uAmp * wave), 0.0, 1.0);
 
   vec3 bg = vec3(0.075, 0.065, 0.045);
-  gl_FragColor = vec4(mix(bg, vec3(gray), inside), 1.0);
+  gl_FragColor = vec4(mix(bg, vec3(lit), inside), 1.0);
 }
 `;
 
@@ -148,16 +125,20 @@ export function initHero() {
       gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGB, gl.RGB, gl.UNSIGNED_BYTE, img);
     } catch (e) { return; }
 
-    const uRes   = gl.getUniformLocation(prog, 'uRes');
-    const uImg   = gl.getUniformLocation(prog, 'uImg');
-    const uTime  = gl.getUniformLocation(prog, 'uTime');
-    const uAmp   = gl.getUniformLocation(prog, 'uAmp');
-    const uSpeed = gl.getUniformLocation(prog, 'uSpeed');
-    const uZoom  = gl.getUniformLocation(prog, 'uZoom');
+    const uRes    = gl.getUniformLocation(prog, 'uRes');
+    const uImg    = gl.getUniformLocation(prog, 'uImg');
+    const uTime   = gl.getUniformLocation(prog, 'uTime');
+    const uZoom   = gl.getUniformLocation(prog, 'uZoom');
+    const uCenter = gl.getUniformLocation(prog, 'uCenter');
+    const uFreq   = gl.getUniformLocation(prog, 'uFreq');
+    const uSpeed  = gl.getUniformLocation(prog, 'uSpeed');
+    const uAmp    = gl.getUniformLocation(prog, 'uAmp');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
-    gl.uniform1f(uAmp, 0.055);    // how far the bands race
-    gl.uniform1f(uSpeed, 0.18);   // racing speed
-    gl.uniform1f(uZoom, 0.9);     // zoom out a little
+    gl.uniform1f(uZoom, 0.9);            // zoom out a little
+    gl.uniform2f(uCenter, 0.42, 0.42);   // focal point of the rings
+    gl.uniform1f(uFreq, 17.0);           // how many pulse rings travel at once
+    gl.uniform1f(uSpeed, 2.2);           // outward pulse speed
+    gl.uniform1f(uAmp, 0.25);            // pulse strength
 
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
