@@ -179,11 +179,14 @@ a { color: inherit; text-decoration: none; }
   height: var(--nav-h-desk);
   background: transparent;
   z-index: 500;
-  display: flex;
+  /* Quiriego layout: equal flanks (links) around a centered logo. The 1fr
+     columns are equal regardless of their content, so the logo is always
+     page-centered. */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-  justify-content: space-between;
+  column-gap: clamp(1rem, 3vw, 2.5rem);
   padding: 0 clamp(1rem, 4vw, 3rem);
-  gap: 1.5rem;
   transition: height 0.35s var(--ease, ease), background 0.35s ease,
               box-shadow 0.35s ease, backdrop-filter 0.35s ease;
 }
@@ -208,21 +211,12 @@ a { color: inherit; text-decoration: none; }
 }
 .site-nav.scrolled::before { opacity: 0; }
 
-/* Brand mark stays out of the way over the hero, then reveals as you scroll. */
+/* Centered brand mark, always visible (quiriego). */
 .nav-logo {
-  flex-shrink: 0;
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   align-items: center;
-  opacity: 0;
-  transform: translateY(-8px);
-  pointer-events: none;
-  transition: opacity 0.35s ease, transform 0.35s ease;
-}
-
-.site-nav.scrolled .nav-logo {
-  opacity: 1;
-  transform: none;
-  pointer-events: auto;
 }
 
 .nav-logo img {
@@ -232,31 +226,52 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(232,223,192,0.45);
 }
 
+/* Split link lists flank the centered logo. */
 .nav-links {
-  /* Absolutely centered on the page so the links don't drift left when the
-     logo (narrow) and the right cluster (wider) are unequal widths. */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
   display: flex;
-  justify-content: center;
   align-items: center;
-  gap: clamp(1.25rem, 2.5vw, 2.5rem);
+  gap: clamp(1.1rem, 2.2vw, 2.2rem);
   list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.nav-links-left  { grid-column: 1; justify-content: flex-end; }
+/* The right cell holds the right links plus the lang + reserve cluster, with
+   the cluster pushed to the far corner (quiriego flag-in-corner idiom). */
+.nav-col-right {
+  grid-column: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  min-width: 0;
 }
 
 .nav-links a {
   position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
   font-family: var(--font-main);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: rgba(232,223,192,0.85);
   padding-bottom: 5px;
+  white-space: nowrap;
   transition: color 0.25s ease;
 }
+
+.nav-ico {
+  width: 15px; height: 15px;
+  flex-shrink: 0;
+  opacity: 0.78;
+  transition: opacity 0.25s ease;
+}
+.nav-links a:hover .nav-ico,
+.nav-links a:focus-visible .nav-ico,
+.nav-links a.active .nav-ico { opacity: 1; }
 
 /* Underline grows from the centre on hover / focus / active. */
 .nav-links a::after {
@@ -311,6 +326,41 @@ a { color: inherit; text-decoration: none; }
 .lang-btn.active {
   background: var(--golden);
   color: #fff;
+}
+
+/* Flag-chip variant (quiriego): no pill, a small flag + ES/EN, active chip
+   carries a gold underline, inactive is dimmed. */
+.lang-toggle.lang-flags {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  gap: 0.9rem;
+}
+.lang-flags .lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 4px 0;
+  opacity: 0.55;
+  position: relative;
+}
+.lang-flags .lang-btn.active {
+  background: transparent;
+  color: var(--cream);
+  opacity: 1;
+}
+.lang-flags .lang-btn.active::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -2px;
+  height: 1.5px;
+  background: var(--golden);
+}
+.flag-ico {
+  width: 18px; height: 12px;
+  flex-shrink: 0;
+  display: block;
+  border: 1px solid rgba(232,223,192,0.35);
 }
 
 .btn-reserve {
@@ -441,6 +491,20 @@ a { color: inherit; text-decoration: none; }
 /* Hamburger floats above the overlay so it can morph into the close (X). */
 .nav-hamburger { position: relative; z-index: 501; }
 .nav-hamburger.open span { background: var(--cream); }
+
+/* The icon links need room; collapse to the hamburger below 1000px. The bar
+   reverts to flex so the always-on logo sits left and the hamburger right. */
+@media (max-width: 1000px) {
+  .site-nav {
+    display: flex;
+    justify-content: space-between;
+    column-gap: 1rem;
+  }
+  .nav-links,
+  .nav-col-right { display: none; }
+  .nav-logo { justify-self: auto; }
+  .nav-hamburger { display: flex; }
+}
 
 /* =========================================================
    FOOTER
@@ -792,6 +856,63 @@ a { color: inherit; text-decoration: none; }
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* =========================================================
+   HOME HERO: animated black & white op-art mural
+   ========================================================= */
+.hero-mural {
+  align-items: flex-end;          /* content sits at the bottom */
+  justify-content: stretch;
+  background: #14100A;
+}
+.hero-mural-img,
+.hero-mural-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+.hero-mural-img { display: block; }
+.hero-mural-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+/* The canvas fades in over the identical static photo once WebGL is ready, so
+   there is no visible swap. If WebGL is missing or motion is reduced, it never
+   becomes ready and the static mural shows. */
+.hero-mural-canvas {
+  display: block;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+.hero-mural-canvas.is-ready { opacity: 1; }
+.hero-mural-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(to top, rgba(18,15,10,0.92) 0%, rgba(18,15,10,0.5) 20%,
+                    rgba(18,15,10,0.06) 44%, transparent 60%),
+    linear-gradient(to bottom, rgba(18,15,10,0.55) 0%, rgba(18,15,10,0.12) 12%,
+                    transparent 22%);
+}
+.hero-mural .hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 clamp(1.5rem, 6vw, 5rem) clamp(2.4rem, 6vw, 4.6rem);
+  animation: none;                /* the .hero-mark stagger handles entrance */
+}
+.hero-mural .hero-eyebrow { color: rgba(245,242,235,0.92); margin-bottom: 0.85rem; }
+.hero-mural .hero-tagline { color: rgba(245,242,235,0.7); margin: 0 0 1.7rem; padding-left: 0.4em; }
 
 /* ─── Decorative corner frame (Rahmen) — retired for the quiriego look ─── */
 .rahmen { display: none !important; }

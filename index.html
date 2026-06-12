@@ -29,6 +29,12 @@
 
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- LCP: preload the responsive mural hero (WebP) -->
+  <link rel="preload" as="image" type="image/webp"
+        href="assets/mural_bw-1448.webp"
+        imagesrcset="assets/mural_bw-768.webp 768w, assets/mural_bw-1152.webp 1152w, assets/mural_bw-1448.webp 1448w"
+        imagesizes="100vw">
+
   <script>
     (function(){
       var lang = localStorage.getItem('blvd301_lang') || 'es';
@@ -50,24 +56,29 @@
      NAV
      ====================================================== -->
 <nav class="site-nav" role="navigation" aria-label="Navegación principal">
-  <a href="index.html" class="nav-logo" aria-label="Boulevard 301 – Inicio">
+  <ul class="nav-links nav-links-left">
+    <li><a href="index.html" class="active"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 4l9 6.5"/><path d="M5.5 9.5V20h13V9.5"/></svg><span class="nav-label" data-es="Inicio" data-en="Home">Inicio</span></a></li>
+    <li><a href="menu.html"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v18"/><path d="M5 3v4a2 2 0 0 0 4 0V3"/><path d="M16.5 3C15 4.5 15 9 16.5 10.5V21"/></svg><span class="nav-label" data-es="Menú" data-en="Menu">Menú</span></a></li>
+  </ul>
+
+  <a href="index.html" class="nav-logo" aria-label="Boulevard 301, Inicio">
     <img src="assets/logo.jpg" alt="Boulevard 301">
   </a>
 
-  <ul class="nav-links">
-    <li><a href="index.html" class="active" data-es="Inicio" data-en="Home">Inicio</a></li>
-    <li><a href="menu.html" data-es="Menú" data-en="Menu">Menú</a></li>
-    <li><a href="about.html" data-es="Nosotros" data-en="About">Nosotros</a></li>
-    <li><a href="gallery.html" data-es="Galería" data-en="Gallery">Galería</a></li>
-    <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
-  </ul>
+  <div class="nav-col-right">
+    <ul class="nav-links nav-links-right">
+      <li><a href="about.html"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.2"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/></svg><span class="nav-label" data-es="Nosotros" data-en="About">Nosotros</span></a></li>
+      <li><a href="gallery.html"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14"/><circle cx="9" cy="10" r="1.5"/><path d="M20.5 16 15 11l-9 8"/></svg><span class="nav-label" data-es="Galería" data-en="Gallery">Galería</span></a></li>
+      <li><a href="visit.html"><svg class="nav-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s6.5-5.8 6.5-10.5A6.5 6.5 0 0 0 5.5 10.5C5.5 15.2 12 21 12 21Z"/><circle cx="12" cy="10" r="2.3"/></svg><span class="nav-label" data-es="Visítanos" data-en="Visit">Visítanos</span></a></li>
+    </ul>
 
-  <div class="nav-right">
-    <div class="lang-toggle" role="group" aria-label="Idioma / Language">
-      <button class="lang-btn active" data-lang="es">ES</button>
-      <button class="lang-btn" data-lang="en">EN</button>
+    <div class="nav-right">
+      <div class="lang-toggle lang-flags" role="group" aria-label="Idioma / Language">
+        <button class="lang-btn active" data-lang="es"><svg class="flag-ico" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#006847"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg><span>ES</span></button>
+        <button class="lang-btn" data-lang="en"><svg class="flag-ico" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height="0.286" fill="#b22234"/><rect width="3" height="0.286" y="0.572" fill="#b22234"/><rect width="3" height="0.286" y="1.144" fill="#b22234"/><rect width="3" height="0.286" y="1.716" fill="#b22234"/><rect width="1.2" height="1.144" fill="#3c3b6e"/></svg><span>EN</span></button>
+      </div>
+      <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
     </div>
-    <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
   </div>
 
   <button class="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
@@ -85,9 +96,9 @@
     <li><a href="visit.html" data-es="Visítanos" data-en="Visit">Visítanos</a></li>
   </ul>
   <div class="nav-mobile-footer">
-    <div class="lang-toggle">
-      <button class="lang-btn active" data-lang="es">ES</button>
-      <button class="lang-btn" data-lang="en">EN</button>
+    <div class="lang-toggle lang-flags">
+      <button class="lang-btn active" data-lang="es"><svg class="flag-ico" viewBox="0 0 3 2" aria-hidden="true"><rect width="1" height="2" fill="#006847"/><rect x="1" width="1" height="2" fill="#fff"/><rect x="2" width="1" height="2" fill="#ce1126"/></svg><span>ES</span></button>
+      <button class="lang-btn" data-lang="en"><svg class="flag-ico" viewBox="0 0 3 2" aria-hidden="true"><rect width="3" height="2" fill="#fff"/><rect width="3" height="0.286" fill="#b22234"/><rect width="3" height="0.286" y="0.572" fill="#b22234"/><rect width="3" height="0.286" y="1.144" fill="#b22234"/><rect width="3" height="0.286" y="1.716" fill="#b22234"/><rect width="1.2" height="1.144" fill="#3c3b6e"/></svg><span>EN</span></button>
     </div>
     <a href="tel:+526383834816" class="btn-reserve" data-es="Reservar" data-en="Book a Table">Reservar</a>
   </div>
@@ -96,28 +107,25 @@
 <!-- ======================================================
      SECTION 1: HERO (centered, Quiriego-style)
      ====================================================== -->
-<section class="page-hero hero-home hero-plain" aria-label="Hero">
-  <div class="hero-glow" aria-hidden="true"></div>
-  <div class="hero-rays" aria-hidden="true"></div>
-  <div class="hero-motes" aria-hidden="true">
-    <span style="left:12%; animation-duration:14s; animation-delay:0s; width:3px; height:3px;"></span>
-    <span style="left:26%; animation-duration:18s; animation-delay:3s;"></span>
-    <span style="left:39%; animation-duration:12s; animation-delay:1.6s; width:2px; height:2px;"></span>
-    <span style="left:57%; animation-duration:16s; animation-delay:5.5s;"></span>
-    <span style="left:70%; animation-duration:13s; animation-delay:2.4s; width:3px; height:3px;"></span>
-    <span style="left:83%; animation-duration:19s; animation-delay:4.2s;"></span>
-    <span style="left:48%; animation-duration:17s; animation-delay:7.5s; width:2px; height:2px;"></span>
-    <span style="left:33%; animation-duration:15s; animation-delay:9s;"></span>
-    <span style="left:64%; animation-duration:20s; animation-delay:6s; width:2px; height:2px;"></span>
-  </div>
+<section class="page-hero hero-home hero-mural" aria-label="Hero">
+  <!-- The real Boulevard 301 building: a black-and-white op-art mural with the
+       hand-painted cursive wordmark. js/hero.js renders it to the WebGL canvas
+       and warps the stripes like flowing ink. The static photo below is the
+       fallback (no WebGL / reduced motion / pre-load). -->
+  <picture class="hero-mural-img">
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/mural_bw-768.webp 768w, assets/mural_bw-1152.webp 1152w, assets/mural_bw-1448.webp 1448w">
+    <img id="hero-mural-src" src="assets/mural_bw-1448.jpg" width="1448" height="1086"
+      alt="Mural en blanco y negro del edificio de Boulevard 301 con el letrero pintado a mano"
+      fetchpriority="high" decoding="async">
+  </picture>
+  <canvas class="hero-mural-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+  <div class="hero-mural-scrim" aria-hidden="true"></div>
+
   <div class="hero-content hero-mark">
+    <h1 class="sr-only">Boulevard 301 · Desayuno y Comida en Puerto Peñasco</h1>
     <p class="hero-eyebrow" data-es="Desayuno y Comida · Puerto Peñasco" data-en="Breakfast &amp; Lunch · Puerto Peñasco">Desayuno y Comida · Puerto Peñasco</p>
-    <h1 class="hero-wordmark">
-      <span class="wm-script">Boulevard</span><span class="wm-num">301</span>
-    </h1>
     <p class="hero-tagline" data-es="Steaks &amp; Eggs · Hecho con amor" data-en="Steaks &amp; Eggs · Made with love">Steaks &amp; Eggs · Hecho con amor</p>
-    <span class="hero-rule" aria-hidden="true"></span>
-    <p class="hero-sub" data-es="Fresco, saludable y con sazón. Abierto todos los días desde las 7:30 AM." data-en="Fresh, healthy, made with love. Open every day from 7:30 AM.">Fresco, saludable y con sazón. Abierto todos los días desde las 7:30 AM.</p>
     <div class="hero-cta-row">
       <a href="menu.html" class="btn btn-secondary-cream" data-es="Ver el menú" data-en="See the menu">Ver el menú</a>
     </div>
@@ -261,5 +269,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script type="module" src="js/hero.js"></script>
 </body>
 </html>
