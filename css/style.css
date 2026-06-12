@@ -632,19 +632,98 @@ a { color: inherit; text-decoration: none; }
   justify-content: center;
 }
 
-/* Minimal typographic hero (no photo) + clean text CTA band */
+/* =========================================================
+   AMAZING HERO — cursive wordmark, warm light, drifting motes
+   ========================================================= */
 .hero-plain {
-  background: radial-gradient(125% 95% at 50% 26%, #38311F 0%, #211E15 72%);
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(150% 130% at 50% 4%, #2C2618 0%, #1C1810 56%, #14100A 100%);
 }
+.hero-glow {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background: radial-gradient(44% 42% at 50% 41%, rgba(204,156,70,0.32) 0%, rgba(204,156,70,0.10) 42%, transparent 72%);
+  animation: heroGlow 7.5s ease-in-out infinite;
+}
+@keyframes heroGlow { 0%, 100% { opacity: 0.72; transform: scale(1); } 50% { opacity: 1; transform: scale(1.05); } }
+.hero-rays {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none; opacity: 0.6;
+  background:
+    linear-gradient(158deg, rgba(255,226,162,0.13) 0%, transparent 32%),
+    linear-gradient(202deg, rgba(255,226,162,0.07) 0%, transparent 30%);
+}
+.hero-motes { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-motes span {
+  position: absolute; bottom: -12px; width: 4px; height: 4px; border-radius: 50%;
+  background: rgba(247,224,168,0.7); filter: blur(0.4px);
+  animation-name: moteFloat; animation-timing-function: linear; animation-iteration-count: infinite;
+}
+@keyframes moteFloat {
+  0% { transform: translateY(0) translateX(0); opacity: 0; }
+  12% { opacity: 0.75; }
+  50% { transform: translateY(-40vh) translateX(10px); }
+  85% { opacity: 0.45; }
+  100% { transform: translateY(-82vh) translateX(-6px); opacity: 0; }
+}
+
+.hero-plain .hero-content { position: relative; z-index: 2; }
 .hero-plain .hero-eyebrow { color: var(--gold-soft); }
-.hero-plain .hero-headline { color: var(--white); }
+
+.hero-wordmark {
+  font-family: var(--font-main);
+  line-height: 0.95;
+  margin: 0.5rem 0 0.2rem;
+  display: flex; align-items: flex-end; justify-content: center; gap: 0.08em;
+  flex-wrap: nowrap;
+}
+.wm-script {
+  font-family: 'Kaushan Script', cursive;
+  font-weight: 400;
+  font-size: clamp(58px, 13.5vw, 158px);
+  line-height: 0.82;
+  background-image: linear-gradient(100deg, #A8843F 0%, #E7C883 22%, #FBEFC9 40%, #E7C883 58%, #A8843F 100%);
+  background-size: 240% 100%;
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  filter: drop-shadow(0 6px 22px rgba(0,0,0,0.5));
+  animation: wmShimmer 6s ease-in-out infinite;
+  padding: 0 0.06em 0.08em;
+}
+@keyframes wmShimmer { 0% { background-position: 130% 0; } 100% { background-position: -130% 0; } }
+.wm-num {
+  font-family: var(--font-main);
+  font-weight: 300;
+  font-size: clamp(22px, 4.6vw, 54px);
+  letter-spacing: 0.14em;
+  color: var(--gold-soft);
+  margin-bottom: 0.5em;
+  padding-left: 0.06em;
+}
+.hero-tagline {
+  font-family: var(--font-main);
+  font-weight: 500; font-size: 11px;
+  letter-spacing: 0.4em; text-transform: uppercase;
+  color: rgba(245,242,235,0.55);
+  margin-top: 0.6rem; padding-left: 0.4em;
+}
 .hero-rule {
   display: block;
   width: 54px; height: 1px;
   background: var(--gold);
-  margin: 0.2rem auto 1.9rem;
-  opacity: 0.9;
+  margin: 1.6rem auto 1.5rem;
+  opacity: 0.85;
 }
+
+/* elegant staggered reveal */
+.hero-mark > * { opacity: 0; animation: heroRise 0.95s cubic-bezier(.2,.7,.2,1) forwards; }
+.hero-mark > *:nth-child(1) { animation-delay: 0.15s; }
+.hero-mark > *:nth-child(2) { animation-delay: 0.34s; }
+.hero-mark > *:nth-child(3) { animation-delay: 0.54s; }
+.hero-mark > *:nth-child(4) { animation-delay: 0.66s; }
+.hero-mark > *:nth-child(5) { animation-delay: 0.78s; }
+.hero-mark > *:nth-child(6) { animation-delay: 0.9s; }
+@keyframes heroRise { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: none; } }
+
 .cta-plain { background: var(--olive); }
 .cta-plain .cta-banner-sub { color: rgba(232,223,192,0.78); }
 

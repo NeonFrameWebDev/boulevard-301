@@ -23,9 +23,9 @@
   <!-- Fonts: non-blocking load (preconnect + print-media swap) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap"></noscript>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Kaushan+Script&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Kaushan+Script&display=swap" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Kaushan+Script&display=swap"></noscript>
 
   <link rel="stylesheet" href="css/style.css">
 
@@ -97,9 +97,25 @@
      SECTION 1: HERO (centered, Quiriego-style)
      ====================================================== -->
 <section class="page-hero hero-home hero-plain" aria-label="Hero">
-  <div class="hero-content">
+  <div class="hero-glow" aria-hidden="true"></div>
+  <div class="hero-rays" aria-hidden="true"></div>
+  <div class="hero-motes" aria-hidden="true">
+    <span style="left:12%; animation-duration:14s; animation-delay:0s; width:3px; height:3px;"></span>
+    <span style="left:26%; animation-duration:18s; animation-delay:3s;"></span>
+    <span style="left:39%; animation-duration:12s; animation-delay:1.6s; width:2px; height:2px;"></span>
+    <span style="left:57%; animation-duration:16s; animation-delay:5.5s;"></span>
+    <span style="left:70%; animation-duration:13s; animation-delay:2.4s; width:3px; height:3px;"></span>
+    <span style="left:83%; animation-duration:19s; animation-delay:4.2s;"></span>
+    <span style="left:48%; animation-duration:17s; animation-delay:7.5s; width:2px; height:2px;"></span>
+    <span style="left:33%; animation-duration:15s; animation-delay:9s;"></span>
+    <span style="left:64%; animation-duration:20s; animation-delay:6s; width:2px; height:2px;"></span>
+  </div>
+  <div class="hero-content hero-mark">
     <p class="hero-eyebrow" data-es="Desayuno y Comida · Puerto Peñasco" data-en="Breakfast &amp; Lunch · Puerto Peñasco">Desayuno y Comida · Puerto Peñasco</p>
-    <h1 class="hero-headline">Boulevard 301</h1>
+    <h1 class="hero-wordmark">
+      <span class="wm-script">Boulevard</span><span class="wm-num">301</span>
+    </h1>
+    <p class="hero-tagline" data-es="Steaks &amp; Eggs · Hecho con amor" data-en="Steaks &amp; Eggs · Made with love">Steaks &amp; Eggs · Hecho con amor</p>
     <span class="hero-rule" aria-hidden="true"></span>
     <p class="hero-sub" data-es="Fresco, saludable y con sazón. Abierto todos los días desde las 7:30 AM." data-en="Fresh, healthy, made with love. Open every day from 7:30 AM.">Fresco, saludable y con sazón. Abierto todos los días desde las 7:30 AM.</p>
     <div class="hero-cta-row">
