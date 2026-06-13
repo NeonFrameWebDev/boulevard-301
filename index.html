@@ -112,15 +112,19 @@
        hand-painted cursive wordmark. js/hero.js renders it to the WebGL canvas
        and warps the stripes like flowing ink. The static photo below is the
        fallback (no WebGL / reduced motion / pre-load). -->
-  <picture class="hero-mural-img">
-    <source type="image/webp" sizes="100vw"
-      srcset="assets/mural_bw-768.webp 768w, assets/mural_bw-1152.webp 1152w, assets/mural_bw-1448.webp 1448w">
-    <img id="hero-mural-src" src="assets/mural_bw-1448.jpg" width="1448" height="1086"
-      alt="Mural en blanco y negro del edificio de Boulevard 301 con el letrero pintado a mano"
-      fetchpriority="high" decoding="async">
-  </picture>
-  <canvas class="hero-mural-canvas" id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-mural-scrim" aria-hidden="true"></div>
+  <!-- Mural media. On desktop this is the full-bleed background; on phones it
+       becomes a top card showing the whole mural (the painted sign uncut). -->
+  <div class="hero-mural-media">
+    <picture class="hero-mural-img">
+      <source type="image/webp" sizes="100vw"
+        srcset="assets/mural_bw-768.webp 768w, assets/mural_bw-1152.webp 1152w, assets/mural_bw-1448.webp 1448w">
+      <img id="hero-mural-src" src="assets/mural_bw-1448.jpg" width="1448" height="1086"
+        alt="Mural en blanco y negro del edificio de Boulevard 301 con el letrero pintado a mano"
+        fetchpriority="high" decoding="async">
+    </picture>
+    <canvas class="hero-mural-canvas" id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-mural-scrim" aria-hidden="true"></div>
+  </div>
 
   <!-- Vertical labels fill the side margins (desktop only) -->
   <span class="hero-side hero-side-left" aria-hidden="true" data-es="Puerto Peñasco · Sonora" data-en="Puerto Peñasco · Sonora">Puerto Peñasco · Sonora</span>
@@ -128,6 +132,8 @@
 
   <div class="hero-content hero-mark">
     <h1 class="sr-only">Boulevard 301 · Desayuno y Comida en Puerto Peñasco</h1>
+    <!-- Cursive wordmark, phones only (where the painted sign would be cut) -->
+    <div class="hero-wm" aria-hidden="true"><span class="wm-script">Boulevard</span><span class="wm-num">301</span></div>
     <p class="hero-eyebrow" data-es="Desayuno y Comida · Puerto Peñasco" data-en="Breakfast &amp; Lunch · Puerto Peñasco">Desayuno y Comida · Puerto Peñasco</p>
     <p class="hero-tagline" data-es="Steaks &amp; Eggs · Hecho con amor" data-en="Steaks &amp; Eggs · Made with love">Steaks &amp; Eggs · Hecho con amor</p>
     <div class="hero-cta-row">

@@ -865,6 +865,13 @@ a { color: inherit; text-decoration: none; }
   justify-content: stretch;
   background: #14100A;
 }
+/* Desktop: the media layer is the full-bleed background. */
+.hero-mural-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-wm { display: none; }       /* cursive wordmark is phones-only */
 .hero-mural-img,
 .hero-mural-canvas {
   position: absolute;
@@ -934,12 +941,54 @@ a { color: inherit; text-decoration: none; }
 .hero-side-left  { left:  clamp(0.4rem, 1vw, 1rem); transform: translateY(-50%) rotate(180deg); }
 .hero-side-right { right: clamp(0.4rem, 1vw, 1rem); transform: translateY(-50%); }
 
-/* On viewports narrower than the photo (phones) the stripes fill edge to edge:
-   the static fallback covers + zooms in a touch to match the WebGL canvas, and
-   the side labels (which live in the desktop side frames) are hidden. */
+/* On phones (narrower than the photo) the full-bleed background fights the wide
+   sign, so we stack: the whole mural as a top card (uncropped), then a content
+   block on the brand olive with the cursive wordmark. */
 @media (max-aspect-ratio: 4 / 3) {
-  .hero-mural-img img { object-fit: cover; transform: scale(1.12); transform-origin: center; }
   .hero-side { display: none; }
+  .hero-mural {
+    height: auto;
+    min-height: 100svh;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    background: var(--olive);
+    padding-top: var(--nav-h-mob);     /* mural card sits below the nav */
+  }
+  .hero-mural-media {
+    position: relative;
+    inset: auto;
+    width: 100%;
+    aspect-ratio: 1448 / 1086;          /* the whole mural, no crop */
+    flex: 0 0 auto;
+  }
+  .hero-mural-img img { object-fit: cover; transform: none; }
+  /* fade the card's bottom into the olive content block */
+  .hero-mural-scrim {
+    background: linear-gradient(to bottom, transparent 66%, rgba(46,42,30,0.9));
+  }
+  .hero-mural .hero-content {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    align-items: flex-start;
+    text-align: left;
+    justify-content: center;
+    padding: clamp(1.6rem, 7vw, 2.8rem) clamp(1.4rem, 6vw, 2rem) clamp(2.4rem, 9vw, 3.5rem);
+    animation: none;
+  }
+  .hero-wm {
+    display: flex;
+    align-items: flex-end;
+    gap: 0.06em;
+    line-height: 0.85;
+    margin-bottom: 1rem;
+  }
+  .hero-wm .wm-script { font-size: clamp(46px, 16vw, 92px); }
+  .hero-wm .wm-num    { font-size: clamp(20px, 5.5vw, 42px); margin-bottom: 0.35em; }
+  .hero-mural .hero-eyebrow { margin-bottom: 0.55rem; }
+  .hero-mural .hero-tagline { margin-bottom: 1.4rem; }
+  .hero-mural .hero-cta-row { justify-content: flex-start; }
 }
 
 /* ─── Decorative corner frame (Rahmen) — retired for the quiriego look ─── */
