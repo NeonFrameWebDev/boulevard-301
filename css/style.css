@@ -934,11 +934,11 @@ a { color: inherit; text-decoration: none; }
 .hero-side-left  { left:  clamp(0.4rem, 1vw, 1rem); transform: translateY(-50%) rotate(180deg); }
 .hero-side-right { right: clamp(0.4rem, 1vw, 1rem); transform: translateY(-50%); }
 
-/* On viewports narrower than the photo (phones), the static fallback fits by
-   width so the whole wordmark shows, matching the WebGL canvas (the letterbox
-   shows the dark hero backdrop), and the side labels are hidden. */
+/* On viewports narrower than the photo (phones) the stripes fill edge to edge:
+   the static fallback covers + zooms in a touch to match the WebGL canvas, and
+   the side labels (which live in the desktop side frames) are hidden. */
 @media (max-aspect-ratio: 4 / 3) {
-  .hero-mural-img img { object-fit: contain; }
+  .hero-mural-img img { object-fit: cover; transform: scale(1.12); transform-origin: center; }
   .hero-side { display: none; }
 }
 

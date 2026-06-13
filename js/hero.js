@@ -32,13 +32,14 @@ void main(){
   vec2 uv = gl_FragCoord.xy / uRes;
   uv.y = 1.0 - uv.y;                 // image upright (canvas origin is bottom-left)
 
-  // Fit by WIDTH: on wide screens this fills like cover (crops a little height);
-  // on tall phones it letterboxes top/bottom so the full painted wordmark always
-  // shows, and that letterbox becomes the dark hero frame the nav + CTA sit in.
+  // object-fit: cover (fills the frame both ways). uZoom is set per device in
+  // JS: zoomed OUT on desktop (thin dark side frames hold the side labels),
+  // zoomed IN on phones so the stripes fill the screen edge to edge.
   float ca = uRes.x / uRes.y;
   float ia = uImg.x / uImg.y;
   vec2 cuv = uv;
-  cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5;
+  if (ca > ia) { cuv.y = (uv.y - 0.5) * (ia / ca) + 0.5; }
+  else         { cuv.x = (uv.x - 0.5) * (ca / ia) + 0.5; }
 
   // zoom out a touch; anything past the photo edge becomes the dark hero
   // backdrop so it reads as a clean frame.
@@ -133,9 +134,10 @@ export function initHero() {
     const uSpeed  = gl.getUniformLocation(prog, 'uSpeed');
     const uAmp    = gl.getUniformLocation(prog, 'uAmp');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
-    gl.uniform1f(uZoom, 0.9);            // zoom out a little
     gl.uniform1f(uSpeed, 0.3);           // ~3.3s per glint sweep
     gl.uniform1f(uAmp, 1.0);             // glint strength
+    // uZoom is set per device in resize(): wide screens zoom OUT (side frames
+    // for the labels), phones zoom IN so the stripes fill edge to edge.
 
     const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
@@ -148,6 +150,8 @@ export function initHero() {
       }
       gl.viewport(0, 0, canvas.width, canvas.height);
       gl.uniform2f(uRes, canvas.width, canvas.height);
+      // wide (>= 4:3) zooms out for the framed look; narrower (phones) zooms in
+      gl.uniform1f(uZoom, (w / h) >= (4 / 3) ? 0.9 : 1.15);
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
