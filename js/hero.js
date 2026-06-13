@@ -153,7 +153,7 @@ export function initHero() {
       gl.uniform2f(uRes, canvas.width, canvas.height);
       // wide desktop hero zooms out a touch (side frames for the labels); the
       // ~4:3 phone card shows the whole mural with no zoom.
-      gl.uniform1f(uZoom, (w / h) > 1.4 ? 0.9 : 1.0);
+      gl.uniform1f(uZoom, (w / h) > 1.4 ? 0.80 : 1.0);
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
