@@ -221,7 +221,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(232,223,192,0.45);
 }
 
-/* All five page links in a single centered group. */
+/* All five page links flow left after the logo. */
 .nav-links {
   display: flex;
   align-items: center;
@@ -229,8 +229,6 @@ a { color: inherit; text-decoration: none; }
   list-style: none;
   margin: 0;
   padding: 0;
-  flex: 1;
-  justify-content: center;
 }
 
 .nav-links a {
@@ -284,6 +282,7 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   gap: 0.75rem;
+  margin-left: auto;
 }
 
 .lang-toggle {
