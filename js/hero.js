@@ -47,15 +47,16 @@ void main(){
   vec2 ib = step(vec2(0.0), cuv) * step(cuv, vec2(1.0));
   float inside = ib.x * ib.y;
 
-  // The PHOTO never moves or warps: sample at the fixed pixel, lightly blurred
-  // only to keep the black/white crisp.
-  float e = 1.1 / uImg.y;
-  float b = lum(texture2D(uTex, cuv).rgb) * 0.5
-          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.125
-          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.125
-          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.125
-          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.125;
-  float bw = smoothstep(0.40, 0.60, b);          // crisp black & white
+  // The PHOTO never moves or warps. Sample mostly at the fixed pixel with only a
+  // whisper of neighbour averaging (just enough to avoid jagged aliasing) so the
+  // painted sign stays sharp.
+  float e = 0.6 / uImg.y;
+  float b = lum(texture2D(uTex, cuv).rgb) * 0.68
+          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.08;
+  float bw = smoothstep(0.42, 0.58, b);          // crisp black & white
 
   // A single light glint sweeps diagonally across the crisp mural: no warp, no
   // rings, just a gleam of light gliding over the wall.
