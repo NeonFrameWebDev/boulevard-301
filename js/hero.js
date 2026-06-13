@@ -25,7 +25,6 @@ uniform float uTime;
 uniform float uZoom;    // <1 zooms out (reveals more of the mural)
 uniform float uSpeed;   // glint sweep speed (sweeps per second)
 uniform float uAmp;     // glint strength
-uniform float uSharp;   // >0 sharpens (desktop upscale), <0 softens (mobile downscale)
 
 float lum(vec3 c){ return dot(c, vec3(0.299, 0.587, 0.114)); }
 
@@ -48,17 +47,15 @@ void main(){
   vec2 ib = step(vec2(0.0), cuv) * step(cuv, vec2(1.0));
   float inside = ib.x * ib.y;
 
-  // The PHOTO never moves or warps. An unsharp mask keeps the painted sign crisp
-  // where the 1448px source is stretched up to fill a big screen (uSharp > 0);
-  // on phones the photo is shrunk so we soften a touch instead (uSharp < 0) to
-  // stop the fine stripes aliasing.
-  float e = 1.3 / uImg.y;
-  float c = lum(texture2D(uTex, cuv).rgb);
-  float n = 0.25 * ( lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb)
-                   + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb)
-                   + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb)
-                   + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) );
-  float b  = clamp(c + uSharp * (c - n), 0.0, 1.0);
+  // The PHOTO never moves or warps. Sample mostly at the fixed pixel with only a
+  // whisper of neighbour averaging (just enough to avoid jagged aliasing) so the
+  // painted sign stays sharp.
+  float e = 0.6 / uImg.y;
+  float b = lum(texture2D(uTex, cuv).rgb) * 0.68
+          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.08
+          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.08;
   float bw = smoothstep(0.42, 0.58, b);          // crisp black & white
 
   // A single light glint sweeps diagonally across the crisp mural: no warp, no
@@ -137,14 +134,13 @@ export function initHero() {
     const uZoom   = gl.getUniformLocation(prog, 'uZoom');
     const uSpeed  = gl.getUniformLocation(prog, 'uSpeed');
     const uAmp    = gl.getUniformLocation(prog, 'uAmp');
-    const uSharp  = gl.getUniformLocation(prog, 'uSharp');
     gl.uniform2f(uImg, img.naturalWidth || 1448, img.naturalHeight || 1086);
     gl.uniform1f(uSpeed, 0.3);           // ~3.3s per glint sweep
     gl.uniform1f(uAmp, 1.0);             // glint strength
     // uZoom is set per device in resize(): wide screens zoom OUT (side frames
     // for the labels), phones zoom IN so the stripes fill edge to edge.
 
-    const DPR = Math.min(window.devicePixelRatio || 1, 2);
+    const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
     function resize() {
       const w = canvas.clientWidth || canvas.parentElement.clientWidth;
       const h = canvas.clientHeight || canvas.parentElement.clientHeight;
@@ -157,11 +153,7 @@ export function initHero() {
       gl.uniform2f(uRes, canvas.width, canvas.height);
       // wide desktop hero zooms out a touch (side frames for the labels); the
       // ~4:3 phone card shows the whole mural with no zoom.
-      const wide = (w / h) > 1.4;
-      gl.uniform1f(uZoom, wide ? 0.9 : 1.0);
-      // the texture is now a crisp high-res vector render, so only a light touch:
-      // a hair of sharpen on desktop, a hair of soften on the phone downscale.
-      gl.uniform1f(uSharp, wide ? 0.3 : -0.15);
+      gl.uniform1f(uZoom, (w / h) > 1.4 ? 0.9 : 1.0);
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
