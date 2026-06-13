@@ -159,8 +159,9 @@ export function initHero() {
       // ~4:3 phone card shows the whole mural with no zoom.
       const wide = (w / h) > 1.4;
       gl.uniform1f(uZoom, wide ? 0.9 : 1.0);
-      // sharpen the stretched-up desktop image; soften the shrunk phone image
-      gl.uniform1f(uSharp, wide ? 0.9 : -0.2);
+      // the texture is now a crisp high-res vector render, so only a light touch:
+      // a hair of sharpen on desktop, a hair of soften on the phone downscale.
+      gl.uniform1f(uSharp, wide ? 0.3 : -0.15);
     }
     resize();
     window.addEventListener('resize', resize, { passive: true });
