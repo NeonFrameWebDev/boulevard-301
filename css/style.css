@@ -221,7 +221,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(232,223,192,0.45);
 }
 
-/* All five page links flow left after the logo. */
+/* All five page links; shifted right of logo into the lighter mural area. */
 .nav-links {
   display: flex;
   align-items: center;
@@ -229,6 +229,7 @@ a { color: inherit; text-decoration: none; }
   list-style: none;
   margin: 0;
   padding: 0;
+  margin-left: clamp(3rem, 18vw, 22rem);
 }
 
 .nav-links a {
