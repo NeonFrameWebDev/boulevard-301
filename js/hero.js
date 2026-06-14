@@ -51,11 +51,11 @@ void main(){
   // whisper of neighbour averaging (just enough to avoid jagged aliasing) so the
   // painted sign stays sharp.
   float e = 0.6 / uImg.y;
-  float b = lum(texture2D(uTex, cuv).rgb) * 0.68
-          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.08
-          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.08
-          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.08
-          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.08;
+  float b = lum(texture2D(uTex, cuv).rgb) * 0.80
+          + lum(texture2D(uTex, cuv + vec2( e, 0.0)).rgb) * 0.05
+          + lum(texture2D(uTex, cuv + vec2(-e, 0.0)).rgb) * 0.05
+          + lum(texture2D(uTex, cuv + vec2(0.0,  e)).rgb) * 0.05
+          + lum(texture2D(uTex, cuv + vec2(0.0, -e)).rgb) * 0.05;
   float bw = smoothstep(0.42, 0.58, b);          // crisp black & white
 
   // A single light glint sweeps diagonally across the crisp mural: no warp, no
@@ -140,7 +140,7 @@ export function initHero() {
     // uZoom is set per device in resize(): wide screens zoom OUT (side frames
     // for the labels), phones zoom IN so the stripes fill edge to edge.
 
-    const DPR = Math.min(window.devicePixelRatio || 1, 1.5);
+    const DPR = Math.min(window.devicePixelRatio || 1, 2);
     function resize() {
       const w = canvas.clientWidth || canvas.parentElement.clientWidth;
       const h = canvas.clientHeight || canvas.parentElement.clientHeight;
