@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
 
   <meta name="title-es" content="Visítanos | Boulevard 301 Puerto Peñasco">
   <meta name="title-en" content="Visit Us | Boulevard 301 Puerto Peñasco">
@@ -32,6 +33,122 @@
         imagesizes="100vw">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-scoped: airy quiriego treatment for the Visit page (light grounds,
+       hairline info groups, calm map frame, borderless social). Reuses shared
+       tokens; no shared classes are overridden. -->
+  <style>
+    /* Info / map split with generous gutter */
+    .visit-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(2.5rem, 6vw, 5rem);
+      align-items: start;
+    }
+    @media (max-width: 760px) {
+      .visit-split { grid-template-columns: 1fr; gap: 3rem; }
+    }
+
+    /* Stacked hairline info groups (address / phone / email / hours) */
+    .visit-info-group { padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
+    .visit-info-group:first-of-type { border-top: 1px solid var(--line); }
+    .visit-info-label {
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .visit-info-group > div,
+    .visit-info-group > a {
+      font-weight: 300;
+      font-size: clamp(15px, 1.6vw, 17px);
+      line-height: 1.7;
+      color: var(--body-dark);
+    }
+    .visit-info-group a { display: inline-block; transition: color 0.2s; }
+    .visit-info-group a:hover { color: var(--gold); }
+    .visit-info-note { font-size: 13px; color: var(--muted); margin-top: 0.35rem; }
+
+    /* Amenities as a calm two-column hairline list */
+    .amenity-hair-list {
+      list-style: none;
+      margin: 0.75rem 0 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: clamp(1.5rem, 4vw, 3rem);
+    }
+    @media (max-width: 460px) { .amenity-hair-list { grid-template-columns: 1fr; } }
+    .amenity-hair-list li {
+      font-weight: 300;
+      font-size: 15px;
+      color: var(--body-dark);
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    /* Calm map frame (hairline, no heavy box) */
+    .visit-map-frame {
+      margin-top: 0.75rem;
+      border: 1px solid var(--line);
+      background: #f8f5ef;
+    }
+    .visit-map-frame iframe {
+      display: block;
+      width: 100%;
+      height: clamp(320px, 46vh, 460px);
+      border: 0;
+    }
+    .visit-map-note { font-size: 13px; color: var(--muted); margin-top: 0.75rem; }
+
+    /* Contact form sits airy on the light ground */
+    .visit-form-wrap { margin-top: 2.75rem; }
+
+    /* Borderless, hairline social treatment (no boxes, no top rule) */
+    .social-hair-list {
+      list-style: none;
+      margin: 2.5rem auto 0;
+      padding: 0;
+      max-width: 560px;
+    }
+    .social-hair-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 1.5rem;
+      padding: 1.6rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .social-hair-row:first-child { border-top: 1px solid var(--line); }
+    .social-hair-name {
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: clamp(16px, 2vw, 19px);
+      letter-spacing: 0.02em;
+      color: var(--body-dark);
+    }
+    .social-hair-handle { color: var(--gold); font-weight: 400; }
+    .social-hair-meta { font-size: 13px; color: var(--muted); margin-top: 0.35rem; }
+    .social-hair-link {
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: 13px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold);
+      white-space: nowrap;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 2px;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-hair-link:hover { color: var(--body-dark); border-bottom-color: var(--gold); }
+    @media (max-width: 460px) {
+      .social-hair-row { grid-template-columns: 1fr; gap: 0.75rem; }
+    }
+  </style>
 
   <script>
     (function(){
@@ -105,119 +222,99 @@
 </header>
 
 <!-- ======================================================
-     SECTION: ESSENTIAL INFO (dark)
+     SECTION: ESSENTIAL INFO (light, airy)
      ====================================================== -->
-<section class="bg-dark">
-  <div class="section-inner">
-    <div class="col-split col-split-50-50" style="align-items: start; gap: 3rem;">
+<div class="bg-light">
+  <section class="section-inner">
+    <p class="page-lead" style="margin-bottom: 3.75rem;" data-es="Estamos sobre la Avenida Benito Juárez, en el corazón del centro. Llega, siéntate y pide. Aquí están los detalles." data-en="We're on Avenida Benito Juárez, in the heart of downtown. Come in, sit down, order. Here are the details.">Estamos sobre la Avenida Benito Juárez, en el corazón del centro. Llega, siéntate y pide. Aquí están los detalles.</p>
 
-      <!-- Left: Details -->
+    <div class="visit-split">
+
+      <!-- Left: Details as hairline info groups -->
       <div class="visit-details-block reveal">
-        <p class="eyebrow" data-es="Dónde estamos" data-en="Find us">Dónde estamos</p>
+        <h2 class="airy-label" style="margin-bottom: 1.75rem;" data-es="Dónde estamos" data-en="Find us">Dónde estamos</h2>
 
-        <div class="visit-address-block" style="margin-top: 0.5rem;">
+        <div class="visit-info-group visit-address-block">
+          <p class="visit-info-label" data-es="Dirección" data-en="Address">Dirección</p>
           <div data-es="Avenida Benito Juárez entre Sonora y León de la Barra" data-en="Avenida Benito Juárez between Sonora and León de la Barra">Avenida Benito Juárez entre Sonora y León de la Barra</div>
           <div data-es="Centro, Puerto Peñasco, Sonora 83550" data-en="Centro, Puerto Peñasco, Sonora 83550">Centro, Puerto Peñasco, Sonora 83550</div>
         </div>
 
-        <div class="visit-phone-block" style="margin-top: 1rem;">
-          <a href="tel:+526383834816">
-            <span class="visit-phone-icon" aria-hidden="true">&#9990;</span>
-            +52 638 383 4816
-          </a>
+        <div class="visit-info-group visit-phone-block">
+          <p class="visit-info-label" data-es="Teléfono" data-en="Phone">Teléfono</p>
+          <a href="tel:+526383834816">+52 638 383 4816</a>
         </div>
 
         <!-- Email: confirm with owner before launch -->
         <!-- NOTE: cooper1978@live.com.mx is publicly listed but active status is unverified.
              Confirm with owner before enabling this link at launch. -->
-        <div class="visit-email-block" style="margin-top: 0.5rem;">
+        <div class="visit-info-group visit-email-block">
+          <p class="visit-info-label" data-es="Correo" data-en="Email">Correo</p>
           <a href="mailto:cooper1978@live.com.mx">cooper1978@live.com.mx</a>
           <!-- [copy needed: confirm email is still active before publishing] -->
         </div>
 
-        <div class="visit-hours-block" style="margin-top: 1.25rem;">
-          <p class="eyebrow" style="margin-bottom: 0.3rem;" data-es="Horario" data-en="Hours">Horario</p>
+        <div class="visit-info-group visit-hours-block">
+          <p class="visit-info-label" data-es="Horario" data-en="Hours">Horario</p>
           <div data-es="Lunes a domingo, 7:30 AM – 4:00 PM" data-en="Monday through Sunday, 7:30 AM – 4:00 PM">Lunes a domingo, 7:30 AM – 4:00 PM</div>
-          <div style="font-size:13px; color: var(--muted); margin-top:2px;" data-es="Abierto todos los días del año." data-en="Open every day.">Abierto todos los días del año.</div>
+          <div class="visit-info-note" data-es="Abierto todos los días del año." data-en="Open every day.">Abierto todos los días del año.</div>
         </div>
 
-        <!-- Amenities -->
-        <div style="margin-top: 1.5rem;">
-          <p class="eyebrow" style="margin-bottom: 0.6rem;" data-es="Servicios" data-en="Amenities">Servicios</p>
-          <div class="amenity-grid">
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F17F;</span>
-              <span data-es="Estacionamiento gratis" data-en="Free parking">Estacionamiento gratis</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F4F6;</span>
-              <span data-es="WiFi gratis" data-en="Free WiFi">WiFi gratis</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F6CD;</span>
-              <span data-es="Para llevar" data-en="Takeout">Para llevar</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F6F5;</span>
-              <span data-es="A domicilio" data-en="Delivery">A domicilio</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F4C5;</span>
-              <span data-es="Reservaciones" data-en="Reservations">Reservaciones</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F4B3;</span>
-              <span data-es="Tarjetas de crédito" data-en="Credit cards">Tarjetas de crédito</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x267F;</span>
-              <span data-es="Acceso en silla de ruedas" data-en="Wheelchair accessible">Acceso en silla de ruedas</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F331;</span>
-              <span data-es="Opciones vegetarianas/veganas" data-en="Vegetarian/vegan options">Opciones vegetarianas/veganas</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F476;</span>
-              <span data-es="Menú para niños" data-en="Kids menu">Menú para niños</span>
-            </div>
-            <div class="amenity-pill">
-              <span class="amenity-icon" aria-hidden="true">&#x1F381;</span>
-              <span data-es="Tarjetas de regalo" data-en="Gift cards">Tarjetas de regalo</span>
-            </div>
-          </div>
-        </div>
+        <!-- Amenities as a calm two-column hairline list -->
+        <h2 class="airy-label" style="margin: 2.75rem 0 0.75rem;" data-es="Servicios" data-en="Amenities">Servicios</h2>
+        <ul class="amenity-hair-list">
+          <li data-es="Estacionamiento gratis" data-en="Free parking">Estacionamiento gratis</li>
+          <li data-es="WiFi gratis" data-en="Free WiFi">WiFi gratis</li>
+          <li data-es="Para llevar" data-en="Takeout">Para llevar</li>
+          <li data-es="A domicilio" data-en="Delivery">A domicilio</li>
+          <li data-es="Reservaciones" data-en="Reservations">Reservaciones</li>
+          <li data-es="Tarjetas de crédito" data-en="Credit cards">Tarjetas de crédito</li>
+          <li data-es="Acceso en silla de ruedas" data-en="Wheelchair accessible">Acceso en silla de ruedas</li>
+          <li data-es="Opciones vegetarianas/veganas" data-en="Vegetarian/vegan options">Opciones vegetarianas/veganas</li>
+          <li data-es="Menú para niños" data-en="Kids menu">Menú para niños</li>
+          <li data-es="Tarjetas de regalo" data-en="Gift cards">Tarjetas de regalo</li>
+        </ul>
       </div>
 
       <!-- Right: Map -->
       <div class="map-wrap reveal">
-        <p class="eyebrow" data-es="En el mapa" data-en="On the map">En el mapa</p>
-        <iframe
-          src="https://maps.google.com/maps?q=Boulevard+301+Steaks+%26+Eggs+Puerto+Pe%C3%B1asco+Sonora+Mexico&output=embed"
-          title="Mapa de Boulevard 301"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          aria-label="Mapa de Boulevard 301 en Puerto Peñasco"
-        ></iframe>
-        <p class="map-note" data-es="Estacionamiento gratuito disponible fuera de la calle." data-en="Free off-street parking available.">Estacionamiento gratuito disponible fuera de la calle.</p>
+        <h2 class="airy-label" style="margin-bottom: 1.75rem;" data-es="En el mapa" data-en="On the map">En el mapa</h2>
+        <div class="visit-map-frame">
+          <iframe
+            src="https://maps.google.com/maps?q=Boulevard+301+Steaks+%26+Eggs+Puerto+Pe%C3%B1asco+Sonora+Mexico&output=embed"
+            title="Mapa de Boulevard 301"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            aria-label="Mapa de Boulevard 301 en Puerto Peñasco"
+          ></iframe>
+        </div>
+        <p class="visit-map-note" data-es="Estacionamiento gratuito disponible fuera de la calle." data-en="Free off-street parking available.">Estacionamiento gratuito disponible fuera de la calle.</p>
       </div>
 
     </div>
-  </div>
-</section>
+  </section>
+</div><!-- /bg-light -->
+
+<!-- Full-bleed photo break -->
+<div class="photo-break reveal">
+  <picture>
+    <source type="image/webp" sizes="100vw" srcset="assets/photo_d-400.webp 400w, assets/photo_d-640.webp 640w, assets/photo_d-960.webp 960w, assets/photo_d-1280.webp 1280w, assets/photo_d-1600.webp 1600w">
+    <img src="assets/photo_d.jpg" width="2048" height="1536" alt="Mesa servida en Boulevard 301" loading="lazy" decoding="async">
+  </picture>
+</div>
 
 <!-- ======================================================
-     SECTION: CONTACT FORM (light)
+     SECTION: CONTACT FORM (light, airy)
      ====================================================== -->
 <section class="bg-light">
   <div class="section-inner-narrow">
-    <p class="eyebrow" data-es="Contáctanos" data-en="Get in touch">Contáctanos</p>
-    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,32px); margin-bottom: 2rem;" data-es="Tienes preguntas? Escríbenos." data-en="Have questions? Write to us.">Tienes preguntas? Escríbenos.</h2>
+    <h2 class="airy-label" style="text-align:center; display:inline-block;" data-es="Contáctanos" data-en="Get in touch">Contáctanos</h2>
+    <p class="page-lead" style="margin: 1.75rem auto 0;" data-es="Tienes preguntas? Escríbenos y te respondemos pronto." data-en="Have questions? Write to us and we'll get back to you soon.">Tienes preguntas? Escríbenos y te respondemos pronto.</p>
 
     <!-- Spec form: FormSubmit.co endpoint to be wired by owner at launch -->
     <form
-      class="contact-form reveal"
+      class="contact-form visit-form-wrap reveal"
       action="https://formsubmit.co/cooper1978@live.com.mx"
       method="POST"
       novalidate
@@ -290,39 +387,48 @@
 </section>
 
 <!-- ======================================================
-     SECTION: SOCIAL LINKS (dark, thin)
+     SECTION: SOCIAL LINKS (light, borderless hairline)
      ====================================================== -->
-<section class="bg-dark">
-  <div class="section-inner-narrow">
-    <p class="eyebrow" style="text-align:center;" data-es="Síguenos" data-en="Follow us">Síguenos</p>
-    <h2 class="section-heading" style="font-size: clamp(20px,3vw,28px); color: var(--cream); text-align:center; margin-bottom: 2rem;" data-es="Síguenos en redes sociales." data-en="Follow us on social.">Síguenos en redes sociales.</h2>
+<section class="bg-light">
+  <div class="section-inner-narrow" style="text-align:center;">
+    <h2 class="airy-label" style="display:inline-block;" data-es="Síguenos" data-en="Follow us">Síguenos</h2>
+    <p class="page-lead" style="margin: 1.75rem auto 0;" data-es="Fotos del día, especiales y lo que sale de la cocina." data-en="Photos of the day, specials, and what's coming out of the kitchen.">Fotos del día, especiales y lo que sale de la cocina.</p>
 
-    <div class="social-cards-row reveal">
+    <ul class="social-hair-list reveal" style="text-align:left;">
       <!-- Facebook -->
-      <div class="social-card">
-        <div class="social-card-name">Facebook</div>
-        <div class="social-card-handle">/Blvd301</div>
-        <p class="social-card-desc" data-es="4,001+ seguidores · 363 reseñas · 4.1/5" data-en="4,001+ followers · 363 reviews · 4.1/5">4,001+ seguidores · 363 reseñas · 4.1/5</p>
-        <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 0.5rem;" data-es="Ver página" data-en="View page">Ver página</a>
-      </div>
+      <li class="social-hair-row">
+        <div>
+          <div class="social-hair-name">Facebook <span class="social-hair-handle">/Blvd301</span></div>
+          <p class="social-hair-meta" data-es="4,001+ seguidores · 363 reseñas · 4.1/5" data-en="4,001+ followers · 363 reviews · 4.1/5">4,001+ seguidores · 363 reseñas · 4.1/5</p>
+        </div>
+        <a href="https://www.facebook.com/Blvd301/" target="_blank" rel="noopener noreferrer" class="social-hair-link" data-es="Ver página" data-en="View page">Ver página</a>
+      </li>
 
       <!-- Instagram -->
-      <div class="social-card">
-        <div class="social-card-name">Instagram</div>
-        <div class="social-card-handle">@boulevard301</div>
-        <p class="social-card-desc" data-es="1,916 seguidores · 571 publicaciones" data-en="1,916 followers · 571 posts">1,916 seguidores · 571 publicaciones</p>
-        <a href="https://www.instagram.com/boulevard301/" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top: 0.5rem;" data-es="Ver perfil" data-en="View profile">Ver perfil</a>
-      </div>
-    </div>
+      <li class="social-hair-row">
+        <div>
+          <div class="social-hair-name">Instagram <span class="social-hair-handle">@boulevard301</span></div>
+          <p class="social-hair-meta" data-es="1,916 seguidores · 571 publicaciones" data-en="1,916 followers · 571 posts">1,916 seguidores · 571 publicaciones</p>
+        </div>
+        <a href="https://www.instagram.com/boulevard301/" target="_blank" rel="noopener noreferrer" class="social-hair-link" data-es="Ver perfil" data-en="View profile">Ver perfil</a>
+      </li>
+    </ul>
   </div>
 </section>
 
-<!-- ======================================================
-     SECTION: VISIT CTA
-     ====================================================== -->
-<section class="bg-dark" style="padding: 3rem clamp(1.5rem,5vw,4rem); text-align:center; border-top: 1px solid rgba(212,98,42,0.3);">
-  <p style="font-size: clamp(20px,3vw,28px); font-family: var(--font-display); font-weight:600; color: var(--cream); margin-bottom: 1.25rem;" data-es="Tienes preguntas? Llámanos." data-en="Have questions? Give us a call.">Tienes preguntas? Llámanos.</p>
-  <a href="tel:+526383834816" class="btn btn-primary" data-es="Llamar ahora" data-en="Call now">Llamar ahora</a>
+<!-- ¡VIVE LA EXPERIENCIA! experience band -->
+<section class="cta-banner cta-experience reveal" aria-label="Boulevard 301">
+  <picture>
+    <source type="image/webp" sizes="100vw" srcset="assets/exterior_1-400.webp 400w, assets/exterior_1-640.webp 640w, assets/exterior_1-960.webp 960w, assets/exterior_1-1280.webp 1280w, assets/exterior_1-1600.webp 1600w">
+    <img class="cta-banner-bg" src="assets/exterior_1.jpg" width="2048" height="2048" alt="Fachada de Boulevard 301 en la Avenida Benito Juárez" loading="lazy" decoding="async">
+  </picture>
+  <div class="cta-banner-overlay"></div>
+  <div class="cta-banner-content">
+    <span class="cta-banner-eyebrow" data-es="Avenida Benito Juárez · Centro" data-en="Avenida Benito Juárez · Centro">Avenida Benito Juárez · Centro</span>
+    <h2 class="cta-banner-headline" data-es="Te esperamos." data-en="We'll see you soon.">Te esperamos.</h2>
+    <p class="cta-banner-sub" data-es="Abierto todos los días · 7:30 AM a 4:00 PM · Estacionamiento gratis" data-en="Open every day · 7:30 AM to 4:00 PM · Free parking">Abierto todos los días · 7:30 AM a 4:00 PM · Estacionamiento gratis</p>
+    <a href="tel:+526383834816" class="btn btn-secondary-cream" data-es="Llámanos" data-en="Call us">Llámanos</a>
+  </div>
 </section>
 
 <!-- FOOTER -->

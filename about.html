@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" translate="no">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="google" content="notranslate">
 
   <meta name="title-es" content="Nosotros | Boulevard 301 Puerto Peñasco">
   <meta name="title-en" content="About | Boulevard 301 Puerto Peñasco">
@@ -32,6 +33,147 @@
         imagesizes="100vw">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Page-scoped quiriego touches for the About body (reuses shared tokens) -->
+  <style>
+    /* Unboxed by-the-numbers: number-over-label stacks split by hairlines */
+    .about-figures {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      margin-top: clamp(3rem, 6vw, 4.5rem);
+      border-top: 1px solid var(--line-cream);
+      border-bottom: 1px solid var(--line-cream);
+    }
+    .about-figure {
+      text-align: center;
+      padding: clamp(1.6rem, 3vw, 2.4rem) 1rem;
+      border-left: 1px solid var(--line-cream);
+    }
+    .about-figure:first-child { border-left: 0; }
+    .about-figure-num {
+      font-family: var(--font-main);
+      font-weight: 300;
+      font-size: clamp(30px, 5vw, 44px);
+      line-height: 1;
+      color: var(--cream);
+    }
+    .about-figure-label {
+      margin-top: 0.7rem;
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+    @media (max-width: 620px) {
+      .about-figures { grid-template-columns: 1fr 1fr; }
+      .about-figure:nth-child(3) { border-left: 0; }
+      .about-figure:nth-child(n+3) { border-top: 1px solid var(--line-cream); }
+    }
+
+    /* Calm 2-up photo pair (1px gap, edge-aware corners) */
+    .photo-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      margin-top: clamp(2rem, 4vw, 3rem);
+    }
+    .photo-pair-cell {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background: var(--paper);
+    }
+    .photo-pair-cell img,
+    .photo-pair-cell picture {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    @media (max-width: 560px) {
+      .photo-pair { grid-template-columns: 1fr; }
+    }
+
+    /* Airy numbered ingredient rows (no boxes, hairline split) */
+    .ranch-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .ranch-item {
+      padding: clamp(1.6rem, 3vw, 2.2rem) 0;
+      border-top: 1px solid var(--line-cream);
+    }
+    .ranch-item:nth-child(odd) { padding-right: clamp(1.5rem, 3vw, 2.5rem); }
+    .ranch-item:nth-child(even) { padding-left: clamp(1.5rem, 3vw, 2.5rem); border-left: 1px solid var(--line-cream); }
+    .ranch-num {
+      font-family: var(--font-main);
+      font-weight: 300;
+      font-size: 13px;
+      letter-spacing: 0.3em;
+      color: var(--gold-soft);
+    }
+    .ranch-item-label {
+      margin-top: 0.55rem;
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: clamp(15px, 2vw, 18px);
+      letter-spacing: 0.02em;
+      color: var(--cream);
+    }
+    .ranch-item-body {
+      margin-top: 0.7rem;
+      font-weight: 300;
+      font-size: 14.5px;
+      line-height: 1.75;
+      color: var(--cream);
+      opacity: 0.74;
+    }
+    @media (max-width: 600px) {
+      .ranch-list { grid-template-columns: 1fr; }
+      .ranch-item:nth-child(odd),
+      .ranch-item:nth-child(even) { padding-left: 0; padding-right: 0; border-left: 0; }
+    }
+
+    /* Centered guest quotes with an oversized gold quotation glyph */
+    .quote-stack {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(3rem, 6vw, 4.5rem);
+      margin-top: clamp(2.5rem, 5vw, 3.5rem);
+    }
+    .airy-quote {
+      text-align: center;
+      max-width: 56ch;
+      margin: 0 auto;
+    }
+    .airy-quote::before {
+      content: "\201C";
+      display: block;
+      font-family: var(--font-display, Georgia, serif);
+      font-size: clamp(44px, 7vw, 64px);
+      line-height: 0.6;
+      color: var(--gold-soft);
+      margin-bottom: 0.6rem;
+    }
+    .airy-quote p {
+      font-weight: 300;
+      font-size: clamp(17px, 2.2vw, 22px);
+      line-height: 1.6;
+      color: var(--body-dark);
+    }
+    .airy-quote footer {
+      font-family: var(--font-main);
+      font-weight: 500;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+  </style>
 
   <script>
     (function(){
@@ -108,7 +250,7 @@
      ====================================================== -->
 <section class="bg-dark">
   <div class="section-inner">
-    <div class="col-split col-split-40-60" style="align-items:start; gap: 3rem;">
+    <div class="col-split col-split-40-60" style="align-items:start; gap: clamp(3rem, 6vw, 6rem);">
 
       <!-- Photo -->
       <div class="about-photo-wrap reveal">
@@ -124,9 +266,9 @@
       <div class="reveal">
         <p class="recipe-pull" data-es="500 gr de Amor · 300 gr de Sazón · 1 Huevo de Paciencia · y locura al gusto" data-en="500g of Love · 300g of Seasoning · 1 Egg of Patience · and madness to taste">500 gr de Amor · 300 gr de Sazón · 1 Huevo de Paciencia · y locura al gusto</p>
 
-        <h2 class="section-heading" style="font-size: clamp(24px,3.5vw,32px); color: var(--cream); margin-bottom: 1.25rem;" data-es="Así cocinamos." data-en="This is how we cook.">Así cocinamos.</h2>
+        <h2 class="section-heading" style="font-size: clamp(24px,3.5vw,32px); color: var(--cream); margin-bottom: 1.5rem;" data-es="Así cocinamos." data-en="This is how we cook.">Así cocinamos.</h2>
 
-        <div class="about-body-text">
+        <div class="about-body-text measure" style="line-height: 1.8;">
           <p data-es="Somos un restaurante familiar en el corazón de Puerto Peñasco, sobre el boulevard principal. Abrimos cada mañana con huevos frescos de nuestro propio rancho, afuera del pueblo. Los traemos directamente, sin intermediarios." data-en="We're a family-owned breakfast and lunch restaurant on Puerto Peñasco's main boulevard. Every morning starts with fresh eggs from our own ranch just outside town. We bring them in ourselves.">Somos un restaurante familiar en el corazón de Puerto Peñasco, sobre el boulevard principal. Abrimos cada mañana con huevos frescos de nuestro propio rancho, afuera del pueblo. Los traemos directamente, sin intermediarios.</p>
           <p data-es="El menú mezcla lo que más nos gusta de Sonora y del norte de México: arrachera, machaca, chilaquiles, barbacoa estilo Sinaloa, y los huevos que siempre han sido la base de un buen desayuno. También tenemos platos para quienes prefieren comer ligero: avena, fruta de temporada, avocado toast, parfait." data-en="The menu runs from Sonoran arrachera steak and eggs to chilaquiles, machaca burritos, barbacoa Sinaloa style, and shrimp omelettes. If you want something lighter, there's avena, seasonal fruit, avocado toast, and parfait.">El menú mezcla lo que más nos gusta de Sonora y del norte de México: arrachera, machaca, chilaquiles, barbacoa estilo Sinaloa, y los huevos que siempre han sido la base de un buen desayuno. También tenemos platos para quienes prefieren comer ligero: avena, fruta de temporada, avocado toast, parfait.</p>
           <p data-es="Llevamos años siendo el desayuno favorito de los locales y de quienes vienen de visita. Eso no es accidente. Es que cocinamos con amor, con sazón, y con paciencia." data-en="We've been a local favorite and a tourist stop for years. That doesn't happen by accident. It happens when you cook with love, seasoning, and patience.">Llevamos años siendo el desayuno favorito de los locales y de quienes vienen de visita. Eso no es accidente. Es que cocinamos con amor, con sazón, y con paciencia.</p>
@@ -135,23 +277,23 @@
 
     </div>
 
-    <!-- By the numbers -->
-    <div class="about-stats-row" style="margin-top: 3.5rem;">
-      <div class="about-stat reveal">
-        <div class="about-stat-num">4.6</div>
-        <div class="about-stat-label" data-es="estrellas en Google" data-en="stars on Google">estrellas en Google</div>
+    <!-- By the numbers (unboxed: number-over-label stacks, hairline separators) -->
+    <div class="about-figures reveal">
+      <div class="about-figure">
+        <div class="about-figure-num">4.6</div>
+        <div class="about-figure-label" data-es="estrellas en Google" data-en="stars on Google">estrellas en Google</div>
       </div>
-      <div class="about-stat reveal">
-        <div class="about-stat-num">511</div>
-        <div class="about-stat-label" data-es="reseñas" data-en="reviews">reseñas</div>
+      <div class="about-figure">
+        <div class="about-figure-num">511</div>
+        <div class="about-figure-label" data-es="reseñas" data-en="reviews">reseñas</div>
       </div>
-      <div class="about-stat reveal">
-        <div class="about-stat-num">7</div>
-        <div class="about-stat-label" data-es="días a la semana" data-en="days a week">días a la semana</div>
+      <div class="about-figure">
+        <div class="about-figure-num">7</div>
+        <div class="about-figure-label" data-es="días a la semana" data-en="days a week">días a la semana</div>
       </div>
-      <div class="about-stat reveal">
-        <div class="about-stat-num">7:30</div>
-        <div class="about-stat-label" data-es="abrimos cada mañana" data-en="we open every morning">abrimos cada mañana</div>
+      <div class="about-figure">
+        <div class="about-figure-num">7:30</div>
+        <div class="about-figure-label" data-es="abrimos cada mañana" data-en="we open every morning">abrimos cada mañana</div>
       </div>
     </div>
   </div>
@@ -160,47 +302,43 @@
 <!-- ======================================================
      SECTION: THE SPACE (light)
      ====================================================== -->
-<section class="bg-light">
-  <div class="section-inner">
+<section class="bg-light" style="padding-bottom: 0;">
+  <div class="section-inner-narrow" style="text-align:center;">
     <p class="eyebrow" data-es="El Espacio" data-en="The Space">El Espacio</p>
-    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,34px); margin-bottom: 1.5rem;" data-es="Bienvenidos a nuestro comedor." data-en="Welcome to our dining room.">Bienvenidos a nuestro comedor.</h2>
+    <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,34px); margin-bottom: 0;" data-es="Bienvenidos a nuestro comedor." data-en="Welcome to our dining room.">Bienvenidos a nuestro comedor.</h2>
+  </div>
+</section>
 
-    <div class="photo-mosaic reveal">
-      <div class="mosaic-row mosaic-row-1">
-        <div class="mosaic-cell">
-          <picture>
-            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
-              srcset="assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w, assets/interior_3-1600.webp 1600w">
-            <img src="assets/interior_3.jpg" width="2048" height="2048" alt="Techo pintado a mano con vigas naranjas sobre cielo azul" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="mosaic-cell">
-          <picture>
-            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
-              srcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w">
-            <img src="assets/interior_4.jpg" width="1024" height="768" alt="Comedor de Boulevard 301 con clientes" loading="lazy" decoding="async">
-          </picture>
-        </div>
+<!-- Full-bleed band: the hand-painted ceiling -->
+<div class="photo-break reveal">
+  <picture>
+    <source type="image/webp" sizes="100vw"
+      srcset="assets/interior_3-400.webp 400w, assets/interior_3-640.webp 640w, assets/interior_3-960.webp 960w, assets/interior_3-1280.webp 1280w, assets/interior_3-1600.webp 1600w">
+    <img src="assets/interior_3.jpg" width="2048" height="2048" alt="Techo pintado a mano con vigas naranjas sobre cielo azul" loading="lazy" decoding="async" style="object-position: center 40%;">
+  </picture>
+</div>
+
+<section class="bg-light">
+  <div class="section-inner-narrow">
+    <!-- Calm 2-up: dining room + signage -->
+    <div class="photo-pair reveal">
+      <div class="photo-pair-cell">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 430px, 100vw"
+            srcset="assets/interior_4-400.webp 400w, assets/interior_4-640.webp 640w, assets/interior_4-960.webp 960w, assets/interior_4-1024.webp 1024w">
+          <img src="assets/interior_4.jpg" width="1024" height="768" alt="Comedor de Boulevard 301 con clientes" loading="lazy" decoding="async">
+        </picture>
       </div>
-      <div class="mosaic-row mosaic-row-2" style="margin-top: 4px;">
-        <div class="mosaic-cell">
-          <picture>
-            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
-              srcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
-            <img src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301 con mural del techo" loading="lazy" decoding="async">
-          </picture>
-        </div>
-        <div class="mosaic-cell">
-          <picture>
-            <source type="image/webp" sizes="(min-width: 768px) 33vw, 100vw"
-              srcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w">
-            <img src="assets/interior_2.jpg" width="2048" height="2048" alt="Booths en vinotinto y murales en las paredes" loading="lazy" decoding="async">
-          </picture>
-        </div>
+      <div class="photo-pair-cell">
+        <picture>
+          <source type="image/webp" sizes="(min-width: 768px) 430px, 100vw"
+            srcset="assets/photo_c-400.webp 400w, assets/photo_c-640.webp 640w, assets/photo_c-960.webp 960w, assets/photo_c-1280.webp 1280w, assets/photo_c-1536.webp 1536w">
+          <img src="assets/photo_c.jpg" width="1536" height="2048" alt="Letrero de Boulevard 301 con mural del techo" loading="lazy" decoding="async" style="object-position: center 30%;">
+        </picture>
       </div>
     </div>
 
-    <p style="font-size:15px; color: var(--muted); margin-top: 1.5rem; max-width: 680px;" data-es="El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro." data-en="The dining room has its own personality. Burgundy booths, a hand-painted ceiling, murals on every wall. Not catalog decor. Ours.">El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro.</p>
+    <p class="measure-center" style="font-weight: 300; font-size: clamp(15px, 2vw, 17px); line-height: 1.8; color: var(--muted); margin-top: clamp(2rem, 4vw, 2.75rem); text-align: center;" data-es="El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro." data-en="The dining room has its own personality. Burgundy booths, a hand-painted ceiling, murals on every wall. Not catalog decor. Ours.">El comedor tiene vida propia. Booths tapizados en vinotinto, techo pintado a mano, murales en cada pared. No es decoración de catálogo. Es lo nuestro.</p>
   </div>
 </section>
 
@@ -212,28 +350,28 @@
     <p class="eyebrow" data-es="Ingredientes" data-en="Ingredients">Ingredientes</p>
     <h2 class="section-heading" style="font-size: clamp(22px,3.5vw,32px); color: var(--cream); margin-bottom: 2rem;" data-es="Del rancho a tu plato." data-en="From the ranch to your plate.">Del rancho a tu plato.</h2>
 
-    <div class="col-split col-split-55-45" style="align-items: center;">
+    <div class="col-split col-split-55-45" style="align-items: center; gap: clamp(2.5rem, 5vw, 5rem);">
       <div>
-        <div class="ingredient-grid">
-          <div class="ingredient-block reveal">
-            <div class="ingredient-num">01</div>
-            <div class="ingredient-label" data-es="Huevos de rancho propio" data-en="Ranch-fresh eggs">Huevos de rancho propio</div>
-            <p class="ingredient-body" data-es="Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad." data-en="The eggs on your plate matter. Ours come from a ranch we run ourselves, outside of town. Actually fresh.">Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad.</p>
+        <div class="ranch-list">
+          <div class="ranch-item reveal">
+            <div class="ranch-num">01</div>
+            <div class="ranch-item-label" data-es="Huevos de rancho propio" data-en="Ranch-fresh eggs">Huevos de rancho propio</div>
+            <p class="ranch-item-body" data-es="Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad." data-en="The eggs on your plate matter. Ours come from a ranch we run ourselves, outside of town. Actually fresh.">Los huevos que sirves en la mesa importan. Los nuestros vienen de un rancho que operamos nosotros mismos, fuera del pueblo. Frescos. De verdad.</p>
           </div>
-          <div class="ingredient-block reveal">
-            <div class="ingredient-num">02</div>
-            <div class="ingredient-label" data-es="100% ingredientes frescos" data-en="100% fresh ingredients">100% ingredientes frescos</div>
-            <p class="ingredient-body" data-es="Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días." data-en="Quality ingredients. No shortcuts. Every plate is made fresh, every day.">Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días.</p>
+          <div class="ranch-item reveal">
+            <div class="ranch-num">02</div>
+            <div class="ranch-item-label" data-es="100% ingredientes frescos" data-en="100% fresh ingredients">100% ingredientes frescos</div>
+            <p class="ranch-item-body" data-es="Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días." data-en="Quality ingredients. No shortcuts. Every plate is made fresh, every day.">Productos de calidad. Sin atajos. Cada plato se prepara con ingredientes frescos y locales todos los días.</p>
           </div>
-          <div class="ingredient-block reveal">
-            <div class="ingredient-num">03</div>
-            <div class="ingredient-label" data-es="Cocina sonorense" data-en="Sonoran kitchen tradition">Cocina sonorense</div>
-            <p class="ingredient-body" data-es="Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación." data-en="Arrachera, machaca, Sinaloa-style barbacoa, chilaquiles. The flavors of northern Mexico that need no explanation.">Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación.</p>
+          <div class="ranch-item reveal">
+            <div class="ranch-num">03</div>
+            <div class="ranch-item-label" data-es="Cocina sonorense" data-en="Sonoran kitchen tradition">Cocina sonorense</div>
+            <p class="ranch-item-body" data-es="Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación." data-en="Arrachera, machaca, Sinaloa-style barbacoa, chilaquiles. The flavors of northern Mexico that need no explanation.">Arrachera, machaca, barbacoa estilo Sinaloa, chilaquiles. Los sabores del norte que no necesitan explicación.</p>
           </div>
-          <div class="ingredient-block reveal">
-            <div class="ingredient-num">04</div>
-            <div class="ingredient-label" data-es="Hecho en casa" data-en="Homemade daily">Hecho en casa</div>
-            <p class="ingredient-body" data-es="El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido." data-en="The chorizo, the salsas, the daily specials. Made here. That's what the regulars already know.">El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido.</p>
+          <div class="ranch-item reveal">
+            <div class="ranch-num">04</div>
+            <div class="ranch-item-label" data-es="Hecho en casa" data-en="Homemade daily">Hecho en casa</div>
+            <p class="ranch-item-body" data-es="El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido." data-en="The chorizo, the salsas, the daily specials. Made here. That's what the regulars already know.">El chorizo, las salsas, los platos del día. Se hacen aquí. Eso es lo que saben los que ya vienen seguido.</p>
           </div>
         </div>
       </div>
@@ -255,20 +393,20 @@
 <section class="bg-light">
   <div class="section-inner-narrow">
     <p class="eyebrow" style="text-align:center;" data-es="Lo que dicen los clientes" data-en="What guests say">Lo que dicen los clientes</p>
-    <div style="display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem;">
-      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
-        <p data-es="«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»" data-en="&quot;The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.&quot;">«El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Renee S., TripAdvisor" data-en="Renee S., TripAdvisor">Renee S., TripAdvisor</footer>
+    <div class="quote-stack">
+      <blockquote class="airy-quote reveal">
+        <p data-es="El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble." data-en="The steak: tender, succulent, cooked medium, portioned large. Mind-blowing.">El bistec: tierno, jugoso, cocinado a término medio, bien porcionado. Increíble.</p>
+        <footer data-es="Renee S., TripAdvisor" data-en="Renee S., TripAdvisor">Renee S., TripAdvisor</footer>
       </blockquote>
 
-      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
-        <p data-es="«La comida es hermosa a la vista y deliciosa al paladar.»" data-en="&quot;The food is absolutely beautiful to look at and tastes oh so delicious.&quot;">«La comida es hermosa a la vista y deliciosa al paladar.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Sarah C., TripAdvisor" data-en="Sarah C., TripAdvisor">Sarah C., TripAdvisor</footer>
+      <blockquote class="airy-quote reveal">
+        <p data-es="La comida es hermosa a la vista y deliciosa al paladar." data-en="The food is absolutely beautiful to look at and tastes oh so delicious.">La comida es hermosa a la vista y deliciosa al paladar.</p>
+        <footer data-es="Sarah C., TripAdvisor" data-en="Sarah C., TripAdvisor">Sarah C., TripAdvisor</footer>
       </blockquote>
 
-      <blockquote class="pull-quote reveal" style="font-size: clamp(16px,2vw,20px); color: var(--body-dark); border-left: 3px solid var(--golden); padding-left: 1.5rem; line-height: 1.7;">
-        <p data-es="«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»" data-en="&quot;Orange juice squeezed fresh. The shrimp omelette was fantastic.&quot;">«El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.»</p>
-        <footer style="font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--muted); margin-top: 0.5rem;" data-es="Paul McLinn, Restaurant Guru" data-en="Paul McLinn, Restaurant Guru">Paul McLinn, Restaurant Guru</footer>
+      <blockquote class="airy-quote reveal">
+        <p data-es="El jugo de naranja exprimido al momento. El omelette de camarón: fantástico." data-en="Orange juice squeezed fresh. The shrimp omelette was fantastic.">El jugo de naranja exprimido al momento. El omelette de camarón: fantástico.</p>
+        <footer data-es="Paul McLinn, Restaurant Guru" data-en="Paul McLinn, Restaurant Guru">Paul McLinn, Restaurant Guru</footer>
       </blockquote>
     </div>
 
@@ -281,12 +419,20 @@
 </section>
 
 <!-- ======================================================
-     SECTION: HOURS + CTA STRIP (dark)
+     SECTION: VIVE EXPERIENCE BAND
      ====================================================== -->
-<section class="bg-dark hours-strip">
-  <p class="main-hours" data-es="Abierto todos los días · 7:30 AM – 4:00 PM" data-en="Open every day · 7:30 AM – 4:00 PM">Abierto todos los días · 7:30 AM – 4:00 PM</p>
-  <p class="sub-hours" data-es="Avenida Benito Juárez · Centro · Puerto Peñasco" data-en="Avenida Benito Juárez · Centro · Puerto Peñasco">Avenida Benito Juárez · Centro · Puerto Peñasco</p>
-  <a href="visit.html" class="btn btn-ghost-teal" style="margin-top: 1.5rem;" data-es="Ver cómo llegar" data-en="Get directions">Ver cómo llegar</a>
+<section class="cta-banner cta-experience reveal" aria-label="Boulevard 301">
+  <picture>
+    <source type="image/webp" sizes="100vw" srcset="assets/interior_2-400.webp 400w, assets/interior_2-640.webp 640w, assets/interior_2-960.webp 960w, assets/interior_2-1280.webp 1280w, assets/interior_2-1600.webp 1600w">
+    <img class="cta-banner-bg" src="assets/interior_2.jpg" width="2048" height="2048" alt="Booths en vinotinto y murales en las paredes del comedor de Boulevard 301" loading="lazy" decoding="async">
+  </picture>
+  <div class="cta-banner-overlay"></div>
+  <div class="cta-banner-content">
+    <span class="cta-banner-eyebrow" data-es="Boulevard 301 · Puerto Peñasco" data-en="Boulevard 301 · Puerto Peñasco">Boulevard 301 · Puerto Peñasco</span>
+    <h2 class="cta-banner-headline" data-es="Hecho con amor." data-en="Made with love.">Hecho con amor.</h2>
+    <p class="cta-banner-sub" data-es="Abierto todos los días · 7:30 AM a 4 PM · Avenida Benito Juárez, Centro" data-en="Open every day · 7:30 AM to 4 PM · Avenida Benito Juárez, Centro">Abierto todos los días · 7:30 AM a 4 PM · Avenida Benito Juárez, Centro</p>
+    <a href="visit.html" class="btn btn-secondary-cream" data-es="Visítanos" data-en="Visit Us">Visítanos</a>
+  </div>
 </section>
 
 <!-- FOOTER -->
